@@ -1,0 +1,78 @@
+{
+  "summary": {
+    "pass": 1,
+    "fail": 0,
+    "duration": "00:00:02",
+    "warehouse": "0e7ef356fe37e56c"
+  },
+  "violations": [],
+  "log": "[start] Submitting 1 rules to 0e7ef356fe37e56c\n[run] Executing rule 1/1: Order_Ship_Due_Date_Validation\n[end] Completed",
+  "per_rule": [
+    {
+      "name": "Order_Ship_Due_Date_Validation",
+      "status": "passed",
+      "row_count": 0,
+      "details": {
+        "passed": true,
+        "row_count": 0,
+        "ge_available": true,
+        "details": {
+          "success": true,
+          "results": [
+            {
+              "success": true,
+              "expectation_config": {
+                "expectation_type": "expect_table_row_count_to_equal",
+                "kwargs": {
+                  "value": 0,
+                  "result_format": "BASIC"
+                },
+                "meta": {}
+              },
+              "result": {
+                "observed_value": 0
+              },
+              "meta": {},
+              "exception_info": {
+                "raised_exception": false,
+                "exception_message": null,
+                "exception_traceback": null
+              }
+            }
+          ],
+          "evaluation_parameters": {},
+          "statistics": {
+            "evaluated_expectations": 1,
+            "successful_expectations": 1,
+            "unsuccessful_expectations": 0,
+            "success_percent": 100
+          },
+          "meta": {
+            "great_expectations_version": "0.18.21",
+            "expectation_suite_name": "default",
+            "run_id": {
+              "run_name": null,
+              "run_time": "2025-09-08T02:39:13.293147+05:30"
+            },
+            "batch_kwargs": {
+              "ge_batch_id": "e7bf1d8e-8c2e-11f0-894f-3814286fba39"
+            },
+            "batch_markers": {},
+            "batch_parameters": {},
+            "validation_time": "20250907T210913.293147Z",
+            "expectation_suite_meta": {
+              "great_expectations_version": "0.18.21"
+            }
+          }
+        }
+      },
+      "sample": [],
+      "sql": "SELECT `SalesOrderNumber`,\n       `SalesOrderLineNumber`,\n       `OrderDateKey`,\n       `ShipDateKey`,\n       `DueDateKey`,\n       'OrderDateKey must be <= ShipDateKey and ShipDateKey must be <= DueDateKey' AS violation_reason\nFROM `aigdqr-ragstoriches`.`adv_works_dw`.`factresellersales`\nWHERE NOT (`OrderDateKey` <= `ShipDateKey`\n           AND `ShipDateKey` <= `DueDateKey`)\nUNION ALL\nSELECT `SalesOrderNumber`,\n       `SalesOrderLineNumber`,\n       `OrderDateKey`,\n       `ShipDateKey`,\n       `DueDateKey`,\n       'OrderDateKey must be <= ShipDateKey and ShipDateKey must be <= DueDateKey' AS violation_reason\nFROM `aigdqr-ragstoriches`.`adv_works_dw`.`factinternetsales`\nWHERE NOT (`OrderDateKey` <= `ShipDateKey`\n           AND `ShipDateKey` <= `DueDateKey`)",
+      "severity": "CRITICAL",
+      "description": "Ensure that the ordering date is less than or equal to the shipping date, which is less than or equal to the promised due date. This rule applies to both factresellersales and factinternetsales tables.",
+      "timing_sec": {
+        "sql": 2.29
+      }
+    }
+  ]
+}
