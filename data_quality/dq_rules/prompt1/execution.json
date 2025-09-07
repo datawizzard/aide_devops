@@ -1,0 +1,144 @@
+{
+  "summary": {
+    "pass": 2,
+    "fail": 0,
+    "duration": "00:00:02",
+    "warehouse": "0e7ef356fe37e56c"
+  },
+  "violations": [],
+  "log": "[start] Submitting 2 rules to 0e7ef356fe37e56c\n[run] Executing rule 1/2: Missing_customer_in_factinternetsales\n[run] Executing rule 2/2: Missing_product_in_factinternetsales\n[end] Completed",
+  "per_rule": [
+    {
+      "name": "Missing_customer_in_factinternetsales",
+      "status": "passed",
+      "row_count": 0,
+      "details": {
+        "passed": true,
+        "row_count": 0,
+        "ge_available": true,
+        "details": {
+          "success": true,
+          "results": [
+            {
+              "success": true,
+              "expectation_config": {
+                "expectation_type": "expect_table_row_count_to_equal",
+                "kwargs": {
+                  "value": 0,
+                  "result_format": "BASIC"
+                },
+                "meta": {}
+              },
+              "result": {
+                "observed_value": 0
+              },
+              "meta": {},
+              "exception_info": {
+                "raised_exception": false,
+                "exception_message": null,
+                "exception_traceback": null
+              }
+            }
+          ],
+          "evaluation_parameters": {},
+          "statistics": {
+            "evaluated_expectations": 1,
+            "successful_expectations": 1,
+            "unsuccessful_expectations": 0,
+            "success_percent": 100
+          },
+          "meta": {
+            "great_expectations_version": "0.18.21",
+            "expectation_suite_name": "default",
+            "run_id": {
+              "run_name": null,
+              "run_time": "2025-09-08T02:29:41.217584+05:30"
+            },
+            "batch_kwargs": {
+              "ge_batch_id": "92c30a7e-8c2d-11f0-a170-3814286fba39"
+            },
+            "batch_markers": {},
+            "batch_parameters": {},
+            "validation_time": "20250907T205941.217584Z",
+            "expectation_suite_meta": {
+              "great_expectations_version": "0.18.21"
+            }
+          }
+        }
+      },
+      "sample": [],
+      "sql": "SELECT f.`SalesOrderNumber`,\n       f.`SalesOrderLineNumber`,\n       f.`CustomerKey`,\n       'Referenced CustomerKey does not exist in dimcustomer' AS violation_reason\nFROM `aigdqr-ragstoriches`.`adv_works_dw`.`factinternetsales` f\nWHERE NOT EXISTS\n    (SELECT 1\n     FROM `aigdqr-ragstoriches`.`adv_works_dw`.`dimcustomer` c\n     WHERE f.`CustomerKey` = c.`CustomerKey`)",
+      "severity": "CRITICAL",
+      "description": "Detects online sales records in `factinternetsales` that reference a `CustomerKey` not present in `dimcustomer`. Assumes `CustomerKey` is a unique identifier in both tables.",
+      "timing_sec": {
+        "sql": 3.182
+      }
+    },
+    {
+      "name": "Missing_product_in_factinternetsales",
+      "status": "passed",
+      "row_count": 0,
+      "details": {
+        "passed": true,
+        "row_count": 0,
+        "ge_available": true,
+        "details": {
+          "success": true,
+          "results": [
+            {
+              "success": true,
+              "expectation_config": {
+                "expectation_type": "expect_table_row_count_to_equal",
+                "kwargs": {
+                  "value": 0,
+                  "result_format": "BASIC"
+                },
+                "meta": {}
+              },
+              "result": {
+                "observed_value": 0
+              },
+              "meta": {},
+              "exception_info": {
+                "raised_exception": false,
+                "exception_message": null,
+                "exception_traceback": null
+              }
+            }
+          ],
+          "evaluation_parameters": {},
+          "statistics": {
+            "evaluated_expectations": 1,
+            "successful_expectations": 1,
+            "unsuccessful_expectations": 0,
+            "success_percent": 100
+          },
+          "meta": {
+            "great_expectations_version": "0.18.21",
+            "expectation_suite_name": "default",
+            "run_id": {
+              "run_name": null,
+              "run_time": "2025-09-08T02:29:43.866033+05:30"
+            },
+            "batch_kwargs": {
+              "ge_batch_id": "94576eea-8c2d-11f0-b31c-3814286fba39"
+            },
+            "batch_markers": {},
+            "batch_parameters": {},
+            "validation_time": "20250907T205943.866033Z",
+            "expectation_suite_meta": {
+              "great_expectations_version": "0.18.21"
+            }
+          }
+        }
+      },
+      "sample": [],
+      "sql": "SELECT f.`SalesOrderNumber`,\n       f.`SalesOrderLineNumber`,\n       f.`ProductKey`,\n       'Referenced ProductKey does not exist in dimproduct' AS violation_reason\nFROM `aigdqr-ragstoriches`.`adv_works_dw`.`factinternetsales` f\nWHERE NOT EXISTS\n    (SELECT 1\n     FROM `aigdqr-ragstoriches`.`adv_works_dw`.`dimproduct` p\n     WHERE f.`ProductKey` = p.`ProductKey`)",
+      "severity": "CRITICAL",
+      "description": "Detects online sales records in `factinternetsales` that reference a `ProductKey` not present in `dimproduct`. Assumes `ProductKey` is a unique identifier in both tables.",
+      "timing_sec": {
+        "sql": 2.635
+      }
+    }
+  ]
+}
