@@ -1,0 +1,234 @@
+
+        <!doctype html>
+        <html>
+        <head>
+          <meta charset="utf-8" />
+          <title>Qualitron — Data Quality Report</title>
+          <style>
+            :root {
+              --accent: #00A79D;
+              --accent-hover: #008E86;
+              --text: #0E141B;
+              --text-subtle: #5E6A75;
+              --surface: #FFFFFF;
+              --surface-alt: #F6F8FA;
+              --border: #E6E9EF;
+              --radius: 12px;
+              --font-sans: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+              --font-mono: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, 'Liberation Mono', 'Courier New', monospace;
+            }
+            body {
+              font-family: var(--font-sans);
+              margin: 24px;
+              background: var(--surface);
+              color: var(--text);
+            }
+            .brand { display: flex; align-items: center; gap: 12px; margin-bottom: 12px; }
+            .logo-badge {
+              padding: 4px 8px;
+              border-radius: var(--radius);
+              border: 1px solid rgba(0,0,0,0.12);
+              color: var(--accent);
+              font-weight: 600;
+              letter-spacing: 0.06em;
+            }
+            .brand-title { font-size: 16px; font-weight: 600; }
+            .brand-sub { font-size: 12px; color: var(--text-subtle); }
+            .rule { border: 1px solid var(--border); padding: 12px; margin: 12px 0; border-radius: var(--radius); background: var(--surface); }
+            .status { text-transform: uppercase; font-size: 12px; padding: 2px 6px; border-radius: 999px; margin-left: 8px; }
+            .status.passed { background: #e6ffed; color: #036400; border: 1px solid #b5e6bf; }
+            .status.failed { background: #ffebe6; color: #970000; border: 1px solid #f3b1a3; }
+            .status.error  { background: #fff4e5; color: #8a6d3b; border: 1px solid #ffd9a6; }
+            table { border-collapse: collapse; margin-top: 8px; width: 100%; }
+            th, td { border: 1px solid var(--border); padding: 6px; font-size: 12px; }
+            th { background: var(--surface-alt); text-align: left; }
+            pre { white-space: pre-wrap; background: var(--surface-alt); padding: 8px; border: 1px solid var(--border); border-radius: 8px; }
+            .meta { display: flex; gap: 16px; color: #333; font-size: 13px; margin: 6px 0; }
+            .desc { color: #444; }
+            .divider { height: 1px; background: var(--border); margin: 12px 0; }
+            .header { display: flex; align-items: baseline; justify-content: space-between; margin-bottom: 8px; }
+            .header h1 { margin: 0; font-size: 20px; }
+            .ts { color: var(--text-subtle); font-size: 12px; }
+          </style>
+        </head>
+        <body>
+          <div class="header">
+            <div class="brand">
+              <div class="logo-badge">[ QUALITRON ]</div>
+              <div>
+                <div class="brand-title">Qualitron – AI Data Quality</div>
+                <div class="brand-sub">EPAM-inspired single-page UI</div>
+              </div>
+            </div>
+            <div class="ts">Generated 2025-09-08 20:46:23 UTC</div>
+          </div>
+          <div class="divider"></div>
+
+                <section class="rule">
+                  <h2>
+                    unique_line_number_per_order
+                    <span class="status failed">failed</span>
+                  </h2>
+                  <div class="meta">
+                    <div><b>Severity:</b> CRITICAL</div>
+                    <div><b>Violating rows:</b> 50</div>
+                  </div>
+                  <details>
+                    <summary>SQL</summary>
+                    <pre>SELECT `SalesOrderNumber`,
+       `SalesOrderLineNumber`,
+       &#x27;Duplicate line number within the same order&#x27; AS violation_reason
+FROM
+  (SELECT `SalesOrderNumber`,
+          `SalesOrderLineNumber`,
+          ROW_NUMBER() OVER (PARTITION BY `SalesOrderNumber`
+                             ORDER BY `SalesOrderLineNumber`) AS row_num
+   FROM `aigdqr-ragstoriches`.`adv_works_dw`.`factinternetsales`) t
+WHERE t.row_num &gt; 1</pre>
+                  </details>
+                  <details>
+                    <summary>Validation details</summary>
+                    <pre>{
+  &quot;passed&quot;: false,
+  &quot;row_count&quot;: 50,
+  &quot;ge_available&quot;: true,
+  &quot;details&quot;: {
+    &quot;success&quot;: false,
+    &quot;results&quot;: [
+      {
+        &quot;success&quot;: false,
+        &quot;expectation_config&quot;: {
+          &quot;expectation_type&quot;: &quot;expect_table_row_count_to_equal&quot;,
+          &quot;kwargs&quot;: {
+            &quot;value&quot;: 0,
+            &quot;result_format&quot;: &quot;BASIC&quot;
+          },
+          &quot;meta&quot;: {}
+        },
+        &quot;result&quot;: {
+          &quot;observed_value&quot;: 50
+        },
+        &quot;meta&quot;: {},
+        &quot;exception_info&quot;: {
+          &quot;raised_exception&quot;: false,
+          &quot;exception_message&quot;: null,
+          &quot;exception_traceback&quot;: null
+        }
+      }
+    ],
+    &quot;evaluation_parameters&quot;: {},
+    &quot;statistics&quot;: {
+      &quot;evaluated_expectations&quot;: 1,
+      &quot;successful_expectations&quot;: 0,
+      &quot;unsuccessful_expectations&quot;: 1,
+      &quot;success_percent&quot;: 0
+    },
+    &quot;meta&quot;: {
+      &quot;great_expectations_version&quot;: &quot;0.18.21&quot;,
+      &quot;expectation_suite_name&quot;: &quot;default&quot;,
+      &quot;run_id&quot;: {
+        &quot;run_name&quot;: null,
+        &quot;run_time&quot;: &quot;2025-09-09T02:16:02.623330+05:30&quot;
+      },
+      &quot;batch_kwargs&quot;: {
+        &quot;ge_batch_id&quot;: &quot;d540f753-8cf4-11f0-83a2-3814286fba39&quot;
+      },
+      &quot;batch_markers&quot;: {},
+      &quot;batch_parameters&quot;: {},
+      &quot;validation_time&quot;: &quot;20250908T204602.623330Z&quot;,
+      &quot;expectation_suite_meta&quot;: {
+        &quot;great_expectations_version&quot;: &quot;0.18.21&quot;
+      }
+    }
+  }
+}</pre>
+                  </details>
+                  <table><thead><tr><th>SalesOrderNumber</th><th>SalesOrderLineNumber</th><th>violation_reason</th></tr></thead><tbody><tr><td>SO51176</td><td>2</td><td>Duplicate line number within the same order</td></tr><tr><td>SO51177</td><td>2</td><td>Duplicate line number within the same order</td></tr><tr><td>SO51178</td><td>2</td><td>Duplicate line number within the same order</td></tr><tr><td>SO51178</td><td>3</td><td>Duplicate line number within the same order</td></tr><tr><td>SO51179</td><td>2</td><td>Duplicate line number within the same order</td></tr><tr><td>SO51179</td><td>3</td><td>Duplicate line number within the same order</td></tr><tr><td>SO51179</td><td>4</td><td>Duplicate line number within the same order</td></tr><tr><td>SO51180</td><td>2</td><td>Duplicate line number within the same order</td></tr><tr><td>SO51180</td><td>3</td><td>Duplicate line number within the same order</td></tr><tr><td>SO51180</td><td>4</td><td>Duplicate line number within the same order</td></tr><tr><td>SO51180</td><td>5</td><td>Duplicate line number within the same order</td></tr><tr><td>SO51181</td><td>2</td><td>Duplicate line number within the same order</td></tr><tr><td>SO51181</td><td>3</td><td>Duplicate line number within the same order</td></tr><tr><td>SO51181</td><td>4</td><td>Duplicate line number within the same order</td></tr><tr><td>SO51182</td><td>2</td><td>Duplicate line number within the same order</td></tr><tr><td>SO51183</td><td>2</td><td>Duplicate line number within the same order</td></tr><tr><td>SO51184</td><td>2</td><td>Duplicate line number within the same order</td></tr><tr><td>SO51184</td><td>3</td><td>Duplicate line number within the same order</td></tr><tr><td>SO51184</td><td>4</td><td>Duplicate line number within the same order</td></tr><tr><td>SO51185</td><td>2</td><td>Duplicate line number within the same order</td></tr><tr><td>SO51185</td><td>3</td><td>Duplicate line number within the same order</td></tr><tr><td>SO51187</td><td>2</td><td>Duplicate line number within the same order</td></tr><tr><td>SO51189</td><td>2</td><td>Duplicate line number within the same order</td></tr><tr><td>SO51189</td><td>3</td><td>Duplicate line number within the same order</td></tr><tr><td>SO51190</td><td>2</td><td>Duplicate line number within the same order</td></tr><tr><td>SO51190</td><td>3</td><td>Duplicate line number within the same order</td></tr><tr><td>SO51191</td><td>2</td><td>Duplicate line number within the same order</td></tr><tr><td>SO51191</td><td>3</td><td>Duplicate line number within the same order</td></tr><tr><td>SO51191</td><td>4</td><td>Duplicate line number within the same order</td></tr><tr><td>SO51192</td><td>2</td><td>Duplicate line number within the same order</td></tr><tr><td>SO51193</td><td>2</td><td>Duplicate line number within the same order</td></tr><tr><td>SO51194</td><td>2</td><td>Duplicate line number within the same order</td></tr><tr><td>SO51194</td><td>3</td><td>Duplicate line number within the same order</td></tr><tr><td>SO51195</td><td>2</td><td>Duplicate line number within the same order</td></tr><tr><td>SO51195</td><td>3</td><td>Duplicate line number within the same order</td></tr><tr><td>SO51196</td><td>2</td><td>Duplicate line number within the same order</td></tr><tr><td>SO51196</td><td>3</td><td>Duplicate line number within the same order</td></tr><tr><td>SO51196</td><td>4</td><td>Duplicate line number within the same order</td></tr><tr><td>SO51196</td><td>5</td><td>Duplicate line number within the same order</td></tr><tr><td>SO51197</td><td>2</td><td>Duplicate line number within the same order</td></tr><tr><td>SO51197</td><td>3</td><td>Duplicate line number within the same order</td></tr><tr><td>SO51197</td><td>4</td><td>Duplicate line number within the same order</td></tr><tr><td>SO51198</td><td>2</td><td>Duplicate line number within the same order</td></tr><tr><td>SO51198</td><td>3</td><td>Duplicate line number within the same order</td></tr><tr><td>SO51199</td><td>2</td><td>Duplicate line number within the same order</td></tr><tr><td>SO51199</td><td>3</td><td>Duplicate line number within the same order</td></tr><tr><td>SO51199</td><td>4</td><td>Duplicate line number within the same order</td></tr><tr><td>SO51200</td><td>2</td><td>Duplicate line number within the same order</td></tr><tr><td>SO51201</td><td>2</td><td>Duplicate line number within the same order</td></tr><tr><td>SO51202</td><td>2</td><td>Duplicate line number within the same order</td></tr></tbody></table>
+                  <p class="desc">Ensure that each line item within an order has a unique line number in the factinternetsales table. This rule checks for duplicate SalesOrderLineNumber values within the same SalesOrderNumber.</p>
+                </section>
+
+                <section class="rule">
+                  <h2>
+                    unique_line_number_per_order_reseller
+                    <span class="status failed">failed</span>
+                  </h2>
+                  <div class="meta">
+                    <div><b>Severity:</b> CRITICAL</div>
+                    <div><b>Violating rows:</b> 50</div>
+                  </div>
+                  <details>
+                    <summary>SQL</summary>
+                    <pre>SELECT `SalesOrderNumber`,
+       `SalesOrderLineNumber`,
+       &#x27;Duplicate line number within the same order&#x27; AS violation_reason
+FROM
+  (SELECT `SalesOrderNumber`,
+          `SalesOrderLineNumber`,
+          ROW_NUMBER() OVER (PARTITION BY `SalesOrderNumber`
+                             ORDER BY `SalesOrderLineNumber`) AS row_num
+   FROM `aigdqr-ragstoriches`.`adv_works_dw`.`factresellersales`) t
+WHERE t.row_num &gt; 1</pre>
+                  </details>
+                  <details>
+                    <summary>Validation details</summary>
+                    <pre>{
+  &quot;passed&quot;: false,
+  &quot;row_count&quot;: 50,
+  &quot;ge_available&quot;: true,
+  &quot;details&quot;: {
+    &quot;success&quot;: false,
+    &quot;results&quot;: [
+      {
+        &quot;success&quot;: false,
+        &quot;expectation_config&quot;: {
+          &quot;expectation_type&quot;: &quot;expect_table_row_count_to_equal&quot;,
+          &quot;kwargs&quot;: {
+            &quot;value&quot;: 0,
+            &quot;result_format&quot;: &quot;BASIC&quot;
+          },
+          &quot;meta&quot;: {}
+        },
+        &quot;result&quot;: {
+          &quot;observed_value&quot;: 50
+        },
+        &quot;meta&quot;: {},
+        &quot;exception_info&quot;: {
+          &quot;raised_exception&quot;: false,
+          &quot;exception_message&quot;: null,
+          &quot;exception_traceback&quot;: null
+        }
+      }
+    ],
+    &quot;evaluation_parameters&quot;: {},
+    &quot;statistics&quot;: {
+      &quot;evaluated_expectations&quot;: 1,
+      &quot;successful_expectations&quot;: 0,
+      &quot;unsuccessful_expectations&quot;: 1,
+      &quot;success_percent&quot;: 0
+    },
+    &quot;meta&quot;: {
+      &quot;great_expectations_version&quot;: &quot;0.18.21&quot;,
+      &quot;expectation_suite_name&quot;: &quot;default&quot;,
+      &quot;run_id&quot;: {
+        &quot;run_name&quot;: null,
+        &quot;run_time&quot;: &quot;2025-09-09T02:16:08.256261+05:30&quot;
+      },
+      &quot;batch_kwargs&quot;: {
+        &quot;ge_batch_id&quot;: &quot;d89d0237-8cf4-11f0-8fed-3814286fba39&quot;
+      },
+      &quot;batch_markers&quot;: {},
+      &quot;batch_parameters&quot;: {},
+      &quot;validation_time&quot;: &quot;20250908T204608.256261Z&quot;,
+      &quot;expectation_suite_meta&quot;: {
+        &quot;great_expectations_version&quot;: &quot;0.18.21&quot;
+      }
+    }
+  }
+}</pre>
+                  </details>
+                  <table><thead><tr><th>SalesOrderNumber</th><th>SalesOrderLineNumber</th><th>violation_reason</th></tr></thead><tbody><tr><td>SO43659</td><td>2</td><td>Duplicate line number within the same order</td></tr><tr><td>SO43659</td><td>3</td><td>Duplicate line number within the same order</td></tr><tr><td>SO43659</td><td>4</td><td>Duplicate line number within the same order</td></tr><tr><td>SO43659</td><td>5</td><td>Duplicate line number within the same order</td></tr><tr><td>SO43659</td><td>6</td><td>Duplicate line number within the same order</td></tr><tr><td>SO43659</td><td>7</td><td>Duplicate line number within the same order</td></tr><tr><td>SO43659</td><td>8</td><td>Duplicate line number within the same order</td></tr><tr><td>SO43659</td><td>9</td><td>Duplicate line number within the same order</td></tr><tr><td>SO43659</td><td>10</td><td>Duplicate line number within the same order</td></tr><tr><td>SO43659</td><td>11</td><td>Duplicate line number within the same order</td></tr><tr><td>SO43659</td><td>12</td><td>Duplicate line number within the same order</td></tr><tr><td>SO43660</td><td>2</td><td>Duplicate line number within the same order</td></tr><tr><td>SO43661</td><td>2</td><td>Duplicate line number within the same order</td></tr><tr><td>SO43661</td><td>3</td><td>Duplicate line number within the same order</td></tr><tr><td>SO43661</td><td>4</td><td>Duplicate line number within the same order</td></tr><tr><td>SO43661</td><td>5</td><td>Duplicate line number within the same order</td></tr><tr><td>SO43661</td><td>6</td><td>Duplicate line number within the same order</td></tr><tr><td>SO43661</td><td>7</td><td>Duplicate line number within the same order</td></tr><tr><td>SO43661</td><td>8</td><td>Duplicate line number within the same order</td></tr><tr><td>SO43661</td><td>9</td><td>Duplicate line number within the same order</td></tr><tr><td>SO43661</td><td>10</td><td>Duplicate line number within the same order</td></tr><tr><td>SO43661</td><td>11</td><td>Duplicate line number within the same order</td></tr><tr><td>SO43661</td><td>12</td><td>Duplicate line number within the same order</td></tr><tr><td>SO43661</td><td>13</td><td>Duplicate line number within the same order</td></tr><tr><td>SO43661</td><td>14</td><td>Duplicate line number within the same order</td></tr><tr><td>SO43661</td><td>15</td><td>Duplicate line number within the same order</td></tr><tr><td>SO43662</td><td>2</td><td>Duplicate line number within the same order</td></tr><tr><td>SO43662</td><td>3</td><td>Duplicate line number within the same order</td></tr><tr><td>SO43662</td><td>4</td><td>Duplicate line number within the same order</td></tr><tr><td>SO43662</td><td>5</td><td>Duplicate line number within the same order</td></tr><tr><td>SO43662</td><td>6</td><td>Duplicate line number within the same order</td></tr><tr><td>SO43662</td><td>7</td><td>Duplicate line number within the same order</td></tr><tr><td>SO43662</td><td>8</td><td>Duplicate line number within the same order</td></tr><tr><td>SO43662</td><td>9</td><td>Duplicate line number within the same order</td></tr><tr><td>SO43662</td><td>10</td><td>Duplicate line number within the same order</td></tr><tr><td>SO43662</td><td>11</td><td>Duplicate line number within the same order</td></tr><tr><td>SO43662</td><td>12</td><td>Duplicate line number within the same order</td></tr><tr><td>SO43662</td><td>13</td><td>Duplicate line number within the same order</td></tr><tr><td>SO43662</td><td>14</td><td>Duplicate line number within the same order</td></tr><tr><td>SO43662</td><td>15</td><td>Duplicate line number within the same order</td></tr><tr><td>SO43662</td><td>16</td><td>Duplicate line number within the same order</td></tr><tr><td>SO43662</td><td>17</td><td>Duplicate line number within the same order</td></tr><tr><td>SO43662</td><td>18</td><td>Duplicate line number within the same order</td></tr><tr><td>SO43662</td><td>19</td><td>Duplicate line number within the same order</td></tr><tr><td>SO43662</td><td>20</td><td>Duplicate line number within the same order</td></tr><tr><td>SO43662</td><td>21</td><td>Duplicate line number within the same order</td></tr><tr><td>SO43662</td><td>22</td><td>Duplicate line number within the same order</td></tr><tr><td>SO43664</td><td>2</td><td>Duplicate line number within the same order</td></tr><tr><td>SO43664</td><td>3</td><td>Duplicate line number within the same order</td></tr><tr><td>SO43664</td><td>4</td><td>Duplicate line number within the same order</td></tr></tbody></table>
+                  <p class="desc">Ensure that each line item within an order has a unique line number in the factresellersales table. This rule checks for duplicate SalesOrderLineNumber values within the same SalesOrderNumber.</p>
+                </section>
+
+        </body>
+        </html>
