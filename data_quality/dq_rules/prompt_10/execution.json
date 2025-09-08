@@ -1,0 +1,78 @@
+{
+  "summary": {
+    "pass": 1,
+    "fail": 0,
+    "duration": "00:00:11",
+    "warehouse": "0e7ef356fe37e56c"
+  },
+  "violations": [],
+  "log": "[start] Submitting 1 rules to 0e7ef356fe37e56c\n[run] Executing rule 1/1: Customer email disposable domain check\n[end] Completed",
+  "per_rule": [
+    {
+      "name": "Customer email disposable domain check",
+      "status": "passed",
+      "row_count": 0,
+      "details": {
+        "passed": true,
+        "row_count": 0,
+        "ge_available": true,
+        "details": {
+          "success": true,
+          "results": [
+            {
+              "success": true,
+              "expectation_config": {
+                "expectation_type": "expect_table_row_count_to_equal",
+                "kwargs": {
+                  "value": 0,
+                  "result_format": "BASIC"
+                },
+                "meta": {}
+              },
+              "result": {
+                "observed_value": 0
+              },
+              "meta": {},
+              "exception_info": {
+                "raised_exception": false,
+                "exception_message": null,
+                "exception_traceback": null
+              }
+            }
+          ],
+          "evaluation_parameters": {},
+          "statistics": {
+            "evaluated_expectations": 1,
+            "successful_expectations": 1,
+            "unsuccessful_expectations": 0,
+            "success_percent": 100
+          },
+          "meta": {
+            "great_expectations_version": "0.18.21",
+            "expectation_suite_name": "default",
+            "run_id": {
+              "run_name": null,
+              "run_time": "2025-09-09T03:05:42.315589+05:30"
+            },
+            "batch_kwargs": {
+              "ge_batch_id": "c549d5f5-8cfb-11f0-b779-3814286fba39"
+            },
+            "batch_markers": {},
+            "batch_parameters": {},
+            "validation_time": "20250908T213542.315589Z",
+            "expectation_suite_meta": {
+              "great_expectations_version": "0.18.21"
+            }
+          }
+        }
+      },
+      "sample": [],
+      "sql": "SELECT `CustomerKey`,\n       `EmailAddress`,\n       'Email domain is disposable or fake' AS violation_reason\nFROM `aigdqr-ragstoriches`.`adv_works_dw`.`dimcustomer`\nWHERE lower(trim(split(`EmailAddress`, '@')[1])) IN ('mailinator.com',\n                                                     'tempmail.com',\n                                                     '10minutemail.com',\n                                                     'guerrillamail.com',\n                                                     'fakeinbox.com')",
+      "severity": "HIGH",
+      "description": "Flags customer email addresses that are associated with disposable or fake domains. Assumes a predefined list of disposable domains is available for comparison.",
+      "timing_sec": {
+        "sql": 11.018
+      }
+    }
+  ]
+}
