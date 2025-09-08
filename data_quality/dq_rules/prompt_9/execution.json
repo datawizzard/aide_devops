@@ -1,0 +1,403 @@
+{
+  "summary": {
+    "pass": 1,
+    "fail": 1,
+    "duration": "00:00:02",
+    "warehouse": "0e7ef356fe37e56c"
+  },
+  "violations": [
+    {
+      "rule": "Product alternate code uniqueness",
+      "table": "",
+      "keys": "",
+      "detail": "50 rows",
+      "severity": "CRITICAL"
+    }
+  ],
+  "log": "[start] Submitting 2 rules to 0e7ef356fe37e56c\n[run] Executing rule 1/2: Product alternate code uniqueness\n[run] Executing rule 2/2: Product alternate code non-null check\n[end] Completed",
+  "per_rule": [
+    {
+      "name": "Product alternate code uniqueness",
+      "status": "failed",
+      "row_count": 50,
+      "details": {
+        "passed": false,
+        "row_count": 50,
+        "ge_available": true,
+        "details": {
+          "success": false,
+          "results": [
+            {
+              "success": false,
+              "expectation_config": {
+                "expectation_type": "expect_table_row_count_to_equal",
+                "kwargs": {
+                  "value": 0,
+                  "result_format": "BASIC"
+                },
+                "meta": {}
+              },
+              "result": {
+                "observed_value": 50
+              },
+              "meta": {},
+              "exception_info": {
+                "raised_exception": false,
+                "exception_message": null,
+                "exception_traceback": null
+              }
+            }
+          ],
+          "evaluation_parameters": {},
+          "statistics": {
+            "evaluated_expectations": 1,
+            "successful_expectations": 0,
+            "unsuccessful_expectations": 1,
+            "success_percent": 0
+          },
+          "meta": {
+            "great_expectations_version": "0.18.21",
+            "expectation_suite_name": "default",
+            "run_id": {
+              "run_name": null,
+              "run_time": "2025-09-09T02:28:33.549181+05:30"
+            },
+            "batch_kwargs": {
+              "ge_batch_id": "94d7aee9-8cf6-11f0-b706-3814286fba39"
+            },
+            "batch_markers": {},
+            "batch_parameters": {},
+            "validation_time": "20250908T205833.549181Z",
+            "expectation_suite_meta": {
+              "great_expectations_version": "0.18.21"
+            }
+          }
+        }
+      },
+      "sample": [
+        {
+          "ProductKey": 212,
+          "ProductAlternateKey": "HL-U509-R",
+          "violation_reason": "Duplicate ProductAlternateKey detected"
+        },
+        {
+          "ProductKey": 213,
+          "ProductAlternateKey": "HL-U509-R",
+          "violation_reason": "Duplicate ProductAlternateKey detected"
+        },
+        {
+          "ProductKey": 214,
+          "ProductAlternateKey": "HL-U509-R",
+          "violation_reason": "Duplicate ProductAlternateKey detected"
+        },
+        {
+          "ProductKey": 215,
+          "ProductAlternateKey": "HL-U509",
+          "violation_reason": "Duplicate ProductAlternateKey detected"
+        },
+        {
+          "ProductKey": 216,
+          "ProductAlternateKey": "HL-U509",
+          "violation_reason": "Duplicate ProductAlternateKey detected"
+        },
+        {
+          "ProductKey": 217,
+          "ProductAlternateKey": "HL-U509",
+          "violation_reason": "Duplicate ProductAlternateKey detected"
+        },
+        {
+          "ProductKey": 220,
+          "ProductAlternateKey": "HL-U509-B",
+          "violation_reason": "Duplicate ProductAlternateKey detected"
+        },
+        {
+          "ProductKey": 221,
+          "ProductAlternateKey": "HL-U509-B",
+          "violation_reason": "Duplicate ProductAlternateKey detected"
+        },
+        {
+          "ProductKey": 222,
+          "ProductAlternateKey": "HL-U509-B",
+          "violation_reason": "Duplicate ProductAlternateKey detected"
+        },
+        {
+          "ProductKey": 223,
+          "ProductAlternateKey": "CA-1098",
+          "violation_reason": "Duplicate ProductAlternateKey detected"
+        },
+        {
+          "ProductKey": 224,
+          "ProductAlternateKey": "CA-1098",
+          "violation_reason": "Duplicate ProductAlternateKey detected"
+        },
+        {
+          "ProductKey": 225,
+          "ProductAlternateKey": "CA-1098",
+          "violation_reason": "Duplicate ProductAlternateKey detected"
+        },
+        {
+          "ProductKey": 226,
+          "ProductAlternateKey": "LJ-0192-S",
+          "violation_reason": "Duplicate ProductAlternateKey detected"
+        },
+        {
+          "ProductKey": 227,
+          "ProductAlternateKey": "LJ-0192-S",
+          "violation_reason": "Duplicate ProductAlternateKey detected"
+        },
+        {
+          "ProductKey": 228,
+          "ProductAlternateKey": "LJ-0192-S",
+          "violation_reason": "Duplicate ProductAlternateKey detected"
+        },
+        {
+          "ProductKey": 229,
+          "ProductAlternateKey": "LJ-0192-M",
+          "violation_reason": "Duplicate ProductAlternateKey detected"
+        },
+        {
+          "ProductKey": 230,
+          "ProductAlternateKey": "LJ-0192-M",
+          "violation_reason": "Duplicate ProductAlternateKey detected"
+        },
+        {
+          "ProductKey": 231,
+          "ProductAlternateKey": "LJ-0192-M",
+          "violation_reason": "Duplicate ProductAlternateKey detected"
+        },
+        {
+          "ProductKey": 232,
+          "ProductAlternateKey": "LJ-0192-L",
+          "violation_reason": "Duplicate ProductAlternateKey detected"
+        },
+        {
+          "ProductKey": 233,
+          "ProductAlternateKey": "LJ-0192-L",
+          "violation_reason": "Duplicate ProductAlternateKey detected"
+        },
+        {
+          "ProductKey": 234,
+          "ProductAlternateKey": "LJ-0192-L",
+          "violation_reason": "Duplicate ProductAlternateKey detected"
+        },
+        {
+          "ProductKey": 235,
+          "ProductAlternateKey": "LJ-0192-X",
+          "violation_reason": "Duplicate ProductAlternateKey detected"
+        },
+        {
+          "ProductKey": 236,
+          "ProductAlternateKey": "LJ-0192-X",
+          "violation_reason": "Duplicate ProductAlternateKey detected"
+        },
+        {
+          "ProductKey": 237,
+          "ProductAlternateKey": "LJ-0192-X",
+          "violation_reason": "Duplicate ProductAlternateKey detected"
+        },
+        {
+          "ProductKey": 238,
+          "ProductAlternateKey": "FR-R92R-62",
+          "violation_reason": "Duplicate ProductAlternateKey detected"
+        },
+        {
+          "ProductKey": 239,
+          "ProductAlternateKey": "FR-R92R-62",
+          "violation_reason": "Duplicate ProductAlternateKey detected"
+        },
+        {
+          "ProductKey": 240,
+          "ProductAlternateKey": "FR-R92R-62",
+          "violation_reason": "Duplicate ProductAlternateKey detected"
+        },
+        {
+          "ProductKey": 241,
+          "ProductAlternateKey": "FR-R92R-44",
+          "violation_reason": "Duplicate ProductAlternateKey detected"
+        },
+        {
+          "ProductKey": 242,
+          "ProductAlternateKey": "FR-R92R-44",
+          "violation_reason": "Duplicate ProductAlternateKey detected"
+        },
+        {
+          "ProductKey": 243,
+          "ProductAlternateKey": "FR-R92R-44",
+          "violation_reason": "Duplicate ProductAlternateKey detected"
+        },
+        {
+          "ProductKey": 244,
+          "ProductAlternateKey": "FR-R92R-48",
+          "violation_reason": "Duplicate ProductAlternateKey detected"
+        },
+        {
+          "ProductKey": 245,
+          "ProductAlternateKey": "FR-R92R-48",
+          "violation_reason": "Duplicate ProductAlternateKey detected"
+        },
+        {
+          "ProductKey": 246,
+          "ProductAlternateKey": "FR-R92R-48",
+          "violation_reason": "Duplicate ProductAlternateKey detected"
+        },
+        {
+          "ProductKey": 247,
+          "ProductAlternateKey": "FR-R92R-52",
+          "violation_reason": "Duplicate ProductAlternateKey detected"
+        },
+        {
+          "ProductKey": 248,
+          "ProductAlternateKey": "FR-R92R-52",
+          "violation_reason": "Duplicate ProductAlternateKey detected"
+        },
+        {
+          "ProductKey": 249,
+          "ProductAlternateKey": "FR-R92R-52",
+          "violation_reason": "Duplicate ProductAlternateKey detected"
+        },
+        {
+          "ProductKey": 250,
+          "ProductAlternateKey": "FR-R92R-56",
+          "violation_reason": "Duplicate ProductAlternateKey detected"
+        },
+        {
+          "ProductKey": 251,
+          "ProductAlternateKey": "FR-R92R-56",
+          "violation_reason": "Duplicate ProductAlternateKey detected"
+        },
+        {
+          "ProductKey": 252,
+          "ProductAlternateKey": "FR-R92R-56",
+          "violation_reason": "Duplicate ProductAlternateKey detected"
+        },
+        {
+          "ProductKey": 253,
+          "ProductAlternateKey": "FR-R38B-58",
+          "violation_reason": "Duplicate ProductAlternateKey detected"
+        },
+        {
+          "ProductKey": 254,
+          "ProductAlternateKey": "FR-R38B-58",
+          "violation_reason": "Duplicate ProductAlternateKey detected"
+        },
+        {
+          "ProductKey": 255,
+          "ProductAlternateKey": "FR-R38B-58",
+          "violation_reason": "Duplicate ProductAlternateKey detected"
+        },
+        {
+          "ProductKey": 256,
+          "ProductAlternateKey": "FR-R38B-60",
+          "violation_reason": "Duplicate ProductAlternateKey detected"
+        },
+        {
+          "ProductKey": 257,
+          "ProductAlternateKey": "FR-R38B-60",
+          "violation_reason": "Duplicate ProductAlternateKey detected"
+        },
+        {
+          "ProductKey": 258,
+          "ProductAlternateKey": "FR-R38B-60",
+          "violation_reason": "Duplicate ProductAlternateKey detected"
+        },
+        {
+          "ProductKey": 259,
+          "ProductAlternateKey": "FR-R38B-62",
+          "violation_reason": "Duplicate ProductAlternateKey detected"
+        },
+        {
+          "ProductKey": 260,
+          "ProductAlternateKey": "FR-R38B-62",
+          "violation_reason": "Duplicate ProductAlternateKey detected"
+        },
+        {
+          "ProductKey": 261,
+          "ProductAlternateKey": "FR-R38B-62",
+          "violation_reason": "Duplicate ProductAlternateKey detected"
+        },
+        {
+          "ProductKey": 262,
+          "ProductAlternateKey": "FR-R38R-44",
+          "violation_reason": "Duplicate ProductAlternateKey detected"
+        },
+        {
+          "ProductKey": 263,
+          "ProductAlternateKey": "FR-R38R-44",
+          "violation_reason": "Duplicate ProductAlternateKey detected"
+        }
+      ],
+      "sql": "SELECT p.`ProductKey`,\n       p.`ProductAlternateKey`,\n       'Duplicate ProductAlternateKey detected' AS violation_reason\nFROM `aigdqr-ragstoriches`.`adv_works_dw`.`dimproduct` p\nWHERE EXISTS\n    (SELECT 1\n     FROM `aigdqr-ragstoriches`.`adv_works_dw`.`dimproduct` p2\n     WHERE p.`ProductAlternateKey` = p2.`ProductAlternateKey`\n       AND p.`ProductKey` <> p2.`ProductKey`)\n  AND p.`ProductAlternateKey` IS NOT NULL",
+      "severity": "CRITICAL",
+      "description": "Ensure that each product in the dimproduct table has a unique ProductAlternateKey value. Assumes ProductAlternateKey is a candidate key based on profiling data.",
+      "timing_sec": {
+        "sql": 2.972
+      }
+    },
+    {
+      "name": "Product alternate code non-null check",
+      "status": "passed",
+      "row_count": 0,
+      "details": {
+        "passed": true,
+        "row_count": 0,
+        "ge_available": true,
+        "details": {
+          "success": true,
+          "results": [
+            {
+              "success": true,
+              "expectation_config": {
+                "expectation_type": "expect_table_row_count_to_equal",
+                "kwargs": {
+                  "value": 0,
+                  "result_format": "BASIC"
+                },
+                "meta": {}
+              },
+              "result": {
+                "observed_value": 0
+              },
+              "meta": {},
+              "exception_info": {
+                "raised_exception": false,
+                "exception_message": null,
+                "exception_traceback": null
+              }
+            }
+          ],
+          "evaluation_parameters": {},
+          "statistics": {
+            "evaluated_expectations": 1,
+            "successful_expectations": 1,
+            "unsuccessful_expectations": 0,
+            "success_percent": 100
+          },
+          "meta": {
+            "great_expectations_version": "0.18.21",
+            "expectation_suite_name": "default",
+            "run_id": {
+              "run_name": null,
+              "run_time": "2025-09-09T02:28:35.902509+05:30"
+            },
+            "batch_kwargs": {
+              "ge_batch_id": "963ec5c6-8cf6-11f0-bce0-3814286fba39"
+            },
+            "batch_markers": {},
+            "batch_parameters": {},
+            "validation_time": "20250908T205835.902509Z",
+            "expectation_suite_meta": {
+              "great_expectations_version": "0.18.21"
+            }
+          }
+        }
+      },
+      "sample": [],
+      "sql": "SELECT `ProductKey`,\n       `ProductAlternateKey`,\n       'ProductAlternateKey is NULL' AS violation_reason\nFROM `aigdqr-ragstoriches`.`adv_works_dw`.`dimproduct`\nWHERE `ProductAlternateKey` IS NULL",
+      "severity": "HIGH",
+      "description": "Ensure that each product in the dimproduct table has a non-null ProductAlternateKey value.",
+      "timing_sec": {
+        "sql": 2.337
+      }
+    }
+  ]
+}
