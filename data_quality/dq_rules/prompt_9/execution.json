@@ -1,0 +1,337 @@
+{
+  "summary": {
+    "pass": 0,
+    "fail": 1,
+    "duration": "00:00:05",
+    "warehouse": "0e7ef356fe37e56c"
+  },
+  "violations": [
+    {
+      "rule": "unique_product_alternate_code",
+      "table": "",
+      "keys": "",
+      "detail": "50 rows",
+      "severity": "CRITICAL"
+    }
+  ],
+  "log": "[start] Submitting 1 rules to 0e7ef356fe37e56c\n[run] Executing rule 1/1: unique_product_alternate_code\n[end] Completed",
+  "per_rule": [
+    {
+      "name": "unique_product_alternate_code",
+      "status": "failed",
+      "row_count": 50,
+      "details": {
+        "passed": false,
+        "row_count": 50,
+        "ge_available": true,
+        "details": {
+          "success": false,
+          "results": [
+            {
+              "success": false,
+              "expectation_config": {
+                "expectation_type": "expect_table_row_count_to_equal",
+                "kwargs": {
+                  "value": 0,
+                  "result_format": "BASIC"
+                },
+                "meta": {}
+              },
+              "result": {
+                "observed_value": 50
+              },
+              "meta": {},
+              "exception_info": {
+                "raised_exception": false,
+                "exception_message": null,
+                "exception_traceback": null
+              }
+            }
+          ],
+          "evaluation_parameters": {},
+          "statistics": {
+            "evaluated_expectations": 1,
+            "successful_expectations": 0,
+            "unsuccessful_expectations": 1,
+            "success_percent": 0
+          },
+          "meta": {
+            "great_expectations_version": "0.18.21",
+            "expectation_suite_name": "default",
+            "run_id": {
+              "run_name": null,
+              "run_time": "2025-09-09T02:18:25.483235+05:30"
+            },
+            "batch_kwargs": {
+              "ge_batch_id": "2a682ee2-8cf5-11f0-a1c5-3814286fba39"
+            },
+            "batch_markers": {},
+            "batch_parameters": {},
+            "validation_time": "20250908T204825.483235Z",
+            "expectation_suite_meta": {
+              "great_expectations_version": "0.18.21"
+            }
+          }
+        }
+      },
+      "sample": [
+        {
+          "ProductKey": 359,
+          "ProductAlternateKey": "BK-M68B-38",
+          "violation_reason": "Duplicate ProductAlternateKey detected"
+        },
+        {
+          "ProductKey": 361,
+          "ProductAlternateKey": "BK-M68B-42",
+          "violation_reason": "Duplicate ProductAlternateKey detected"
+        },
+        {
+          "ProductKey": 363,
+          "ProductAlternateKey": "BK-M68B-46",
+          "violation_reason": "Duplicate ProductAlternateKey detected"
+        },
+        {
+          "ProductKey": 353,
+          "ProductAlternateKey": "BK-M68S-38",
+          "violation_reason": "Duplicate ProductAlternateKey detected"
+        },
+        {
+          "ProductKey": 355,
+          "ProductAlternateKey": "BK-M68S-42",
+          "violation_reason": "Duplicate ProductAlternateKey detected"
+        },
+        {
+          "ProductKey": 357,
+          "ProductAlternateKey": "BK-M68S-46",
+          "violation_reason": "Duplicate ProductAlternateKey detected"
+        },
+        {
+          "ProductKey": 339,
+          "ProductAlternateKey": "BK-R50B-44",
+          "violation_reason": "Duplicate ProductAlternateKey detected"
+        },
+        {
+          "ProductKey": 341,
+          "ProductAlternateKey": "BK-R50B-48",
+          "violation_reason": "Duplicate ProductAlternateKey detected"
+        },
+        {
+          "ProductKey": 343,
+          "ProductAlternateKey": "BK-R50B-52",
+          "violation_reason": "Duplicate ProductAlternateKey detected"
+        },
+        {
+          "ProductKey": 333,
+          "ProductAlternateKey": "BK-R50B-58",
+          "violation_reason": "Duplicate ProductAlternateKey detected"
+        },
+        {
+          "ProductKey": 335,
+          "ProductAlternateKey": "BK-R50B-60",
+          "violation_reason": "Duplicate ProductAlternateKey detected"
+        },
+        {
+          "ProductKey": 337,
+          "ProductAlternateKey": "BK-R50B-62",
+          "violation_reason": "Duplicate ProductAlternateKey detected"
+        },
+        {
+          "ProductKey": 327,
+          "ProductAlternateKey": "BK-R50R-44",
+          "violation_reason": "Duplicate ProductAlternateKey detected"
+        },
+        {
+          "ProductKey": 329,
+          "ProductAlternateKey": "BK-R50R-48",
+          "violation_reason": "Duplicate ProductAlternateKey detected"
+        },
+        {
+          "ProductKey": 331,
+          "ProductAlternateKey": "BK-R50R-52",
+          "violation_reason": "Duplicate ProductAlternateKey detected"
+        },
+        {
+          "ProductKey": 321,
+          "ProductAlternateKey": "BK-R50R-58",
+          "violation_reason": "Duplicate ProductAlternateKey detected"
+        },
+        {
+          "ProductKey": 323,
+          "ProductAlternateKey": "BK-R50R-60",
+          "violation_reason": "Duplicate ProductAlternateKey detected"
+        },
+        {
+          "ProductKey": 325,
+          "ProductAlternateKey": "BK-R50R-62",
+          "violation_reason": "Duplicate ProductAlternateKey detected"
+        },
+        {
+          "ProductKey": 382,
+          "ProductAlternateKey": "BK-R64Y-38",
+          "violation_reason": "Duplicate ProductAlternateKey detected"
+        },
+        {
+          "ProductKey": 384,
+          "ProductAlternateKey": "BK-R64Y-40",
+          "violation_reason": "Duplicate ProductAlternateKey detected"
+        },
+        {
+          "ProductKey": 386,
+          "ProductAlternateKey": "BK-R64Y-42",
+          "violation_reason": "Duplicate ProductAlternateKey detected"
+        },
+        {
+          "ProductKey": 388,
+          "ProductAlternateKey": "BK-R64Y-44",
+          "violation_reason": "Duplicate ProductAlternateKey detected"
+        },
+        {
+          "ProductKey": 390,
+          "ProductAlternateKey": "BK-R64Y-48",
+          "violation_reason": "Duplicate ProductAlternateKey detected"
+        },
+        {
+          "ProductKey": 374,
+          "ProductAlternateKey": "BK-R89B-44",
+          "violation_reason": "Duplicate ProductAlternateKey detected"
+        },
+        {
+          "ProductKey": 376,
+          "ProductAlternateKey": "BK-R89B-48",
+          "violation_reason": "Duplicate ProductAlternateKey detected"
+        },
+        {
+          "ProductKey": 378,
+          "ProductAlternateKey": "BK-R89B-52",
+          "violation_reason": "Duplicate ProductAlternateKey detected"
+        },
+        {
+          "ProductKey": 380,
+          "ProductAlternateKey": "BK-R89B-58",
+          "violation_reason": "Duplicate ProductAlternateKey detected"
+        },
+        {
+          "ProductKey": 372,
+          "ProductAlternateKey": "BK-R89R-58",
+          "violation_reason": "Duplicate ProductAlternateKey detected"
+        },
+        {
+          "ProductKey": 224,
+          "ProductAlternateKey": "CA-1098",
+          "violation_reason": "Duplicate ProductAlternateKey detected"
+        },
+        {
+          "ProductKey": 225,
+          "ProductAlternateKey": "CA-1098",
+          "violation_reason": "Duplicate ProductAlternateKey detected"
+        },
+        {
+          "ProductKey": 305,
+          "ProductAlternateKey": "FR-M94B-38",
+          "violation_reason": "Duplicate ProductAlternateKey detected"
+        },
+        {
+          "ProductKey": 306,
+          "ProductAlternateKey": "FR-M94B-38",
+          "violation_reason": "Duplicate ProductAlternateKey detected"
+        },
+        {
+          "ProductKey": 297,
+          "ProductAlternateKey": "FR-M94B-42",
+          "violation_reason": "Duplicate ProductAlternateKey detected"
+        },
+        {
+          "ProductKey": 298,
+          "ProductAlternateKey": "FR-M94B-42",
+          "violation_reason": "Duplicate ProductAlternateKey detected"
+        },
+        {
+          "ProductKey": 302,
+          "ProductAlternateKey": "FR-M94B-46",
+          "violation_reason": "Duplicate ProductAlternateKey detected"
+        },
+        {
+          "ProductKey": 303,
+          "ProductAlternateKey": "FR-M94B-46",
+          "violation_reason": "Duplicate ProductAlternateKey detected"
+        },
+        {
+          "ProductKey": 308,
+          "ProductAlternateKey": "FR-M94S-38",
+          "violation_reason": "Duplicate ProductAlternateKey detected"
+        },
+        {
+          "ProductKey": 309,
+          "ProductAlternateKey": "FR-M94S-38",
+          "violation_reason": "Duplicate ProductAlternateKey detected"
+        },
+        {
+          "ProductKey": 289,
+          "ProductAlternateKey": "FR-M94S-42",
+          "violation_reason": "Duplicate ProductAlternateKey detected"
+        },
+        {
+          "ProductKey": 290,
+          "ProductAlternateKey": "FR-M94S-42",
+          "violation_reason": "Duplicate ProductAlternateKey detected"
+        },
+        {
+          "ProductKey": 294,
+          "ProductAlternateKey": "FR-M94S-46",
+          "violation_reason": "Duplicate ProductAlternateKey detected"
+        },
+        {
+          "ProductKey": 295,
+          "ProductAlternateKey": "FR-M94S-46",
+          "violation_reason": "Duplicate ProductAlternateKey detected"
+        },
+        {
+          "ProductKey": 280,
+          "ProductAlternateKey": "FR-R38B-44",
+          "violation_reason": "Duplicate ProductAlternateKey detected"
+        },
+        {
+          "ProductKey": 281,
+          "ProductAlternateKey": "FR-R38B-44",
+          "violation_reason": "Duplicate ProductAlternateKey detected"
+        },
+        {
+          "ProductKey": 283,
+          "ProductAlternateKey": "FR-R38B-48",
+          "violation_reason": "Duplicate ProductAlternateKey detected"
+        },
+        {
+          "ProductKey": 284,
+          "ProductAlternateKey": "FR-R38B-48",
+          "violation_reason": "Duplicate ProductAlternateKey detected"
+        },
+        {
+          "ProductKey": 286,
+          "ProductAlternateKey": "FR-R38B-52",
+          "violation_reason": "Duplicate ProductAlternateKey detected"
+        },
+        {
+          "ProductKey": 287,
+          "ProductAlternateKey": "FR-R38B-52",
+          "violation_reason": "Duplicate ProductAlternateKey detected"
+        },
+        {
+          "ProductKey": 254,
+          "ProductAlternateKey": "FR-R38B-58",
+          "violation_reason": "Duplicate ProductAlternateKey detected"
+        },
+        {
+          "ProductKey": 255,
+          "ProductAlternateKey": "FR-R38B-58",
+          "violation_reason": "Duplicate ProductAlternateKey detected"
+        }
+      ],
+      "sql": "SELECT `ProductKey`,\n       `ProductAlternateKey`,\n       'Duplicate ProductAlternateKey detected' AS `violation_reason`\nFROM\n  (SELECT `ProductKey`,\n          `ProductAlternateKey`,\n          ROW_NUMBER() OVER (PARTITION BY `ProductAlternateKey`\n                             ORDER BY `ProductKey`) AS `row_num`\n   FROM `aigdqr-ragstoriches`.`adv_works_dw`.`dimproduct`) subquery\nWHERE subquery.`row_num` > 1",
+      "severity": "CRITICAL",
+      "description": "Ensure that each product in the dimproduct table has a unique ProductAlternateKey. Assumes that ProductAlternateKey should be unique across all rows.",
+      "timing_sec": {
+        "sql": 5.508
+      }
+    }
+  ]
+}
