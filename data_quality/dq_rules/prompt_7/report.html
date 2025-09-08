@@ -1,0 +1,236 @@
+
+        <!doctype html>
+        <html>
+        <head>
+          <meta charset="utf-8" />
+          <title>Qualitron — Data Quality Report</title>
+          <style>
+            :root {
+              --accent: #00A79D;
+              --accent-hover: #008E86;
+              --text: #0E141B;
+              --text-subtle: #5E6A75;
+              --surface: #FFFFFF;
+              --surface-alt: #F6F8FA;
+              --border: #E6E9EF;
+              --radius: 12px;
+              --font-sans: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+              --font-mono: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, 'Liberation Mono', 'Courier New', monospace;
+            }
+            body {
+              font-family: var(--font-sans);
+              margin: 24px;
+              background: var(--surface);
+              color: var(--text);
+            }
+            .brand { display: flex; align-items: center; gap: 12px; margin-bottom: 12px; }
+            .logo-badge {
+              padding: 4px 8px;
+              border-radius: var(--radius);
+              border: 1px solid rgba(0,0,0,0.12);
+              color: var(--accent);
+              font-weight: 600;
+              letter-spacing: 0.06em;
+            }
+            .brand-title { font-size: 16px; font-weight: 600; }
+            .brand-sub { font-size: 12px; color: var(--text-subtle); }
+            .rule { border: 1px solid var(--border); padding: 12px; margin: 12px 0; border-radius: var(--radius); background: var(--surface); }
+            .status { text-transform: uppercase; font-size: 12px; padding: 2px 6px; border-radius: 999px; margin-left: 8px; }
+            .status.passed { background: #e6ffed; color: #036400; border: 1px solid #b5e6bf; }
+            .status.failed { background: #ffebe6; color: #970000; border: 1px solid #f3b1a3; }
+            .status.error  { background: #fff4e5; color: #8a6d3b; border: 1px solid #ffd9a6; }
+            table { border-collapse: collapse; margin-top: 8px; width: 100%; }
+            th, td { border: 1px solid var(--border); padding: 6px; font-size: 12px; }
+            th { background: var(--surface-alt); text-align: left; }
+            pre { white-space: pre-wrap; background: var(--surface-alt); padding: 8px; border: 1px solid var(--border); border-radius: 8px; }
+            .meta { display: flex; gap: 16px; color: #333; font-size: 13px; margin: 6px 0; }
+            .desc { color: #444; }
+            .divider { height: 1px; background: var(--border); margin: 12px 0; }
+            .header { display: flex; align-items: baseline; justify-content: space-between; margin-bottom: 8px; }
+            .header h1 { margin: 0; font-size: 20px; }
+            .ts { color: var(--text-subtle); font-size: 12px; }
+          </style>
+        </head>
+        <body>
+          <div class="header">
+            <div class="brand">
+              <div class="logo-badge">[ QUALITRON ]</div>
+              <div>
+                <div class="brand-title">Qualitron – AI Data Quality</div>
+                <div class="brand-sub">EPAM-inspired single-page UI</div>
+              </div>
+            </div>
+            <div class="ts">Generated 2025-09-08 20:24:58 UTC</div>
+          </div>
+          <div class="divider"></div>
+
+                <section class="rule">
+                  <h2>
+                    Recalculate line item totals for FactResellerSales
+                    <span class="status failed">failed</span>
+                  </h2>
+                  <div class="meta">
+                    <div><b>Severity:</b> HIGH</div>
+                    <div><b>Violating rows:</b> 50</div>
+                  </div>
+                  <details>
+                    <summary>SQL</summary>
+                    <pre>SELECT `SalesOrderNumber`,
+       `SalesOrderLineNumber`,
+       `OrderQuantity`,
+       `UnitPrice`,
+       `UnitPriceDiscountPct`,
+       `TaxAmt`,
+       `Freight`,
+       `SalesAmount`,
+       &#x27;Recalculated total does not match existing SalesAmount&#x27; AS violation_reason
+FROM `aigdqr-ragstoriches`.`adv_works_dw`.`factresellersales`
+WHERE ROUND((`OrderQuantity` * `UnitPrice` * (1 - `UnitPriceDiscountPct`)) + `TaxAmt` + `Freight`, 2) != ROUND(`SalesAmount`, 2)</pre>
+                  </details>
+                  <details>
+                    <summary>Validation details</summary>
+                    <pre>{
+  &quot;passed&quot;: false,
+  &quot;row_count&quot;: 50,
+  &quot;ge_available&quot;: true,
+  &quot;details&quot;: {
+    &quot;success&quot;: false,
+    &quot;results&quot;: [
+      {
+        &quot;success&quot;: false,
+        &quot;expectation_config&quot;: {
+          &quot;expectation_type&quot;: &quot;expect_table_row_count_to_equal&quot;,
+          &quot;kwargs&quot;: {
+            &quot;value&quot;: 0,
+            &quot;result_format&quot;: &quot;BASIC&quot;
+          },
+          &quot;meta&quot;: {}
+        },
+        &quot;result&quot;: {
+          &quot;observed_value&quot;: 50
+        },
+        &quot;meta&quot;: {},
+        &quot;exception_info&quot;: {
+          &quot;raised_exception&quot;: false,
+          &quot;exception_message&quot;: null,
+          &quot;exception_traceback&quot;: null
+        }
+      }
+    ],
+    &quot;evaluation_parameters&quot;: {},
+    &quot;statistics&quot;: {
+      &quot;evaluated_expectations&quot;: 1,
+      &quot;successful_expectations&quot;: 0,
+      &quot;unsuccessful_expectations&quot;: 1,
+      &quot;success_percent&quot;: 0
+    },
+    &quot;meta&quot;: {
+      &quot;great_expectations_version&quot;: &quot;0.18.21&quot;,
+      &quot;expectation_suite_name&quot;: &quot;default&quot;,
+      &quot;run_id&quot;: {
+        &quot;run_name&quot;: null,
+        &quot;run_time&quot;: &quot;2025-09-09T01:53:06.361558+05:30&quot;
+      },
+      &quot;batch_kwargs&quot;: {
+        &quot;ge_batch_id&quot;: &quot;a0f063d5-8cf1-11f0-8243-3814286fba39&quot;
+      },
+      &quot;batch_markers&quot;: {},
+      &quot;batch_parameters&quot;: {},
+      &quot;validation_time&quot;: &quot;20250908T202306.361558Z&quot;,
+      &quot;expectation_suite_meta&quot;: {
+        &quot;great_expectations_version&quot;: &quot;0.18.21&quot;
+      }
+    }
+  }
+}</pre>
+                  </details>
+                  <table><thead><tr><th>SalesOrderNumber</th><th>SalesOrderLineNumber</th><th>OrderQuantity</th><th>UnitPrice</th><th>UnitPriceDiscountPct</th><th>TaxAmt</th><th>Freight</th><th>SalesAmount</th><th>violation_reason</th></tr></thead><tbody><tr><td>SO43659</td><td>1</td><td>1</td><td>2024.9940</td><td>0</td><td>161.9995</td><td>50.6249</td><td>2024.9940</td><td>Recalculated total does not match existing SalesAmount</td></tr><tr><td>SO43659</td><td>2</td><td>3</td><td>2024.9940</td><td>0</td><td>485.9986</td><td>151.8746</td><td>6074.9820</td><td>Recalculated total does not match existing SalesAmount</td></tr><tr><td>SO43659</td><td>3</td><td>1</td><td>2024.9940</td><td>0</td><td>161.9995</td><td>50.6249</td><td>2024.9940</td><td>Recalculated total does not match existing SalesAmount</td></tr><tr><td>SO43659</td><td>4</td><td>1</td><td>2039.9940</td><td>0</td><td>163.1995</td><td>50.9999</td><td>2039.9940</td><td>Recalculated total does not match existing SalesAmount</td></tr><tr><td>SO43659</td><td>5</td><td>1</td><td>2039.9940</td><td>0</td><td>163.1995</td><td>50.9999</td><td>2039.9940</td><td>Recalculated total does not match existing SalesAmount</td></tr><tr><td>SO43659</td><td>6</td><td>2</td><td>2039.9940</td><td>0</td><td>326.3990</td><td>101.9997</td><td>4079.9880</td><td>Recalculated total does not match existing SalesAmount</td></tr><tr><td>SO43659</td><td>7</td><td>1</td><td>2039.9940</td><td>0</td><td>163.1995</td><td>50.9999</td><td>2039.9940</td><td>Recalculated total does not match existing SalesAmount</td></tr><tr><td>SO43659</td><td>8</td><td>3</td><td>28.8404</td><td>0</td><td>6.9217</td><td>2.1630</td><td>86.5212</td><td>Recalculated total does not match existing SalesAmount</td></tr><tr><td>SO43659</td><td>9</td><td>1</td><td>28.8404</td><td>0</td><td>2.3072</td><td>0.7210</td><td>28.8404</td><td>Recalculated total does not match existing SalesAmount</td></tr><tr><td>SO43659</td><td>10</td><td>6</td><td>5.7000</td><td>0</td><td>2.7360</td><td>0.8550</td><td>34.2000</td><td>Recalculated total does not match existing SalesAmount</td></tr><tr><td>SO43659</td><td>11</td><td>2</td><td>5.1865</td><td>0</td><td>0.8298</td><td>0.2593</td><td>10.3730</td><td>Recalculated total does not match existing SalesAmount</td></tr><tr><td>SO43659</td><td>12</td><td>4</td><td>20.1865</td><td>0</td><td>6.4597</td><td>2.0187</td><td>80.7460</td><td>Recalculated total does not match existing SalesAmount</td></tr><tr><td>SO43660</td><td>1</td><td>1</td><td>419.4589</td><td>0</td><td>33.5567</td><td>10.4865</td><td>419.4589</td><td>Recalculated total does not match existing SalesAmount</td></tr><tr><td>SO43660</td><td>2</td><td>1</td><td>874.7940</td><td>0</td><td>69.9835</td><td>21.8699</td><td>874.7940</td><td>Recalculated total does not match existing SalesAmount</td></tr><tr><td>SO43661</td><td>1</td><td>1</td><td>809.7600</td><td>0</td><td>64.7808</td><td>20.2440</td><td>809.7600</td><td>Recalculated total does not match existing SalesAmount</td></tr><tr><td>SO43661</td><td>2</td><td>1</td><td>714.7043</td><td>0</td><td>57.1763</td><td>17.8676</td><td>714.7043</td><td>Recalculated total does not match existing SalesAmount</td></tr><tr><td>SO43661</td><td>3</td><td>2</td><td>714.7043</td><td>0</td><td>114.3527</td><td>35.7352</td><td>1429.4086</td><td>Recalculated total does not match existing SalesAmount</td></tr><tr><td>SO43661</td><td>4</td><td>4</td><td>5.1865</td><td>0</td><td>1.6597</td><td>0.5187</td><td>20.7460</td><td>Recalculated total does not match existing SalesAmount</td></tr><tr><td>SO43661</td><td>5</td><td>4</td><td>28.8404</td><td>0</td><td>9.2289</td><td>2.8840</td><td>115.3616</td><td>Recalculated total does not match existing SalesAmount</td></tr><tr><td>SO43661</td><td>6</td><td>2</td><td>722.5949</td><td>0</td><td>115.6152</td><td>36.1297</td><td>1445.1898</td><td>Recalculated total does not match existing SalesAmount</td></tr><tr><td>SO43661</td><td>7</td><td>3</td><td>2024.9940</td><td>0</td><td>485.9986</td><td>151.8746</td><td>6074.9820</td><td>Recalculated total does not match existing SalesAmount</td></tr><tr><td>SO43661</td><td>8</td><td>2</td><td>2024.9940</td><td>0</td><td>323.9990</td><td>101.2497</td><td>4049.9880</td><td>Recalculated total does not match existing SalesAmount</td></tr><tr><td>SO43661</td><td>9</td><td>2</td><td>20.1865</td><td>0</td><td>3.2298</td><td>1.0093</td><td>40.3730</td><td>Recalculated total does not match existing SalesAmount</td></tr><tr><td>SO43661</td><td>10</td><td>2</td><td>818.7000</td><td>0</td><td>130.9920</td><td>40.9350</td><td>1637.4000</td><td>Recalculated total does not match existing SalesAmount</td></tr><tr><td>SO43661</td><td>11</td><td>4</td><td>2024.9940</td><td>0</td><td>647.9981</td><td>202.4994</td><td>8099.9760</td><td>Recalculated total does not match existing SalesAmount</td></tr><tr><td>SO43661</td><td>12</td><td>2</td><td>2039.9940</td><td>0</td><td>326.3990</td><td>101.9997</td><td>4079.9880</td><td>Recalculated total does not match existing SalesAmount</td></tr><tr><td>SO43661</td><td>13</td><td>2</td><td>28.8404</td><td>0</td><td>4.6145</td><td>1.4420</td><td>57.6808</td><td>Recalculated total does not match existing SalesAmount</td></tr><tr><td>SO43661</td><td>14</td><td>2</td><td>2024.9940</td><td>0</td><td>323.9990</td><td>101.2497</td><td>4049.9880</td><td>Recalculated total does not match existing SalesAmount</td></tr><tr><td>SO43661</td><td>15</td><td>5</td><td>20.1865</td><td>0</td><td>8.0746</td><td>2.5233</td><td>100.9325</td><td>Recalculated total does not match existing SalesAmount</td></tr><tr><td>SO43662</td><td>1</td><td>3</td><td>419.4589</td><td>0</td><td>100.6701</td><td>31.4594</td><td>1258.3767</td><td>Recalculated total does not match existing SalesAmount</td></tr><tr><td>SO43662</td><td>2</td><td>5</td><td>419.4589</td><td>0</td><td>167.7836</td><td>52.4324</td><td>2097.2945</td><td>Recalculated total does not match existing SalesAmount</td></tr><tr><td>SO43662</td><td>3</td><td>2</td><td>183.9382</td><td>0</td><td>29.4301</td><td>9.1969</td><td>367.8764</td><td>Recalculated total does not match existing SalesAmount</td></tr><tr><td>SO43662</td><td>4</td><td>4</td><td>874.7940</td><td>0</td><td>279.9341</td><td>87.4794</td><td>3499.1760</td><td>Recalculated total does not match existing SalesAmount</td></tr><tr><td>SO43662</td><td>5</td><td>3</td><td>183.9382</td><td>0</td><td>44.1452</td><td>13.7954</td><td>551.8146</td><td>Recalculated total does not match existing SalesAmount</td></tr><tr><td>SO43662</td><td>6</td><td>5</td><td>419.4589</td><td>0</td><td>167.7836</td><td>52.4324</td><td>2097.2945</td><td>Recalculated total does not match existing SalesAmount</td></tr><tr><td>SO43662</td><td>7</td><td>3</td><td>419.4589</td><td>0</td><td>100.6701</td><td>31.4594</td><td>1258.3767</td><td>Recalculated total does not match existing SalesAmount</td></tr><tr><td>SO43662</td><td>8</td><td>2</td><td>419.4589</td><td>0</td><td>67.1134</td><td>20.9729</td><td>838.9178</td><td>Recalculated total does not match existing SalesAmount</td></tr><tr><td>SO43662</td><td>9</td><td>1</td><td>2146.9620</td><td>0</td><td>171.7570</td><td>53.6741</td><td>2146.9620</td><td>Recalculated total does not match existing SalesAmount</td></tr><tr><td>SO43662</td><td>10</td><td>1</td><td>874.7940</td><td>0</td><td>69.9835</td><td>21.8699</td><td>874.7940</td><td>Recalculated total does not match existing SalesAmount</td></tr><tr><td>SO43662</td><td>11</td><td>3</td><td>419.4589</td><td>0</td><td>100.6701</td><td>31.4594</td><td>1258.3767</td><td>Recalculated total does not match existing SalesAmount</td></tr><tr><td>SO43662</td><td>12</td><td>1</td><td>356.8980</td><td>0</td><td>28.5518</td><td>8.9225</td><td>356.8980</td><td>Recalculated total does not match existing SalesAmount</td></tr><tr><td>SO43662</td><td>13</td><td>6</td><td>874.7940</td><td>0</td><td>419.9011</td><td>131.2191</td><td>5248.7640</td><td>Recalculated total does not match existing SalesAmount</td></tr><tr><td>SO43662</td><td>14</td><td>1</td><td>183.9382</td><td>0</td><td>14.7151</td><td>4.5985</td><td>183.9382</td><td>Recalculated total does not match existing SalesAmount</td></tr><tr><td>SO43662</td><td>15</td><td>3</td><td>178.5808</td><td>0</td><td>42.8594</td><td>13.3936</td><td>535.7424</td><td>Recalculated total does not match existing SalesAmount</td></tr><tr><td>SO43662</td><td>16</td><td>1</td><td>2146.9620</td><td>0</td><td>171.7570</td><td>53.6741</td><td>2146.9620</td><td>Recalculated total does not match existing SalesAmount</td></tr><tr><td>SO43662</td><td>17</td><td>3</td><td>419.4589</td><td>0</td><td>100.6701</td><td>31.4594</td><td>1258.3767</td><td>Recalculated total does not match existing SalesAmount</td></tr><tr><td>SO43662</td><td>18</td><td>1</td><td>183.9382</td><td>0</td><td>14.7151</td><td>4.5985</td><td>183.9382</td><td>Recalculated total does not match existing SalesAmount</td></tr><tr><td>SO43662</td><td>19</td><td>1</td><td>356.8980</td><td>0</td><td>28.5518</td><td>8.9225</td><td>356.8980</td><td>Recalculated total does not match existing SalesAmount</td></tr><tr><td>SO43662</td><td>20</td><td>1</td><td>178.5808</td><td>0</td><td>14.2865</td><td>4.4645</td><td>178.5808</td><td>Recalculated total does not match existing SalesAmount</td></tr><tr><td>SO43662</td><td>21</td><td>3</td><td>419.4589</td><td>0</td><td>100.6701</td><td>31.4594</td><td>1258.3767</td><td>Recalculated total does not match existing SalesAmount</td></tr></tbody></table>
+                  <p class="desc">Recalculate line item totals using OrderQuantity, UnitPrice, UnitPriceDiscountPct, TaxAmt, and Freight for FactResellerSales table, and flag rows where recalculated totals differ from SalesAmount.</p>
+                </section>
+
+                <section class="rule">
+                  <h2>
+                    Recalculate line item totals for FactInternetSales
+                    <span class="status failed">failed</span>
+                  </h2>
+                  <div class="meta">
+                    <div><b>Severity:</b> HIGH</div>
+                    <div><b>Violating rows:</b> 50</div>
+                  </div>
+                  <details>
+                    <summary>SQL</summary>
+                    <pre>SELECT `SalesOrderNumber`,
+       `SalesOrderLineNumber`,
+       `OrderQuantity`,
+       `UnitPrice`,
+       `UnitPriceDiscountPct`,
+       `TaxAmt`,
+       `Freight`,
+       `SalesAmount`,
+       &#x27;Recalculated total does not match existing SalesAmount&#x27; AS violation_reason
+FROM `aigdqr-ragstoriches`.`adv_works_dw`.`factinternetsales`
+WHERE ROUND((`OrderQuantity` * `UnitPrice` * (1 - `UnitPriceDiscountPct`)) + `TaxAmt` + `Freight`, 2) != ROUND(`SalesAmount`, 2)</pre>
+                  </details>
+                  <details>
+                    <summary>Validation details</summary>
+                    <pre>{
+  &quot;passed&quot;: false,
+  &quot;row_count&quot;: 50,
+  &quot;ge_available&quot;: true,
+  &quot;details&quot;: {
+    &quot;success&quot;: false,
+    &quot;results&quot;: [
+      {
+        &quot;success&quot;: false,
+        &quot;expectation_config&quot;: {
+          &quot;expectation_type&quot;: &quot;expect_table_row_count_to_equal&quot;,
+          &quot;kwargs&quot;: {
+            &quot;value&quot;: 0,
+            &quot;result_format&quot;: &quot;BASIC&quot;
+          },
+          &quot;meta&quot;: {}
+        },
+        &quot;result&quot;: {
+          &quot;observed_value&quot;: 50
+        },
+        &quot;meta&quot;: {},
+        &quot;exception_info&quot;: {
+          &quot;raised_exception&quot;: false,
+          &quot;exception_message&quot;: null,
+          &quot;exception_traceback&quot;: null
+        }
+      }
+    ],
+    &quot;evaluation_parameters&quot;: {},
+    &quot;statistics&quot;: {
+      &quot;evaluated_expectations&quot;: 1,
+      &quot;successful_expectations&quot;: 0,
+      &quot;unsuccessful_expectations&quot;: 1,
+      &quot;success_percent&quot;: 0
+    },
+    &quot;meta&quot;: {
+      &quot;great_expectations_version&quot;: &quot;0.18.21&quot;,
+      &quot;expectation_suite_name&quot;: &quot;default&quot;,
+      &quot;run_id&quot;: {
+        &quot;run_name&quot;: null,
+        &quot;run_time&quot;: &quot;2025-09-09T01:53:19.386322+05:30&quot;
+      },
+      &quot;batch_kwargs&quot;: {
+        &quot;ge_batch_id&quot;: &quot;a8b3b9dd-8cf1-11f0-8626-3814286fba39&quot;
+      },
+      &quot;batch_markers&quot;: {},
+      &quot;batch_parameters&quot;: {},
+      &quot;validation_time&quot;: &quot;20250908T202319.386322Z&quot;,
+      &quot;expectation_suite_meta&quot;: {
+        &quot;great_expectations_version&quot;: &quot;0.18.21&quot;
+      }
+    }
+  }
+}</pre>
+                  </details>
+                  <table><thead><tr><th>SalesOrderNumber</th><th>SalesOrderLineNumber</th><th>OrderQuantity</th><th>UnitPrice</th><th>UnitPriceDiscountPct</th><th>TaxAmt</th><th>Freight</th><th>SalesAmount</th><th>violation_reason</th></tr></thead><tbody><tr><td>SO43697</td><td>1</td><td>1</td><td>3578.2700</td><td>0</td><td>286.2616</td><td>89.4568</td><td>3578.2700</td><td>Recalculated total does not match existing SalesAmount</td></tr><tr><td>SO43698</td><td>1</td><td>1</td><td>3399.9900</td><td>0</td><td>271.9992</td><td>84.9998</td><td>3399.9900</td><td>Recalculated total does not match existing SalesAmount</td></tr><tr><td>SO43699</td><td>1</td><td>1</td><td>3399.9900</td><td>0</td><td>271.9992</td><td>84.9998</td><td>3399.9900</td><td>Recalculated total does not match existing SalesAmount</td></tr><tr><td>SO43700</td><td>1</td><td>1</td><td>699.0982</td><td>0</td><td>55.9279</td><td>17.4775</td><td>699.0982</td><td>Recalculated total does not match existing SalesAmount</td></tr><tr><td>SO43701</td><td>1</td><td>1</td><td>3399.9900</td><td>0</td><td>271.9992</td><td>84.9998</td><td>3399.9900</td><td>Recalculated total does not match existing SalesAmount</td></tr><tr><td>SO43702</td><td>1</td><td>1</td><td>3578.2700</td><td>0</td><td>286.2616</td><td>89.4568</td><td>3578.2700</td><td>Recalculated total does not match existing SalesAmount</td></tr><tr><td>SO43703</td><td>1</td><td>1</td><td>3578.2700</td><td>0</td><td>286.2616</td><td>89.4568</td><td>3578.2700</td><td>Recalculated total does not match existing SalesAmount</td></tr><tr><td>SO43704</td><td>1</td><td>1</td><td>3374.9900</td><td>0</td><td>269.9992</td><td>84.3748</td><td>3374.9900</td><td>Recalculated total does not match existing SalesAmount</td></tr><tr><td>SO43705</td><td>1</td><td>1</td><td>3399.9900</td><td>0</td><td>271.9992</td><td>84.9998</td><td>3399.9900</td><td>Recalculated total does not match existing SalesAmount</td></tr><tr><td>SO43706</td><td>1</td><td>1</td><td>3578.2700</td><td>0</td><td>286.2616</td><td>89.4568</td><td>3578.2700</td><td>Recalculated total does not match existing SalesAmount</td></tr><tr><td>SO43707</td><td>1</td><td>1</td><td>3578.2700</td><td>0</td><td>286.2616</td><td>89.4568</td><td>3578.2700</td><td>Recalculated total does not match existing SalesAmount</td></tr><tr><td>SO43708</td><td>1</td><td>1</td><td>699.0982</td><td>0</td><td>55.9279</td><td>17.4775</td><td>699.0982</td><td>Recalculated total does not match existing SalesAmount</td></tr><tr><td>SO43709</td><td>1</td><td>1</td><td>3578.2700</td><td>0</td><td>286.2616</td><td>89.4568</td><td>3578.2700</td><td>Recalculated total does not match existing SalesAmount</td></tr><tr><td>SO43710</td><td>1</td><td>1</td><td>3578.2700</td><td>0</td><td>286.2616</td><td>89.4568</td><td>3578.2700</td><td>Recalculated total does not match existing SalesAmount</td></tr><tr><td>SO43711</td><td>1</td><td>1</td><td>3578.2700</td><td>0</td><td>286.2616</td><td>89.4568</td><td>3578.2700</td><td>Recalculated total does not match existing SalesAmount</td></tr><tr><td>SO43712</td><td>1</td><td>1</td><td>3578.2700</td><td>0</td><td>286.2616</td><td>89.4568</td><td>3578.2700</td><td>Recalculated total does not match existing SalesAmount</td></tr><tr><td>SO43713</td><td>1</td><td>1</td><td>3578.2700</td><td>0</td><td>286.2616</td><td>89.4568</td><td>3578.2700</td><td>Recalculated total does not match existing SalesAmount</td></tr><tr><td>SO43714</td><td>1</td><td>1</td><td>3578.2700</td><td>0</td><td>286.2616</td><td>89.4568</td><td>3578.2700</td><td>Recalculated total does not match existing SalesAmount</td></tr><tr><td>SO43715</td><td>1</td><td>1</td><td>3578.2700</td><td>0</td><td>286.2616</td><td>89.4568</td><td>3578.2700</td><td>Recalculated total does not match existing SalesAmount</td></tr><tr><td>SO43716</td><td>1</td><td>1</td><td>3578.2700</td><td>0</td><td>286.2616</td><td>89.4568</td><td>3578.2700</td><td>Recalculated total does not match existing SalesAmount</td></tr><tr><td>SO43717</td><td>1</td><td>1</td><td>699.0982</td><td>0</td><td>55.9279</td><td>17.4775</td><td>699.0982</td><td>Recalculated total does not match existing SalesAmount</td></tr><tr><td>SO43718</td><td>1</td><td>1</td><td>3578.2700</td><td>0</td><td>286.2616</td><td>89.4568</td><td>3578.2700</td><td>Recalculated total does not match existing SalesAmount</td></tr><tr><td>SO43719</td><td>1</td><td>1</td><td>3578.2700</td><td>0</td><td>286.2616</td><td>89.4568</td><td>3578.2700</td><td>Recalculated total does not match existing SalesAmount</td></tr><tr><td>SO43720</td><td>1</td><td>1</td><td>3578.2700</td><td>0</td><td>286.2616</td><td>89.4568</td><td>3578.2700</td><td>Recalculated total does not match existing SalesAmount</td></tr><tr><td>SO43721</td><td>1</td><td>1</td><td>3578.2700</td><td>0</td><td>286.2616</td><td>89.4568</td><td>3578.2700</td><td>Recalculated total does not match existing SalesAmount</td></tr><tr><td>SO43722</td><td>1</td><td>1</td><td>3578.2700</td><td>0</td><td>286.2616</td><td>89.4568</td><td>3578.2700</td><td>Recalculated total does not match existing SalesAmount</td></tr><tr><td>SO43723</td><td>1</td><td>1</td><td>699.0982</td><td>0</td><td>55.9279</td><td>17.4775</td><td>699.0982</td><td>Recalculated total does not match existing SalesAmount</td></tr><tr><td>SO43724</td><td>1</td><td>1</td><td>3578.2700</td><td>0</td><td>286.2616</td><td>89.4568</td><td>3578.2700</td><td>Recalculated total does not match existing SalesAmount</td></tr><tr><td>SO43725</td><td>1</td><td>1</td><td>3578.2700</td><td>0</td><td>286.2616</td><td>89.4568</td><td>3578.2700</td><td>Recalculated total does not match existing SalesAmount</td></tr><tr><td>SO43726</td><td>1</td><td>1</td><td>699.0982</td><td>0</td><td>55.9279</td><td>17.4775</td><td>699.0982</td><td>Recalculated total does not match existing SalesAmount</td></tr><tr><td>SO43727</td><td>1</td><td>1</td><td>3578.2700</td><td>0</td><td>286.2616</td><td>89.4568</td><td>3578.2700</td><td>Recalculated total does not match existing SalesAmount</td></tr><tr><td>SO43728</td><td>1</td><td>1</td><td>3578.2700</td><td>0</td><td>286.2616</td><td>89.4568</td><td>3578.2700</td><td>Recalculated total does not match existing SalesAmount</td></tr><tr><td>SO43729</td><td>1</td><td>1</td><td>3399.9900</td><td>0</td><td>271.9992</td><td>84.9998</td><td>3399.9900</td><td>Recalculated total does not match existing SalesAmount</td></tr><tr><td>SO43730</td><td>1</td><td>1</td><td>3399.9900</td><td>0</td><td>271.9992</td><td>84.9998</td><td>3399.9900</td><td>Recalculated total does not match existing SalesAmount</td></tr><tr><td>SO43731</td><td>1</td><td>1</td><td>3578.2700</td><td>0</td><td>286.2616</td><td>89.4568</td><td>3578.2700</td><td>Recalculated total does not match existing SalesAmount</td></tr><tr><td>SO43732</td><td>1</td><td>1</td><td>3374.9900</td><td>0</td><td>269.9992</td><td>84.3748</td><td>3374.9900</td><td>Recalculated total does not match existing SalesAmount</td></tr><tr><td>SO43733</td><td>1</td><td>1</td><td>3578.2700</td><td>0</td><td>286.2616</td><td>89.4568</td><td>3578.2700</td><td>Recalculated total does not match existing SalesAmount</td></tr><tr><td>SO43734</td><td>1</td><td>1</td><td>3578.2700</td><td>0</td><td>286.2616</td><td>89.4568</td><td>3578.2700</td><td>Recalculated total does not match existing SalesAmount</td></tr><tr><td>SO43735</td><td>1</td><td>1</td><td>3578.2700</td><td>0</td><td>286.2616</td><td>89.4568</td><td>3578.2700</td><td>Recalculated total does not match existing SalesAmount</td></tr><tr><td>SO43736</td><td>1</td><td>1</td><td>3399.9900</td><td>0</td><td>271.9992</td><td>84.9998</td><td>3399.9900</td><td>Recalculated total does not match existing SalesAmount</td></tr><tr><td>SO43737</td><td>1</td><td>1</td><td>3578.2700</td><td>0</td><td>286.2616</td><td>89.4568</td><td>3578.2700</td><td>Recalculated total does not match existing SalesAmount</td></tr><tr><td>SO43738</td><td>1</td><td>1</td><td>3578.2700</td><td>0</td><td>286.2616</td><td>89.4568</td><td>3578.2700</td><td>Recalculated total does not match existing SalesAmount</td></tr><tr><td>SO43739</td><td>1</td><td>1</td><td>3578.2700</td><td>0</td><td>286.2616</td><td>89.4568</td><td>3578.2700</td><td>Recalculated total does not match existing SalesAmount</td></tr><tr><td>SO43740</td><td>1</td><td>1</td><td>3578.2700</td><td>0</td><td>286.2616</td><td>89.4568</td><td>3578.2700</td><td>Recalculated total does not match existing SalesAmount</td></tr><tr><td>SO43741</td><td>1</td><td>1</td><td>3578.2700</td><td>0</td><td>286.2616</td><td>89.4568</td><td>3578.2700</td><td>Recalculated total does not match existing SalesAmount</td></tr><tr><td>SO43742</td><td>1</td><td>1</td><td>3578.2700</td><td>0</td><td>286.2616</td><td>89.4568</td><td>3578.2700</td><td>Recalculated total does not match existing SalesAmount</td></tr><tr><td>SO43743</td><td>1</td><td>1</td><td>3399.9900</td><td>0</td><td>271.9992</td><td>84.9998</td><td>3399.9900</td><td>Recalculated total does not match existing SalesAmount</td></tr><tr><td>SO43744</td><td>1</td><td>1</td><td>3578.2700</td><td>0</td><td>286.2616</td><td>89.4568</td><td>3578.2700</td><td>Recalculated total does not match existing SalesAmount</td></tr><tr><td>SO43745</td><td>1</td><td>1</td><td>3578.2700</td><td>0</td><td>286.2616</td><td>89.4568</td><td>3578.2700</td><td>Recalculated total does not match existing SalesAmount</td></tr><tr><td>SO43746</td><td>1</td><td>1</td><td>3578.2700</td><td>0</td><td>286.2616</td><td>89.4568</td><td>3578.2700</td><td>Recalculated total does not match existing SalesAmount</td></tr></tbody></table>
+                  <p class="desc">Recalculate line item totals using OrderQuantity, UnitPrice, UnitPriceDiscountPct, TaxAmt, and Freight for FactInternetSales table, and flag rows where recalculated totals differ from SalesAmount.</p>
+                </section>
+
+        </body>
+        </html>
