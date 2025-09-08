@@ -1,0 +1,661 @@
+{
+  "summary": {
+    "pass": 0,
+    "fail": 2,
+    "duration": "00:00:05",
+    "warehouse": "0e7ef356fe37e56c"
+  },
+  "violations": [
+    {
+      "rule": "unique_line_number_per_order",
+      "table": "",
+      "keys": "",
+      "detail": "50 rows",
+      "severity": "CRITICAL"
+    },
+    {
+      "rule": "unique_line_number_per_order_reseller",
+      "table": "",
+      "keys": "",
+      "detail": "50 rows",
+      "severity": "CRITICAL"
+    }
+  ],
+  "log": "[start] Submitting 2 rules to 0e7ef356fe37e56c\n[run] Executing rule 1/2: unique_line_number_per_order\n[run] Executing rule 2/2: unique_line_number_per_order_reseller\n[end] Completed",
+  "per_rule": [
+    {
+      "name": "unique_line_number_per_order",
+      "status": "failed",
+      "row_count": 50,
+      "details": {
+        "passed": false,
+        "row_count": 50,
+        "ge_available": true,
+        "details": {
+          "success": false,
+          "results": [
+            {
+              "success": false,
+              "expectation_config": {
+                "expectation_type": "expect_table_row_count_to_equal",
+                "kwargs": {
+                  "value": 0,
+                  "result_format": "BASIC"
+                },
+                "meta": {}
+              },
+              "result": {
+                "observed_value": 50
+              },
+              "meta": {},
+              "exception_info": {
+                "raised_exception": false,
+                "exception_message": null,
+                "exception_traceback": null
+              }
+            }
+          ],
+          "evaluation_parameters": {},
+          "statistics": {
+            "evaluated_expectations": 1,
+            "successful_expectations": 0,
+            "unsuccessful_expectations": 1,
+            "success_percent": 0
+          },
+          "meta": {
+            "great_expectations_version": "0.18.21",
+            "expectation_suite_name": "default",
+            "run_id": {
+              "run_name": null,
+              "run_time": "2025-09-09T02:16:02.623330+05:30"
+            },
+            "batch_kwargs": {
+              "ge_batch_id": "d540f753-8cf4-11f0-83a2-3814286fba39"
+            },
+            "batch_markers": {},
+            "batch_parameters": {},
+            "validation_time": "20250908T204602.623330Z",
+            "expectation_suite_meta": {
+              "great_expectations_version": "0.18.21"
+            }
+          }
+        }
+      },
+      "sample": [
+        {
+          "SalesOrderNumber": "SO51176",
+          "SalesOrderLineNumber": 2,
+          "violation_reason": "Duplicate line number within the same order"
+        },
+        {
+          "SalesOrderNumber": "SO51177",
+          "SalesOrderLineNumber": 2,
+          "violation_reason": "Duplicate line number within the same order"
+        },
+        {
+          "SalesOrderNumber": "SO51178",
+          "SalesOrderLineNumber": 2,
+          "violation_reason": "Duplicate line number within the same order"
+        },
+        {
+          "SalesOrderNumber": "SO51178",
+          "SalesOrderLineNumber": 3,
+          "violation_reason": "Duplicate line number within the same order"
+        },
+        {
+          "SalesOrderNumber": "SO51179",
+          "SalesOrderLineNumber": 2,
+          "violation_reason": "Duplicate line number within the same order"
+        },
+        {
+          "SalesOrderNumber": "SO51179",
+          "SalesOrderLineNumber": 3,
+          "violation_reason": "Duplicate line number within the same order"
+        },
+        {
+          "SalesOrderNumber": "SO51179",
+          "SalesOrderLineNumber": 4,
+          "violation_reason": "Duplicate line number within the same order"
+        },
+        {
+          "SalesOrderNumber": "SO51180",
+          "SalesOrderLineNumber": 2,
+          "violation_reason": "Duplicate line number within the same order"
+        },
+        {
+          "SalesOrderNumber": "SO51180",
+          "SalesOrderLineNumber": 3,
+          "violation_reason": "Duplicate line number within the same order"
+        },
+        {
+          "SalesOrderNumber": "SO51180",
+          "SalesOrderLineNumber": 4,
+          "violation_reason": "Duplicate line number within the same order"
+        },
+        {
+          "SalesOrderNumber": "SO51180",
+          "SalesOrderLineNumber": 5,
+          "violation_reason": "Duplicate line number within the same order"
+        },
+        {
+          "SalesOrderNumber": "SO51181",
+          "SalesOrderLineNumber": 2,
+          "violation_reason": "Duplicate line number within the same order"
+        },
+        {
+          "SalesOrderNumber": "SO51181",
+          "SalesOrderLineNumber": 3,
+          "violation_reason": "Duplicate line number within the same order"
+        },
+        {
+          "SalesOrderNumber": "SO51181",
+          "SalesOrderLineNumber": 4,
+          "violation_reason": "Duplicate line number within the same order"
+        },
+        {
+          "SalesOrderNumber": "SO51182",
+          "SalesOrderLineNumber": 2,
+          "violation_reason": "Duplicate line number within the same order"
+        },
+        {
+          "SalesOrderNumber": "SO51183",
+          "SalesOrderLineNumber": 2,
+          "violation_reason": "Duplicate line number within the same order"
+        },
+        {
+          "SalesOrderNumber": "SO51184",
+          "SalesOrderLineNumber": 2,
+          "violation_reason": "Duplicate line number within the same order"
+        },
+        {
+          "SalesOrderNumber": "SO51184",
+          "SalesOrderLineNumber": 3,
+          "violation_reason": "Duplicate line number within the same order"
+        },
+        {
+          "SalesOrderNumber": "SO51184",
+          "SalesOrderLineNumber": 4,
+          "violation_reason": "Duplicate line number within the same order"
+        },
+        {
+          "SalesOrderNumber": "SO51185",
+          "SalesOrderLineNumber": 2,
+          "violation_reason": "Duplicate line number within the same order"
+        },
+        {
+          "SalesOrderNumber": "SO51185",
+          "SalesOrderLineNumber": 3,
+          "violation_reason": "Duplicate line number within the same order"
+        },
+        {
+          "SalesOrderNumber": "SO51187",
+          "SalesOrderLineNumber": 2,
+          "violation_reason": "Duplicate line number within the same order"
+        },
+        {
+          "SalesOrderNumber": "SO51189",
+          "SalesOrderLineNumber": 2,
+          "violation_reason": "Duplicate line number within the same order"
+        },
+        {
+          "SalesOrderNumber": "SO51189",
+          "SalesOrderLineNumber": 3,
+          "violation_reason": "Duplicate line number within the same order"
+        },
+        {
+          "SalesOrderNumber": "SO51190",
+          "SalesOrderLineNumber": 2,
+          "violation_reason": "Duplicate line number within the same order"
+        },
+        {
+          "SalesOrderNumber": "SO51190",
+          "SalesOrderLineNumber": 3,
+          "violation_reason": "Duplicate line number within the same order"
+        },
+        {
+          "SalesOrderNumber": "SO51191",
+          "SalesOrderLineNumber": 2,
+          "violation_reason": "Duplicate line number within the same order"
+        },
+        {
+          "SalesOrderNumber": "SO51191",
+          "SalesOrderLineNumber": 3,
+          "violation_reason": "Duplicate line number within the same order"
+        },
+        {
+          "SalesOrderNumber": "SO51191",
+          "SalesOrderLineNumber": 4,
+          "violation_reason": "Duplicate line number within the same order"
+        },
+        {
+          "SalesOrderNumber": "SO51192",
+          "SalesOrderLineNumber": 2,
+          "violation_reason": "Duplicate line number within the same order"
+        },
+        {
+          "SalesOrderNumber": "SO51193",
+          "SalesOrderLineNumber": 2,
+          "violation_reason": "Duplicate line number within the same order"
+        },
+        {
+          "SalesOrderNumber": "SO51194",
+          "SalesOrderLineNumber": 2,
+          "violation_reason": "Duplicate line number within the same order"
+        },
+        {
+          "SalesOrderNumber": "SO51194",
+          "SalesOrderLineNumber": 3,
+          "violation_reason": "Duplicate line number within the same order"
+        },
+        {
+          "SalesOrderNumber": "SO51195",
+          "SalesOrderLineNumber": 2,
+          "violation_reason": "Duplicate line number within the same order"
+        },
+        {
+          "SalesOrderNumber": "SO51195",
+          "SalesOrderLineNumber": 3,
+          "violation_reason": "Duplicate line number within the same order"
+        },
+        {
+          "SalesOrderNumber": "SO51196",
+          "SalesOrderLineNumber": 2,
+          "violation_reason": "Duplicate line number within the same order"
+        },
+        {
+          "SalesOrderNumber": "SO51196",
+          "SalesOrderLineNumber": 3,
+          "violation_reason": "Duplicate line number within the same order"
+        },
+        {
+          "SalesOrderNumber": "SO51196",
+          "SalesOrderLineNumber": 4,
+          "violation_reason": "Duplicate line number within the same order"
+        },
+        {
+          "SalesOrderNumber": "SO51196",
+          "SalesOrderLineNumber": 5,
+          "violation_reason": "Duplicate line number within the same order"
+        },
+        {
+          "SalesOrderNumber": "SO51197",
+          "SalesOrderLineNumber": 2,
+          "violation_reason": "Duplicate line number within the same order"
+        },
+        {
+          "SalesOrderNumber": "SO51197",
+          "SalesOrderLineNumber": 3,
+          "violation_reason": "Duplicate line number within the same order"
+        },
+        {
+          "SalesOrderNumber": "SO51197",
+          "SalesOrderLineNumber": 4,
+          "violation_reason": "Duplicate line number within the same order"
+        },
+        {
+          "SalesOrderNumber": "SO51198",
+          "SalesOrderLineNumber": 2,
+          "violation_reason": "Duplicate line number within the same order"
+        },
+        {
+          "SalesOrderNumber": "SO51198",
+          "SalesOrderLineNumber": 3,
+          "violation_reason": "Duplicate line number within the same order"
+        },
+        {
+          "SalesOrderNumber": "SO51199",
+          "SalesOrderLineNumber": 2,
+          "violation_reason": "Duplicate line number within the same order"
+        },
+        {
+          "SalesOrderNumber": "SO51199",
+          "SalesOrderLineNumber": 3,
+          "violation_reason": "Duplicate line number within the same order"
+        },
+        {
+          "SalesOrderNumber": "SO51199",
+          "SalesOrderLineNumber": 4,
+          "violation_reason": "Duplicate line number within the same order"
+        },
+        {
+          "SalesOrderNumber": "SO51200",
+          "SalesOrderLineNumber": 2,
+          "violation_reason": "Duplicate line number within the same order"
+        },
+        {
+          "SalesOrderNumber": "SO51201",
+          "SalesOrderLineNumber": 2,
+          "violation_reason": "Duplicate line number within the same order"
+        },
+        {
+          "SalesOrderNumber": "SO51202",
+          "SalesOrderLineNumber": 2,
+          "violation_reason": "Duplicate line number within the same order"
+        }
+      ],
+      "sql": "SELECT `SalesOrderNumber`,\n       `SalesOrderLineNumber`,\n       'Duplicate line number within the same order' AS violation_reason\nFROM\n  (SELECT `SalesOrderNumber`,\n          `SalesOrderLineNumber`,\n          ROW_NUMBER() OVER (PARTITION BY `SalesOrderNumber`\n                             ORDER BY `SalesOrderLineNumber`) AS row_num\n   FROM `aigdqr-ragstoriches`.`adv_works_dw`.`factinternetsales`) t\nWHERE t.row_num > 1",
+      "severity": "CRITICAL",
+      "description": "Ensure that each line item within an order has a unique line number in the factinternetsales table. This rule checks for duplicate SalesOrderLineNumber values within the same SalesOrderNumber.",
+      "timing_sec": {
+        "sql": 4.017
+      }
+    },
+    {
+      "name": "unique_line_number_per_order_reseller",
+      "status": "failed",
+      "row_count": 50,
+      "details": {
+        "passed": false,
+        "row_count": 50,
+        "ge_available": true,
+        "details": {
+          "success": false,
+          "results": [
+            {
+              "success": false,
+              "expectation_config": {
+                "expectation_type": "expect_table_row_count_to_equal",
+                "kwargs": {
+                  "value": 0,
+                  "result_format": "BASIC"
+                },
+                "meta": {}
+              },
+              "result": {
+                "observed_value": 50
+              },
+              "meta": {},
+              "exception_info": {
+                "raised_exception": false,
+                "exception_message": null,
+                "exception_traceback": null
+              }
+            }
+          ],
+          "evaluation_parameters": {},
+          "statistics": {
+            "evaluated_expectations": 1,
+            "successful_expectations": 0,
+            "unsuccessful_expectations": 1,
+            "success_percent": 0
+          },
+          "meta": {
+            "great_expectations_version": "0.18.21",
+            "expectation_suite_name": "default",
+            "run_id": {
+              "run_name": null,
+              "run_time": "2025-09-09T02:16:08.256261+05:30"
+            },
+            "batch_kwargs": {
+              "ge_batch_id": "d89d0237-8cf4-11f0-8fed-3814286fba39"
+            },
+            "batch_markers": {},
+            "batch_parameters": {},
+            "validation_time": "20250908T204608.256261Z",
+            "expectation_suite_meta": {
+              "great_expectations_version": "0.18.21"
+            }
+          }
+        }
+      },
+      "sample": [
+        {
+          "SalesOrderNumber": "SO43659",
+          "SalesOrderLineNumber": 2,
+          "violation_reason": "Duplicate line number within the same order"
+        },
+        {
+          "SalesOrderNumber": "SO43659",
+          "SalesOrderLineNumber": 3,
+          "violation_reason": "Duplicate line number within the same order"
+        },
+        {
+          "SalesOrderNumber": "SO43659",
+          "SalesOrderLineNumber": 4,
+          "violation_reason": "Duplicate line number within the same order"
+        },
+        {
+          "SalesOrderNumber": "SO43659",
+          "SalesOrderLineNumber": 5,
+          "violation_reason": "Duplicate line number within the same order"
+        },
+        {
+          "SalesOrderNumber": "SO43659",
+          "SalesOrderLineNumber": 6,
+          "violation_reason": "Duplicate line number within the same order"
+        },
+        {
+          "SalesOrderNumber": "SO43659",
+          "SalesOrderLineNumber": 7,
+          "violation_reason": "Duplicate line number within the same order"
+        },
+        {
+          "SalesOrderNumber": "SO43659",
+          "SalesOrderLineNumber": 8,
+          "violation_reason": "Duplicate line number within the same order"
+        },
+        {
+          "SalesOrderNumber": "SO43659",
+          "SalesOrderLineNumber": 9,
+          "violation_reason": "Duplicate line number within the same order"
+        },
+        {
+          "SalesOrderNumber": "SO43659",
+          "SalesOrderLineNumber": 10,
+          "violation_reason": "Duplicate line number within the same order"
+        },
+        {
+          "SalesOrderNumber": "SO43659",
+          "SalesOrderLineNumber": 11,
+          "violation_reason": "Duplicate line number within the same order"
+        },
+        {
+          "SalesOrderNumber": "SO43659",
+          "SalesOrderLineNumber": 12,
+          "violation_reason": "Duplicate line number within the same order"
+        },
+        {
+          "SalesOrderNumber": "SO43660",
+          "SalesOrderLineNumber": 2,
+          "violation_reason": "Duplicate line number within the same order"
+        },
+        {
+          "SalesOrderNumber": "SO43661",
+          "SalesOrderLineNumber": 2,
+          "violation_reason": "Duplicate line number within the same order"
+        },
+        {
+          "SalesOrderNumber": "SO43661",
+          "SalesOrderLineNumber": 3,
+          "violation_reason": "Duplicate line number within the same order"
+        },
+        {
+          "SalesOrderNumber": "SO43661",
+          "SalesOrderLineNumber": 4,
+          "violation_reason": "Duplicate line number within the same order"
+        },
+        {
+          "SalesOrderNumber": "SO43661",
+          "SalesOrderLineNumber": 5,
+          "violation_reason": "Duplicate line number within the same order"
+        },
+        {
+          "SalesOrderNumber": "SO43661",
+          "SalesOrderLineNumber": 6,
+          "violation_reason": "Duplicate line number within the same order"
+        },
+        {
+          "SalesOrderNumber": "SO43661",
+          "SalesOrderLineNumber": 7,
+          "violation_reason": "Duplicate line number within the same order"
+        },
+        {
+          "SalesOrderNumber": "SO43661",
+          "SalesOrderLineNumber": 8,
+          "violation_reason": "Duplicate line number within the same order"
+        },
+        {
+          "SalesOrderNumber": "SO43661",
+          "SalesOrderLineNumber": 9,
+          "violation_reason": "Duplicate line number within the same order"
+        },
+        {
+          "SalesOrderNumber": "SO43661",
+          "SalesOrderLineNumber": 10,
+          "violation_reason": "Duplicate line number within the same order"
+        },
+        {
+          "SalesOrderNumber": "SO43661",
+          "SalesOrderLineNumber": 11,
+          "violation_reason": "Duplicate line number within the same order"
+        },
+        {
+          "SalesOrderNumber": "SO43661",
+          "SalesOrderLineNumber": 12,
+          "violation_reason": "Duplicate line number within the same order"
+        },
+        {
+          "SalesOrderNumber": "SO43661",
+          "SalesOrderLineNumber": 13,
+          "violation_reason": "Duplicate line number within the same order"
+        },
+        {
+          "SalesOrderNumber": "SO43661",
+          "SalesOrderLineNumber": 14,
+          "violation_reason": "Duplicate line number within the same order"
+        },
+        {
+          "SalesOrderNumber": "SO43661",
+          "SalesOrderLineNumber": 15,
+          "violation_reason": "Duplicate line number within the same order"
+        },
+        {
+          "SalesOrderNumber": "SO43662",
+          "SalesOrderLineNumber": 2,
+          "violation_reason": "Duplicate line number within the same order"
+        },
+        {
+          "SalesOrderNumber": "SO43662",
+          "SalesOrderLineNumber": 3,
+          "violation_reason": "Duplicate line number within the same order"
+        },
+        {
+          "SalesOrderNumber": "SO43662",
+          "SalesOrderLineNumber": 4,
+          "violation_reason": "Duplicate line number within the same order"
+        },
+        {
+          "SalesOrderNumber": "SO43662",
+          "SalesOrderLineNumber": 5,
+          "violation_reason": "Duplicate line number within the same order"
+        },
+        {
+          "SalesOrderNumber": "SO43662",
+          "SalesOrderLineNumber": 6,
+          "violation_reason": "Duplicate line number within the same order"
+        },
+        {
+          "SalesOrderNumber": "SO43662",
+          "SalesOrderLineNumber": 7,
+          "violation_reason": "Duplicate line number within the same order"
+        },
+        {
+          "SalesOrderNumber": "SO43662",
+          "SalesOrderLineNumber": 8,
+          "violation_reason": "Duplicate line number within the same order"
+        },
+        {
+          "SalesOrderNumber": "SO43662",
+          "SalesOrderLineNumber": 9,
+          "violation_reason": "Duplicate line number within the same order"
+        },
+        {
+          "SalesOrderNumber": "SO43662",
+          "SalesOrderLineNumber": 10,
+          "violation_reason": "Duplicate line number within the same order"
+        },
+        {
+          "SalesOrderNumber": "SO43662",
+          "SalesOrderLineNumber": 11,
+          "violation_reason": "Duplicate line number within the same order"
+        },
+        {
+          "SalesOrderNumber": "SO43662",
+          "SalesOrderLineNumber": 12,
+          "violation_reason": "Duplicate line number within the same order"
+        },
+        {
+          "SalesOrderNumber": "SO43662",
+          "SalesOrderLineNumber": 13,
+          "violation_reason": "Duplicate line number within the same order"
+        },
+        {
+          "SalesOrderNumber": "SO43662",
+          "SalesOrderLineNumber": 14,
+          "violation_reason": "Duplicate line number within the same order"
+        },
+        {
+          "SalesOrderNumber": "SO43662",
+          "SalesOrderLineNumber": 15,
+          "violation_reason": "Duplicate line number within the same order"
+        },
+        {
+          "SalesOrderNumber": "SO43662",
+          "SalesOrderLineNumber": 16,
+          "violation_reason": "Duplicate line number within the same order"
+        },
+        {
+          "SalesOrderNumber": "SO43662",
+          "SalesOrderLineNumber": 17,
+          "violation_reason": "Duplicate line number within the same order"
+        },
+        {
+          "SalesOrderNumber": "SO43662",
+          "SalesOrderLineNumber": 18,
+          "violation_reason": "Duplicate line number within the same order"
+        },
+        {
+          "SalesOrderNumber": "SO43662",
+          "SalesOrderLineNumber": 19,
+          "violation_reason": "Duplicate line number within the same order"
+        },
+        {
+          "SalesOrderNumber": "SO43662",
+          "SalesOrderLineNumber": 20,
+          "violation_reason": "Duplicate line number within the same order"
+        },
+        {
+          "SalesOrderNumber": "SO43662",
+          "SalesOrderLineNumber": 21,
+          "violation_reason": "Duplicate line number within the same order"
+        },
+        {
+          "SalesOrderNumber": "SO43662",
+          "SalesOrderLineNumber": 22,
+          "violation_reason": "Duplicate line number within the same order"
+        },
+        {
+          "SalesOrderNumber": "SO43664",
+          "SalesOrderLineNumber": 2,
+          "violation_reason": "Duplicate line number within the same order"
+        },
+        {
+          "SalesOrderNumber": "SO43664",
+          "SalesOrderLineNumber": 3,
+          "violation_reason": "Duplicate line number within the same order"
+        },
+        {
+          "SalesOrderNumber": "SO43664",
+          "SalesOrderLineNumber": 4,
+          "violation_reason": "Duplicate line number within the same order"
+        }
+      ],
+      "sql": "SELECT `SalesOrderNumber`,\n       `SalesOrderLineNumber`,\n       'Duplicate line number within the same order' AS violation_reason\nFROM\n  (SELECT `SalesOrderNumber`,\n          `SalesOrderLineNumber`,\n          ROW_NUMBER() OVER (PARTITION BY `SalesOrderNumber`\n                             ORDER BY `SalesOrderLineNumber`) AS row_num\n   FROM `aigdqr-ragstoriches`.`adv_works_dw`.`factresellersales`) t\nWHERE t.row_num > 1",
+      "severity": "CRITICAL",
+      "description": "Ensure that each line item within an order has a unique line number in the factresellersales table. This rule checks for duplicate SalesOrderLineNumber values within the same SalesOrderNumber.",
+      "timing_sec": {
+        "sql": 5.611
+      }
+    }
+  ]
+}
