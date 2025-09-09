@@ -1,0 +1,225 @@
+
+        <!doctype html>
+        <html>
+        <head>
+          <meta charset="utf-8" />
+          <title>Qualitron — Data Quality Report</title>
+          <style>
+            :root {
+              --accent: #00A79D;
+              --accent-hover: #008E86;
+              --text: #0E141B;
+              --text-subtle: #5E6A75;
+              --surface: #FFFFFF;
+              --surface-alt: #F6F8FA;
+              --border: #E6E9EF;
+              --radius: 12px;
+              --font-sans: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+              --font-mono: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, 'Liberation Mono', 'Courier New', monospace;
+            }
+            body {
+              font-family: var(--font-sans);
+              margin: 24px;
+              background: var(--surface);
+              color: var(--text);
+            }
+            .brand { display: flex; align-items: center; gap: 12px; margin-bottom: 12px; }
+            .logo-badge {
+              padding: 4px 8px;
+              border-radius: var(--radius);
+              border: 1px solid rgba(0,0,0,0.12);
+              color: var(--accent);
+              font-weight: 600;
+              letter-spacing: 0.06em;
+            }
+            .brand-title { font-size: 16px; font-weight: 600; }
+            .brand-sub { font-size: 12px; color: var(--text-subtle); }
+            .rule { border: 1px solid var(--border); padding: 12px; margin: 12px 0; border-radius: var(--radius); background: var(--surface); }
+            .status { text-transform: uppercase; font-size: 12px; padding: 2px 6px; border-radius: 999px; margin-left: 8px; }
+            .status.passed { background: #e6ffed; color: #036400; border: 1px solid #b5e6bf; }
+            .status.failed { background: #ffebe6; color: #970000; border: 1px solid #f3b1a3; }
+            .status.error  { background: #fff4e5; color: #8a6d3b; border: 1px solid #ffd9a6; }
+            table { border-collapse: collapse; margin-top: 8px; width: 100%; }
+            th, td { border: 1px solid var(--border); padding: 6px; font-size: 12px; }
+            th { background: var(--surface-alt); text-align: left; }
+            pre { white-space: pre-wrap; background: var(--surface-alt); padding: 8px; border: 1px solid var(--border); border-radius: 8px; }
+            .meta { display: flex; gap: 16px; color: #333; font-size: 13px; margin: 6px 0; }
+            .desc { color: #444; }
+            .divider { height: 1px; background: var(--border); margin: 12px 0; }
+            .header { display: flex; align-items: baseline; justify-content: space-between; margin-bottom: 8px; }
+            .header h1 { margin: 0; font-size: 20px; }
+            .ts { color: var(--text-subtle); font-size: 12px; }
+          </style>
+        </head>
+        <body>
+          <div class="header">
+            <div class="brand">
+              <div class="logo-badge">[ QUALITRON ]</div>
+              <div>
+                <div class="brand-title">Qualitron – AI Data Quality</div>
+                <div class="brand-sub">EPAM-inspired single-page UI</div>
+              </div>
+            </div>
+            <div class="ts">Generated 2025-09-09 20:20:40 UTC</div>
+          </div>
+          <div class="divider"></div>
+
+                <section class="rule">
+                  <h2>
+                    End date not earlier than start date
+                    <span class="status passed">passed</span>
+                  </h2>
+                  <div class="meta">
+                    <div><b>Severity:</b> HIGH</div>
+                    <div><b>Violating rows:</b> 0</div>
+                  </div>
+                  <details>
+                    <summary>SQL</summary>
+                    <pre>SELECT `calendar_id`,
+       `start_date`,
+       `end_date`,
+       &#x27;end_date is earlier than start_date&#x27; AS `violation_reason`
+FROM `aigdqr-ragstoriches`.`calendar_ddp`.`v_calendar_full`
+WHERE `end_date` &lt; `start_date`</pre>
+                  </details>
+                  <details>
+                    <summary>Validation details</summary>
+                    <pre>{
+  &quot;passed&quot;: true,
+  &quot;row_count&quot;: 0,
+  &quot;ge_available&quot;: true,
+  &quot;details&quot;: {
+    &quot;success&quot;: true,
+    &quot;results&quot;: [
+      {
+        &quot;success&quot;: true,
+        &quot;expectation_config&quot;: {
+          &quot;expectation_type&quot;: &quot;expect_table_row_count_to_equal&quot;,
+          &quot;kwargs&quot;: {
+            &quot;value&quot;: 0,
+            &quot;result_format&quot;: &quot;BASIC&quot;
+          },
+          &quot;meta&quot;: {}
+        },
+        &quot;result&quot;: {
+          &quot;observed_value&quot;: 0
+        },
+        &quot;meta&quot;: {},
+        &quot;exception_info&quot;: {
+          &quot;raised_exception&quot;: false,
+          &quot;exception_message&quot;: null,
+          &quot;exception_traceback&quot;: null
+        }
+      }
+    ],
+    &quot;evaluation_parameters&quot;: {},
+    &quot;statistics&quot;: {
+      &quot;evaluated_expectations&quot;: 1,
+      &quot;successful_expectations&quot;: 1,
+      &quot;unsuccessful_expectations&quot;: 0,
+      &quot;success_percent&quot;: 100
+    },
+    &quot;meta&quot;: {
+      &quot;great_expectations_version&quot;: &quot;0.18.21&quot;,
+      &quot;expectation_suite_name&quot;: &quot;default&quot;,
+      &quot;run_id&quot;: {
+        &quot;run_name&quot;: null,
+        &quot;run_time&quot;: &quot;2025-09-10T01:50:26.439426+05:30&quot;
+      },
+      &quot;batch_kwargs&quot;: {
+        &quot;ge_batch_id&quot;: &quot;6c07832d-8dba-11f0-a4ce-3814286fba39&quot;
+      },
+      &quot;batch_markers&quot;: {},
+      &quot;batch_parameters&quot;: {},
+      &quot;validation_time&quot;: &quot;20250909T202026.439426Z&quot;,
+      &quot;expectation_suite_meta&quot;: {
+        &quot;great_expectations_version&quot;: &quot;0.18.21&quot;
+      }
+    }
+  }
+}</pre>
+                  </details>
+
+                  <p class="desc">Flags rows where the end_date is earlier than the start_date in the calendar tables. Assumes both start_date and end_date are DATE columns.</p>
+                </section>
+
+                <section class="rule">
+                  <h2>
+                    Dates significantly far in the future
+                    <span class="status passed">passed</span>
+                  </h2>
+                  <div class="meta">
+                    <div><b>Severity:</b> MEDIUM</div>
+                    <div><b>Violating rows:</b> 0</div>
+                  </div>
+                  <details>
+                    <summary>SQL</summary>
+                    <pre>SELECT `calendar_id`,
+       `end_date`,
+       &#x27;end_date is more than 100 years in the future&#x27; AS `violation_reason`
+FROM `aigdqr-ragstoriches`.`calendar_ddp`.`v_calendar_full`
+WHERE `end_date` &gt; date_add(current_date(), 36525)</pre>
+                  </details>
+                  <details>
+                    <summary>Validation details</summary>
+                    <pre>{
+  &quot;passed&quot;: true,
+  &quot;row_count&quot;: 0,
+  &quot;ge_available&quot;: true,
+  &quot;details&quot;: {
+    &quot;success&quot;: true,
+    &quot;results&quot;: [
+      {
+        &quot;success&quot;: true,
+        &quot;expectation_config&quot;: {
+          &quot;expectation_type&quot;: &quot;expect_table_row_count_to_equal&quot;,
+          &quot;kwargs&quot;: {
+            &quot;value&quot;: 0,
+            &quot;result_format&quot;: &quot;BASIC&quot;
+          },
+          &quot;meta&quot;: {}
+        },
+        &quot;result&quot;: {
+          &quot;observed_value&quot;: 0
+        },
+        &quot;meta&quot;: {},
+        &quot;exception_info&quot;: {
+          &quot;raised_exception&quot;: false,
+          &quot;exception_message&quot;: null,
+          &quot;exception_traceback&quot;: null
+        }
+      }
+    ],
+    &quot;evaluation_parameters&quot;: {},
+    &quot;statistics&quot;: {
+      &quot;evaluated_expectations&quot;: 1,
+      &quot;successful_expectations&quot;: 1,
+      &quot;unsuccessful_expectations&quot;: 0,
+      &quot;success_percent&quot;: 100
+    },
+    &quot;meta&quot;: {
+      &quot;great_expectations_version&quot;: &quot;0.18.21&quot;,
+      &quot;expectation_suite_name&quot;: &quot;default&quot;,
+      &quot;run_id&quot;: {
+        &quot;run_name&quot;: null,
+        &quot;run_time&quot;: &quot;2025-09-10T01:50:28.663441+05:30&quot;
+      },
+      &quot;batch_kwargs&quot;: {
+        &quot;ge_batch_id&quot;: &quot;6d5b89ac-8dba-11f0-b03a-3814286fba39&quot;
+      },
+      &quot;batch_markers&quot;: {},
+      &quot;batch_parameters&quot;: {},
+      &quot;validation_time&quot;: &quot;20250909T202028.663441Z&quot;,
+      &quot;expectation_suite_meta&quot;: {
+        &quot;great_expectations_version&quot;: &quot;0.18.21&quot;
+      }
+    }
+  }
+}</pre>
+                  </details>
+
+                  <p class="desc">Flags rows where the end_date is significantly far in the future (more than 100 years from today). Assumes end_date is a DATE column.</p>
+                </section>
+
+        </body>
+        </html>
