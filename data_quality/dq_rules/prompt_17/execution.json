@@ -1,0 +1,469 @@
+{
+  "summary": {
+    "pass": 2,
+    "fail": 1,
+    "duration": "00:00:02",
+    "warehouse": "0e7ef356fe37e56c"
+  },
+  "violations": [
+    {
+      "rule": "Group-country-region hierarchy cycle check",
+      "table": "",
+      "keys": "",
+      "detail": "50 rows",
+      "severity": "CRITICAL"
+    }
+  ],
+  "log": "[start] Submitting 3 rules to 0e7ef356fe37e56c\n[run] Executing rule 1/3: Group-country-region hierarchy cycle check\n[run] Executing rule 2/3: Orphaned entries in group-country-region hierarchy\n[run] Executing rule 3/3: Inconsistent parent-child attributes in group-country-region hierarchy\n[end] Completed",
+  "per_rule": [
+    {
+      "name": "Group-country-region hierarchy cycle check",
+      "status": "failed",
+      "row_count": 50,
+      "details": {
+        "passed": false,
+        "row_count": 50,
+        "ge_available": true,
+        "details": {
+          "success": false,
+          "results": [
+            {
+              "success": false,
+              "expectation_config": {
+                "expectation_type": "expect_table_row_count_to_equal",
+                "kwargs": {
+                  "value": 0,
+                  "result_format": "BASIC"
+                },
+                "meta": {}
+              },
+              "result": {
+                "observed_value": 50
+              },
+              "meta": {},
+              "exception_info": {
+                "raised_exception": false,
+                "exception_message": null,
+                "exception_traceback": null
+              }
+            }
+          ],
+          "evaluation_parameters": {},
+          "statistics": {
+            "evaluated_expectations": 1,
+            "successful_expectations": 0,
+            "unsuccessful_expectations": 1,
+            "success_percent": 0
+          },
+          "meta": {
+            "great_expectations_version": "0.18.21",
+            "expectation_suite_name": "default",
+            "run_id": {
+              "run_name": null,
+              "run_time": "2025-09-09T21:13:14.152314+05:30"
+            },
+            "batch_kwargs": {
+              "ge_batch_id": "b26a452a-8d93-11f0-af75-3814286fba39"
+            },
+            "batch_markers": {},
+            "batch_parameters": {},
+            "validation_time": "20250909T154314.152314Z",
+            "expectation_suite_meta": {
+              "great_expectations_version": "0.18.21"
+            }
+          }
+        }
+      },
+      "sample": [
+        {
+          "SalesTerritoryKey": 1,
+          "cycle_path": "1 -> 1",
+          "violation_reason": "Cycle detected in hierarchy"
+        },
+        {
+          "SalesTerritoryKey": 2,
+          "cycle_path": "2 -> 2",
+          "violation_reason": "Cycle detected in hierarchy"
+        },
+        {
+          "SalesTerritoryKey": 3,
+          "cycle_path": "3 -> 3",
+          "violation_reason": "Cycle detected in hierarchy"
+        },
+        {
+          "SalesTerritoryKey": 4,
+          "cycle_path": "4 -> 4",
+          "violation_reason": "Cycle detected in hierarchy"
+        },
+        {
+          "SalesTerritoryKey": 5,
+          "cycle_path": "5 -> 5",
+          "violation_reason": "Cycle detected in hierarchy"
+        },
+        {
+          "SalesTerritoryKey": 6,
+          "cycle_path": "6 -> 6",
+          "violation_reason": "Cycle detected in hierarchy"
+        },
+        {
+          "SalesTerritoryKey": 7,
+          "cycle_path": "7 -> 7",
+          "violation_reason": "Cycle detected in hierarchy"
+        },
+        {
+          "SalesTerritoryKey": 8,
+          "cycle_path": "8 -> 8",
+          "violation_reason": "Cycle detected in hierarchy"
+        },
+        {
+          "SalesTerritoryKey": 9,
+          "cycle_path": "9 -> 9",
+          "violation_reason": "Cycle detected in hierarchy"
+        },
+        {
+          "SalesTerritoryKey": 10,
+          "cycle_path": "10 -> 10",
+          "violation_reason": "Cycle detected in hierarchy"
+        },
+        {
+          "SalesTerritoryKey": 11,
+          "cycle_path": "11 -> 11",
+          "violation_reason": "Cycle detected in hierarchy"
+        },
+        {
+          "SalesTerritoryKey": 1,
+          "cycle_path": "1 -> 1 -> 1",
+          "violation_reason": "Cycle detected in hierarchy"
+        },
+        {
+          "SalesTerritoryKey": 2,
+          "cycle_path": "2 -> 2 -> 2",
+          "violation_reason": "Cycle detected in hierarchy"
+        },
+        {
+          "SalesTerritoryKey": 3,
+          "cycle_path": "3 -> 3 -> 3",
+          "violation_reason": "Cycle detected in hierarchy"
+        },
+        {
+          "SalesTerritoryKey": 4,
+          "cycle_path": "4 -> 4 -> 4",
+          "violation_reason": "Cycle detected in hierarchy"
+        },
+        {
+          "SalesTerritoryKey": 5,
+          "cycle_path": "5 -> 5 -> 5",
+          "violation_reason": "Cycle detected in hierarchy"
+        },
+        {
+          "SalesTerritoryKey": 6,
+          "cycle_path": "6 -> 6 -> 6",
+          "violation_reason": "Cycle detected in hierarchy"
+        },
+        {
+          "SalesTerritoryKey": 7,
+          "cycle_path": "7 -> 7 -> 7",
+          "violation_reason": "Cycle detected in hierarchy"
+        },
+        {
+          "SalesTerritoryKey": 8,
+          "cycle_path": "8 -> 8 -> 8",
+          "violation_reason": "Cycle detected in hierarchy"
+        },
+        {
+          "SalesTerritoryKey": 9,
+          "cycle_path": "9 -> 9 -> 9",
+          "violation_reason": "Cycle detected in hierarchy"
+        },
+        {
+          "SalesTerritoryKey": 10,
+          "cycle_path": "10 -> 10 -> 10",
+          "violation_reason": "Cycle detected in hierarchy"
+        },
+        {
+          "SalesTerritoryKey": 11,
+          "cycle_path": "11 -> 11 -> 11",
+          "violation_reason": "Cycle detected in hierarchy"
+        },
+        {
+          "SalesTerritoryKey": 1,
+          "cycle_path": "1 -> 1 -> 1 -> 1",
+          "violation_reason": "Cycle detected in hierarchy"
+        },
+        {
+          "SalesTerritoryKey": 2,
+          "cycle_path": "2 -> 2 -> 2 -> 2",
+          "violation_reason": "Cycle detected in hierarchy"
+        },
+        {
+          "SalesTerritoryKey": 3,
+          "cycle_path": "3 -> 3 -> 3 -> 3",
+          "violation_reason": "Cycle detected in hierarchy"
+        },
+        {
+          "SalesTerritoryKey": 4,
+          "cycle_path": "4 -> 4 -> 4 -> 4",
+          "violation_reason": "Cycle detected in hierarchy"
+        },
+        {
+          "SalesTerritoryKey": 5,
+          "cycle_path": "5 -> 5 -> 5 -> 5",
+          "violation_reason": "Cycle detected in hierarchy"
+        },
+        {
+          "SalesTerritoryKey": 6,
+          "cycle_path": "6 -> 6 -> 6 -> 6",
+          "violation_reason": "Cycle detected in hierarchy"
+        },
+        {
+          "SalesTerritoryKey": 7,
+          "cycle_path": "7 -> 7 -> 7 -> 7",
+          "violation_reason": "Cycle detected in hierarchy"
+        },
+        {
+          "SalesTerritoryKey": 8,
+          "cycle_path": "8 -> 8 -> 8 -> 8",
+          "violation_reason": "Cycle detected in hierarchy"
+        },
+        {
+          "SalesTerritoryKey": 9,
+          "cycle_path": "9 -> 9 -> 9 -> 9",
+          "violation_reason": "Cycle detected in hierarchy"
+        },
+        {
+          "SalesTerritoryKey": 10,
+          "cycle_path": "10 -> 10 -> 10 -> 10",
+          "violation_reason": "Cycle detected in hierarchy"
+        },
+        {
+          "SalesTerritoryKey": 11,
+          "cycle_path": "11 -> 11 -> 11 -> 11",
+          "violation_reason": "Cycle detected in hierarchy"
+        },
+        {
+          "SalesTerritoryKey": 1,
+          "cycle_path": "1 -> 1 -> 1 -> 1 -> 1",
+          "violation_reason": "Cycle detected in hierarchy"
+        },
+        {
+          "SalesTerritoryKey": 2,
+          "cycle_path": "2 -> 2 -> 2 -> 2 -> 2",
+          "violation_reason": "Cycle detected in hierarchy"
+        },
+        {
+          "SalesTerritoryKey": 3,
+          "cycle_path": "3 -> 3 -> 3 -> 3 -> 3",
+          "violation_reason": "Cycle detected in hierarchy"
+        },
+        {
+          "SalesTerritoryKey": 4,
+          "cycle_path": "4 -> 4 -> 4 -> 4 -> 4",
+          "violation_reason": "Cycle detected in hierarchy"
+        },
+        {
+          "SalesTerritoryKey": 5,
+          "cycle_path": "5 -> 5 -> 5 -> 5 -> 5",
+          "violation_reason": "Cycle detected in hierarchy"
+        },
+        {
+          "SalesTerritoryKey": 6,
+          "cycle_path": "6 -> 6 -> 6 -> 6 -> 6",
+          "violation_reason": "Cycle detected in hierarchy"
+        },
+        {
+          "SalesTerritoryKey": 7,
+          "cycle_path": "7 -> 7 -> 7 -> 7 -> 7",
+          "violation_reason": "Cycle detected in hierarchy"
+        },
+        {
+          "SalesTerritoryKey": 8,
+          "cycle_path": "8 -> 8 -> 8 -> 8 -> 8",
+          "violation_reason": "Cycle detected in hierarchy"
+        },
+        {
+          "SalesTerritoryKey": 9,
+          "cycle_path": "9 -> 9 -> 9 -> 9 -> 9",
+          "violation_reason": "Cycle detected in hierarchy"
+        },
+        {
+          "SalesTerritoryKey": 10,
+          "cycle_path": "10 -> 10 -> 10 -> 10 -> 10",
+          "violation_reason": "Cycle detected in hierarchy"
+        },
+        {
+          "SalesTerritoryKey": 11,
+          "cycle_path": "11 -> 11 -> 11 -> 11 -> 11",
+          "violation_reason": "Cycle detected in hierarchy"
+        },
+        {
+          "SalesTerritoryKey": 1,
+          "cycle_path": "1 -> 1 -> 1 -> 1 -> 1 -> 1",
+          "violation_reason": "Cycle detected in hierarchy"
+        },
+        {
+          "SalesTerritoryKey": 2,
+          "cycle_path": "2 -> 2 -> 2 -> 2 -> 2 -> 2",
+          "violation_reason": "Cycle detected in hierarchy"
+        },
+        {
+          "SalesTerritoryKey": 3,
+          "cycle_path": "3 -> 3 -> 3 -> 3 -> 3 -> 3",
+          "violation_reason": "Cycle detected in hierarchy"
+        },
+        {
+          "SalesTerritoryKey": 4,
+          "cycle_path": "4 -> 4 -> 4 -> 4 -> 4 -> 4",
+          "violation_reason": "Cycle detected in hierarchy"
+        },
+        {
+          "SalesTerritoryKey": 5,
+          "cycle_path": "5 -> 5 -> 5 -> 5 -> 5 -> 5",
+          "violation_reason": "Cycle detected in hierarchy"
+        },
+        {
+          "SalesTerritoryKey": 6,
+          "cycle_path": "6 -> 6 -> 6 -> 6 -> 6 -> 6",
+          "violation_reason": "Cycle detected in hierarchy"
+        }
+      ],
+      "sql": "WITH RECURSIVE hierarchy_path AS\n  (SELECT `SalesTerritoryKey`,\n          `SalesTerritoryKey` AS root_key,\n          CAST(`SalesTerritoryKey` AS STRING) AS PATH,\n          1 AS depth\n   FROM `aigdqr-ragstoriches`.`adv_works_dw`.`dimsalesterritory`\n   UNION ALL SELECT child.`SalesTerritoryKey`,\n                    parent.root_key,\n                    CONCAT(parent.path, ' -> ', child.`SalesTerritoryKey`) AS PATH,\n                    parent.depth + 1\n   FROM hierarchy_path parent\n   JOIN `aigdqr-ragstoriches`.`adv_works_dw`.`dimsalesterritory` child ON parent.`SalesTerritoryKey` = child.`SalesTerritoryKey`\n   WHERE parent.depth < 100)\nSELECT root_key AS `SalesTerritoryKey`,\n       PATH AS `cycle_path`,\n               'Cycle detected in hierarchy' AS `violation_reason`\nFROM hierarchy_path\nWHERE `SalesTerritoryKey` = root_key\n  AND depth > 1",
+      "severity": "CRITICAL",
+      "description": "Detect cycles in the group-country-region hierarchy by traversing parent-child relationships in the dimsalesterritory table. Assumes SalesTerritoryKey is unique and Parent relationships are defined correctly.",
+      "timing_sec": {
+        "sql": 33.359
+      }
+    },
+    {
+      "name": "Orphaned entries in group-country-region hierarchy",
+      "status": "passed",
+      "row_count": 0,
+      "details": {
+        "passed": true,
+        "row_count": 0,
+        "ge_available": true,
+        "details": {
+          "success": true,
+          "results": [
+            {
+              "success": true,
+              "expectation_config": {
+                "expectation_type": "expect_table_row_count_to_equal",
+                "kwargs": {
+                  "value": 0,
+                  "result_format": "BASIC"
+                },
+                "meta": {}
+              },
+              "result": {
+                "observed_value": 0
+              },
+              "meta": {},
+              "exception_info": {
+                "raised_exception": false,
+                "exception_message": null,
+                "exception_traceback": null
+              }
+            }
+          ],
+          "evaluation_parameters": {},
+          "statistics": {
+            "evaluated_expectations": 1,
+            "successful_expectations": 1,
+            "unsuccessful_expectations": 0,
+            "success_percent": 100
+          },
+          "meta": {
+            "great_expectations_version": "0.18.21",
+            "expectation_suite_name": "default",
+            "run_id": {
+              "run_name": null,
+              "run_time": "2025-09-09T21:13:16.412326+05:30"
+            },
+            "batch_kwargs": {
+              "ge_batch_id": "b3c3450e-8d93-11f0-b464-3814286fba39"
+            },
+            "batch_markers": {},
+            "batch_parameters": {},
+            "validation_time": "20250909T154316.412326Z",
+            "expectation_suite_meta": {
+              "great_expectations_version": "0.18.21"
+            }
+          }
+        }
+      },
+      "sample": [],
+      "sql": "SELECT child.`SalesTerritoryKey`,\n       child.`SalesTerritoryAlternateKey`,\n       'Orphaned entry: parent does not exist' AS `violation_reason`\nFROM `aigdqr-ragstoriches`.`adv_works_dw`.`dimsalesterritory` child\nLEFT JOIN `aigdqr-ragstoriches`.`adv_works_dw`.`dimsalesterritory` parent ON child.`SalesTerritoryKey` = parent.`SalesTerritoryKey`\nWHERE parent.`SalesTerritoryKey` IS NULL",
+      "severity": "HIGH",
+      "description": "Identify entries in dimsalesterritory that reference non-existent parent entries, ensuring no orphaned relationships.",
+      "timing_sec": {
+        "sql": 2.25
+      }
+    },
+    {
+      "name": "Inconsistent parent-child attributes in group-country-region hierarchy",
+      "status": "passed",
+      "row_count": 0,
+      "details": {
+        "passed": true,
+        "row_count": 0,
+        "ge_available": true,
+        "details": {
+          "success": true,
+          "results": [
+            {
+              "success": true,
+              "expectation_config": {
+                "expectation_type": "expect_table_row_count_to_equal",
+                "kwargs": {
+                  "value": 0,
+                  "result_format": "BASIC"
+                },
+                "meta": {}
+              },
+              "result": {
+                "observed_value": 0
+              },
+              "meta": {},
+              "exception_info": {
+                "raised_exception": false,
+                "exception_message": null,
+                "exception_traceback": null
+              }
+            }
+          ],
+          "evaluation_parameters": {},
+          "statistics": {
+            "evaluated_expectations": 1,
+            "successful_expectations": 1,
+            "unsuccessful_expectations": 0,
+            "success_percent": 100
+          },
+          "meta": {
+            "great_expectations_version": "0.18.21",
+            "expectation_suite_name": "default",
+            "run_id": {
+              "run_name": null,
+              "run_time": "2025-09-09T21:13:18.486520+05:30"
+            },
+            "batch_kwargs": {
+              "ge_batch_id": "b4ffc353-8d93-11f0-8a2c-3814286fba39"
+            },
+            "batch_markers": {},
+            "batch_parameters": {},
+            "validation_time": "20250909T154318.486520Z",
+            "expectation_suite_meta": {
+              "great_expectations_version": "0.18.21"
+            }
+          }
+        }
+      },
+      "sample": [],
+      "sql": "SELECT child.`SalesTerritoryKey`,\n       child.`SalesTerritoryRegion`,\n       parent.`SalesTerritoryRegion` AS parent_region,\n       'Inconsistent region between parent and child' AS `violation_reason`\nFROM `aigdqr-ragstoriches`.`adv_works_dw`.`dimsalesterritory` child\nJOIN `aigdqr-ragstoriches`.`adv_works_dw`.`dimsalesterritory` parent ON child.`SalesTerritoryKey` = parent.`SalesTerritoryKey`\nWHERE child.`SalesTerritoryRegion` <> parent.`SalesTerritoryRegion`",
+      "severity": "MEDIUM",
+      "description": "Ensure that parent-child relationships in dimsalesterritory maintain consistent attributes, such as region and country.",
+      "timing_sec": {
+        "sql": 2.066
+      }
+    }
+  ]
+}
