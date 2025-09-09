@@ -1,0 +1,1261 @@
+{
+  "summary": {
+    "pass": 0,
+    "fail": 2,
+    "duration": "00:00:13",
+    "warehouse": "0e7ef356fe37e56c"
+  },
+  "violations": [
+    {
+      "rule": "Recalculate line item totals for FactResellerSales",
+      "table": "",
+      "keys": "",
+      "detail": "50 rows",
+      "severity": "HIGH"
+    },
+    {
+      "rule": "Recalculate line item totals for FactInternetSales",
+      "table": "",
+      "keys": "",
+      "detail": "50 rows",
+      "severity": "HIGH"
+    }
+  ],
+  "log": "[start] Submitting 2 rules to 0e7ef356fe37e56c\n[run] Executing rule 1/2: Recalculate line item totals for FactResellerSales\n[run] Executing rule 2/2: Recalculate line item totals for FactInternetSales\n[end] Completed",
+  "per_rule": [
+    {
+      "name": "Recalculate line item totals for FactResellerSales",
+      "status": "failed",
+      "row_count": 50,
+      "details": {
+        "passed": false,
+        "row_count": 50,
+        "ge_available": true,
+        "details": {
+          "success": false,
+          "results": [
+            {
+              "success": false,
+              "expectation_config": {
+                "expectation_type": "expect_table_row_count_to_equal",
+                "kwargs": {
+                  "value": 0,
+                  "result_format": "BASIC"
+                },
+                "meta": {}
+              },
+              "result": {
+                "observed_value": 50
+              },
+              "meta": {},
+              "exception_info": {
+                "raised_exception": false,
+                "exception_message": null,
+                "exception_traceback": null
+              }
+            }
+          ],
+          "evaluation_parameters": {},
+          "statistics": {
+            "evaluated_expectations": 1,
+            "successful_expectations": 0,
+            "unsuccessful_expectations": 1,
+            "success_percent": 0
+          },
+          "meta": {
+            "great_expectations_version": "0.18.21",
+            "expectation_suite_name": "default",
+            "run_id": {
+              "run_name": null,
+              "run_time": "2025-09-09T01:53:06.361558+05:30"
+            },
+            "batch_kwargs": {
+              "ge_batch_id": "a0f063d5-8cf1-11f0-8243-3814286fba39"
+            },
+            "batch_markers": {},
+            "batch_parameters": {},
+            "validation_time": "20250908T202306.361558Z",
+            "expectation_suite_meta": {
+              "great_expectations_version": "0.18.21"
+            }
+          }
+        }
+      },
+      "sample": [
+        {
+          "SalesOrderNumber": "SO43659",
+          "SalesOrderLineNumber": 1,
+          "OrderQuantity": 1,
+          "UnitPrice": "2024.9940",
+          "UnitPriceDiscountPct": 0,
+          "TaxAmt": "161.9995",
+          "Freight": "50.6249",
+          "SalesAmount": "2024.9940",
+          "violation_reason": "Recalculated total does not match existing SalesAmount"
+        },
+        {
+          "SalesOrderNumber": "SO43659",
+          "SalesOrderLineNumber": 2,
+          "OrderQuantity": 3,
+          "UnitPrice": "2024.9940",
+          "UnitPriceDiscountPct": 0,
+          "TaxAmt": "485.9986",
+          "Freight": "151.8746",
+          "SalesAmount": "6074.9820",
+          "violation_reason": "Recalculated total does not match existing SalesAmount"
+        },
+        {
+          "SalesOrderNumber": "SO43659",
+          "SalesOrderLineNumber": 3,
+          "OrderQuantity": 1,
+          "UnitPrice": "2024.9940",
+          "UnitPriceDiscountPct": 0,
+          "TaxAmt": "161.9995",
+          "Freight": "50.6249",
+          "SalesAmount": "2024.9940",
+          "violation_reason": "Recalculated total does not match existing SalesAmount"
+        },
+        {
+          "SalesOrderNumber": "SO43659",
+          "SalesOrderLineNumber": 4,
+          "OrderQuantity": 1,
+          "UnitPrice": "2039.9940",
+          "UnitPriceDiscountPct": 0,
+          "TaxAmt": "163.1995",
+          "Freight": "50.9999",
+          "SalesAmount": "2039.9940",
+          "violation_reason": "Recalculated total does not match existing SalesAmount"
+        },
+        {
+          "SalesOrderNumber": "SO43659",
+          "SalesOrderLineNumber": 5,
+          "OrderQuantity": 1,
+          "UnitPrice": "2039.9940",
+          "UnitPriceDiscountPct": 0,
+          "TaxAmt": "163.1995",
+          "Freight": "50.9999",
+          "SalesAmount": "2039.9940",
+          "violation_reason": "Recalculated total does not match existing SalesAmount"
+        },
+        {
+          "SalesOrderNumber": "SO43659",
+          "SalesOrderLineNumber": 6,
+          "OrderQuantity": 2,
+          "UnitPrice": "2039.9940",
+          "UnitPriceDiscountPct": 0,
+          "TaxAmt": "326.3990",
+          "Freight": "101.9997",
+          "SalesAmount": "4079.9880",
+          "violation_reason": "Recalculated total does not match existing SalesAmount"
+        },
+        {
+          "SalesOrderNumber": "SO43659",
+          "SalesOrderLineNumber": 7,
+          "OrderQuantity": 1,
+          "UnitPrice": "2039.9940",
+          "UnitPriceDiscountPct": 0,
+          "TaxAmt": "163.1995",
+          "Freight": "50.9999",
+          "SalesAmount": "2039.9940",
+          "violation_reason": "Recalculated total does not match existing SalesAmount"
+        },
+        {
+          "SalesOrderNumber": "SO43659",
+          "SalesOrderLineNumber": 8,
+          "OrderQuantity": 3,
+          "UnitPrice": "28.8404",
+          "UnitPriceDiscountPct": 0,
+          "TaxAmt": "6.9217",
+          "Freight": "2.1630",
+          "SalesAmount": "86.5212",
+          "violation_reason": "Recalculated total does not match existing SalesAmount"
+        },
+        {
+          "SalesOrderNumber": "SO43659",
+          "SalesOrderLineNumber": 9,
+          "OrderQuantity": 1,
+          "UnitPrice": "28.8404",
+          "UnitPriceDiscountPct": 0,
+          "TaxAmt": "2.3072",
+          "Freight": "0.7210",
+          "SalesAmount": "28.8404",
+          "violation_reason": "Recalculated total does not match existing SalesAmount"
+        },
+        {
+          "SalesOrderNumber": "SO43659",
+          "SalesOrderLineNumber": 10,
+          "OrderQuantity": 6,
+          "UnitPrice": "5.7000",
+          "UnitPriceDiscountPct": 0,
+          "TaxAmt": "2.7360",
+          "Freight": "0.8550",
+          "SalesAmount": "34.2000",
+          "violation_reason": "Recalculated total does not match existing SalesAmount"
+        },
+        {
+          "SalesOrderNumber": "SO43659",
+          "SalesOrderLineNumber": 11,
+          "OrderQuantity": 2,
+          "UnitPrice": "5.1865",
+          "UnitPriceDiscountPct": 0,
+          "TaxAmt": "0.8298",
+          "Freight": "0.2593",
+          "SalesAmount": "10.3730",
+          "violation_reason": "Recalculated total does not match existing SalesAmount"
+        },
+        {
+          "SalesOrderNumber": "SO43659",
+          "SalesOrderLineNumber": 12,
+          "OrderQuantity": 4,
+          "UnitPrice": "20.1865",
+          "UnitPriceDiscountPct": 0,
+          "TaxAmt": "6.4597",
+          "Freight": "2.0187",
+          "SalesAmount": "80.7460",
+          "violation_reason": "Recalculated total does not match existing SalesAmount"
+        },
+        {
+          "SalesOrderNumber": "SO43660",
+          "SalesOrderLineNumber": 1,
+          "OrderQuantity": 1,
+          "UnitPrice": "419.4589",
+          "UnitPriceDiscountPct": 0,
+          "TaxAmt": "33.5567",
+          "Freight": "10.4865",
+          "SalesAmount": "419.4589",
+          "violation_reason": "Recalculated total does not match existing SalesAmount"
+        },
+        {
+          "SalesOrderNumber": "SO43660",
+          "SalesOrderLineNumber": 2,
+          "OrderQuantity": 1,
+          "UnitPrice": "874.7940",
+          "UnitPriceDiscountPct": 0,
+          "TaxAmt": "69.9835",
+          "Freight": "21.8699",
+          "SalesAmount": "874.7940",
+          "violation_reason": "Recalculated total does not match existing SalesAmount"
+        },
+        {
+          "SalesOrderNumber": "SO43661",
+          "SalesOrderLineNumber": 1,
+          "OrderQuantity": 1,
+          "UnitPrice": "809.7600",
+          "UnitPriceDiscountPct": 0,
+          "TaxAmt": "64.7808",
+          "Freight": "20.2440",
+          "SalesAmount": "809.7600",
+          "violation_reason": "Recalculated total does not match existing SalesAmount"
+        },
+        {
+          "SalesOrderNumber": "SO43661",
+          "SalesOrderLineNumber": 2,
+          "OrderQuantity": 1,
+          "UnitPrice": "714.7043",
+          "UnitPriceDiscountPct": 0,
+          "TaxAmt": "57.1763",
+          "Freight": "17.8676",
+          "SalesAmount": "714.7043",
+          "violation_reason": "Recalculated total does not match existing SalesAmount"
+        },
+        {
+          "SalesOrderNumber": "SO43661",
+          "SalesOrderLineNumber": 3,
+          "OrderQuantity": 2,
+          "UnitPrice": "714.7043",
+          "UnitPriceDiscountPct": 0,
+          "TaxAmt": "114.3527",
+          "Freight": "35.7352",
+          "SalesAmount": "1429.4086",
+          "violation_reason": "Recalculated total does not match existing SalesAmount"
+        },
+        {
+          "SalesOrderNumber": "SO43661",
+          "SalesOrderLineNumber": 4,
+          "OrderQuantity": 4,
+          "UnitPrice": "5.1865",
+          "UnitPriceDiscountPct": 0,
+          "TaxAmt": "1.6597",
+          "Freight": "0.5187",
+          "SalesAmount": "20.7460",
+          "violation_reason": "Recalculated total does not match existing SalesAmount"
+        },
+        {
+          "SalesOrderNumber": "SO43661",
+          "SalesOrderLineNumber": 5,
+          "OrderQuantity": 4,
+          "UnitPrice": "28.8404",
+          "UnitPriceDiscountPct": 0,
+          "TaxAmt": "9.2289",
+          "Freight": "2.8840",
+          "SalesAmount": "115.3616",
+          "violation_reason": "Recalculated total does not match existing SalesAmount"
+        },
+        {
+          "SalesOrderNumber": "SO43661",
+          "SalesOrderLineNumber": 6,
+          "OrderQuantity": 2,
+          "UnitPrice": "722.5949",
+          "UnitPriceDiscountPct": 0,
+          "TaxAmt": "115.6152",
+          "Freight": "36.1297",
+          "SalesAmount": "1445.1898",
+          "violation_reason": "Recalculated total does not match existing SalesAmount"
+        },
+        {
+          "SalesOrderNumber": "SO43661",
+          "SalesOrderLineNumber": 7,
+          "OrderQuantity": 3,
+          "UnitPrice": "2024.9940",
+          "UnitPriceDiscountPct": 0,
+          "TaxAmt": "485.9986",
+          "Freight": "151.8746",
+          "SalesAmount": "6074.9820",
+          "violation_reason": "Recalculated total does not match existing SalesAmount"
+        },
+        {
+          "SalesOrderNumber": "SO43661",
+          "SalesOrderLineNumber": 8,
+          "OrderQuantity": 2,
+          "UnitPrice": "2024.9940",
+          "UnitPriceDiscountPct": 0,
+          "TaxAmt": "323.9990",
+          "Freight": "101.2497",
+          "SalesAmount": "4049.9880",
+          "violation_reason": "Recalculated total does not match existing SalesAmount"
+        },
+        {
+          "SalesOrderNumber": "SO43661",
+          "SalesOrderLineNumber": 9,
+          "OrderQuantity": 2,
+          "UnitPrice": "20.1865",
+          "UnitPriceDiscountPct": 0,
+          "TaxAmt": "3.2298",
+          "Freight": "1.0093",
+          "SalesAmount": "40.3730",
+          "violation_reason": "Recalculated total does not match existing SalesAmount"
+        },
+        {
+          "SalesOrderNumber": "SO43661",
+          "SalesOrderLineNumber": 10,
+          "OrderQuantity": 2,
+          "UnitPrice": "818.7000",
+          "UnitPriceDiscountPct": 0,
+          "TaxAmt": "130.9920",
+          "Freight": "40.9350",
+          "SalesAmount": "1637.4000",
+          "violation_reason": "Recalculated total does not match existing SalesAmount"
+        },
+        {
+          "SalesOrderNumber": "SO43661",
+          "SalesOrderLineNumber": 11,
+          "OrderQuantity": 4,
+          "UnitPrice": "2024.9940",
+          "UnitPriceDiscountPct": 0,
+          "TaxAmt": "647.9981",
+          "Freight": "202.4994",
+          "SalesAmount": "8099.9760",
+          "violation_reason": "Recalculated total does not match existing SalesAmount"
+        },
+        {
+          "SalesOrderNumber": "SO43661",
+          "SalesOrderLineNumber": 12,
+          "OrderQuantity": 2,
+          "UnitPrice": "2039.9940",
+          "UnitPriceDiscountPct": 0,
+          "TaxAmt": "326.3990",
+          "Freight": "101.9997",
+          "SalesAmount": "4079.9880",
+          "violation_reason": "Recalculated total does not match existing SalesAmount"
+        },
+        {
+          "SalesOrderNumber": "SO43661",
+          "SalesOrderLineNumber": 13,
+          "OrderQuantity": 2,
+          "UnitPrice": "28.8404",
+          "UnitPriceDiscountPct": 0,
+          "TaxAmt": "4.6145",
+          "Freight": "1.4420",
+          "SalesAmount": "57.6808",
+          "violation_reason": "Recalculated total does not match existing SalesAmount"
+        },
+        {
+          "SalesOrderNumber": "SO43661",
+          "SalesOrderLineNumber": 14,
+          "OrderQuantity": 2,
+          "UnitPrice": "2024.9940",
+          "UnitPriceDiscountPct": 0,
+          "TaxAmt": "323.9990",
+          "Freight": "101.2497",
+          "SalesAmount": "4049.9880",
+          "violation_reason": "Recalculated total does not match existing SalesAmount"
+        },
+        {
+          "SalesOrderNumber": "SO43661",
+          "SalesOrderLineNumber": 15,
+          "OrderQuantity": 5,
+          "UnitPrice": "20.1865",
+          "UnitPriceDiscountPct": 0,
+          "TaxAmt": "8.0746",
+          "Freight": "2.5233",
+          "SalesAmount": "100.9325",
+          "violation_reason": "Recalculated total does not match existing SalesAmount"
+        },
+        {
+          "SalesOrderNumber": "SO43662",
+          "SalesOrderLineNumber": 1,
+          "OrderQuantity": 3,
+          "UnitPrice": "419.4589",
+          "UnitPriceDiscountPct": 0,
+          "TaxAmt": "100.6701",
+          "Freight": "31.4594",
+          "SalesAmount": "1258.3767",
+          "violation_reason": "Recalculated total does not match existing SalesAmount"
+        },
+        {
+          "SalesOrderNumber": "SO43662",
+          "SalesOrderLineNumber": 2,
+          "OrderQuantity": 5,
+          "UnitPrice": "419.4589",
+          "UnitPriceDiscountPct": 0,
+          "TaxAmt": "167.7836",
+          "Freight": "52.4324",
+          "SalesAmount": "2097.2945",
+          "violation_reason": "Recalculated total does not match existing SalesAmount"
+        },
+        {
+          "SalesOrderNumber": "SO43662",
+          "SalesOrderLineNumber": 3,
+          "OrderQuantity": 2,
+          "UnitPrice": "183.9382",
+          "UnitPriceDiscountPct": 0,
+          "TaxAmt": "29.4301",
+          "Freight": "9.1969",
+          "SalesAmount": "367.8764",
+          "violation_reason": "Recalculated total does not match existing SalesAmount"
+        },
+        {
+          "SalesOrderNumber": "SO43662",
+          "SalesOrderLineNumber": 4,
+          "OrderQuantity": 4,
+          "UnitPrice": "874.7940",
+          "UnitPriceDiscountPct": 0,
+          "TaxAmt": "279.9341",
+          "Freight": "87.4794",
+          "SalesAmount": "3499.1760",
+          "violation_reason": "Recalculated total does not match existing SalesAmount"
+        },
+        {
+          "SalesOrderNumber": "SO43662",
+          "SalesOrderLineNumber": 5,
+          "OrderQuantity": 3,
+          "UnitPrice": "183.9382",
+          "UnitPriceDiscountPct": 0,
+          "TaxAmt": "44.1452",
+          "Freight": "13.7954",
+          "SalesAmount": "551.8146",
+          "violation_reason": "Recalculated total does not match existing SalesAmount"
+        },
+        {
+          "SalesOrderNumber": "SO43662",
+          "SalesOrderLineNumber": 6,
+          "OrderQuantity": 5,
+          "UnitPrice": "419.4589",
+          "UnitPriceDiscountPct": 0,
+          "TaxAmt": "167.7836",
+          "Freight": "52.4324",
+          "SalesAmount": "2097.2945",
+          "violation_reason": "Recalculated total does not match existing SalesAmount"
+        },
+        {
+          "SalesOrderNumber": "SO43662",
+          "SalesOrderLineNumber": 7,
+          "OrderQuantity": 3,
+          "UnitPrice": "419.4589",
+          "UnitPriceDiscountPct": 0,
+          "TaxAmt": "100.6701",
+          "Freight": "31.4594",
+          "SalesAmount": "1258.3767",
+          "violation_reason": "Recalculated total does not match existing SalesAmount"
+        },
+        {
+          "SalesOrderNumber": "SO43662",
+          "SalesOrderLineNumber": 8,
+          "OrderQuantity": 2,
+          "UnitPrice": "419.4589",
+          "UnitPriceDiscountPct": 0,
+          "TaxAmt": "67.1134",
+          "Freight": "20.9729",
+          "SalesAmount": "838.9178",
+          "violation_reason": "Recalculated total does not match existing SalesAmount"
+        },
+        {
+          "SalesOrderNumber": "SO43662",
+          "SalesOrderLineNumber": 9,
+          "OrderQuantity": 1,
+          "UnitPrice": "2146.9620",
+          "UnitPriceDiscountPct": 0,
+          "TaxAmt": "171.7570",
+          "Freight": "53.6741",
+          "SalesAmount": "2146.9620",
+          "violation_reason": "Recalculated total does not match existing SalesAmount"
+        },
+        {
+          "SalesOrderNumber": "SO43662",
+          "SalesOrderLineNumber": 10,
+          "OrderQuantity": 1,
+          "UnitPrice": "874.7940",
+          "UnitPriceDiscountPct": 0,
+          "TaxAmt": "69.9835",
+          "Freight": "21.8699",
+          "SalesAmount": "874.7940",
+          "violation_reason": "Recalculated total does not match existing SalesAmount"
+        },
+        {
+          "SalesOrderNumber": "SO43662",
+          "SalesOrderLineNumber": 11,
+          "OrderQuantity": 3,
+          "UnitPrice": "419.4589",
+          "UnitPriceDiscountPct": 0,
+          "TaxAmt": "100.6701",
+          "Freight": "31.4594",
+          "SalesAmount": "1258.3767",
+          "violation_reason": "Recalculated total does not match existing SalesAmount"
+        },
+        {
+          "SalesOrderNumber": "SO43662",
+          "SalesOrderLineNumber": 12,
+          "OrderQuantity": 1,
+          "UnitPrice": "356.8980",
+          "UnitPriceDiscountPct": 0,
+          "TaxAmt": "28.5518",
+          "Freight": "8.9225",
+          "SalesAmount": "356.8980",
+          "violation_reason": "Recalculated total does not match existing SalesAmount"
+        },
+        {
+          "SalesOrderNumber": "SO43662",
+          "SalesOrderLineNumber": 13,
+          "OrderQuantity": 6,
+          "UnitPrice": "874.7940",
+          "UnitPriceDiscountPct": 0,
+          "TaxAmt": "419.9011",
+          "Freight": "131.2191",
+          "SalesAmount": "5248.7640",
+          "violation_reason": "Recalculated total does not match existing SalesAmount"
+        },
+        {
+          "SalesOrderNumber": "SO43662",
+          "SalesOrderLineNumber": 14,
+          "OrderQuantity": 1,
+          "UnitPrice": "183.9382",
+          "UnitPriceDiscountPct": 0,
+          "TaxAmt": "14.7151",
+          "Freight": "4.5985",
+          "SalesAmount": "183.9382",
+          "violation_reason": "Recalculated total does not match existing SalesAmount"
+        },
+        {
+          "SalesOrderNumber": "SO43662",
+          "SalesOrderLineNumber": 15,
+          "OrderQuantity": 3,
+          "UnitPrice": "178.5808",
+          "UnitPriceDiscountPct": 0,
+          "TaxAmt": "42.8594",
+          "Freight": "13.3936",
+          "SalesAmount": "535.7424",
+          "violation_reason": "Recalculated total does not match existing SalesAmount"
+        },
+        {
+          "SalesOrderNumber": "SO43662",
+          "SalesOrderLineNumber": 16,
+          "OrderQuantity": 1,
+          "UnitPrice": "2146.9620",
+          "UnitPriceDiscountPct": 0,
+          "TaxAmt": "171.7570",
+          "Freight": "53.6741",
+          "SalesAmount": "2146.9620",
+          "violation_reason": "Recalculated total does not match existing SalesAmount"
+        },
+        {
+          "SalesOrderNumber": "SO43662",
+          "SalesOrderLineNumber": 17,
+          "OrderQuantity": 3,
+          "UnitPrice": "419.4589",
+          "UnitPriceDiscountPct": 0,
+          "TaxAmt": "100.6701",
+          "Freight": "31.4594",
+          "SalesAmount": "1258.3767",
+          "violation_reason": "Recalculated total does not match existing SalesAmount"
+        },
+        {
+          "SalesOrderNumber": "SO43662",
+          "SalesOrderLineNumber": 18,
+          "OrderQuantity": 1,
+          "UnitPrice": "183.9382",
+          "UnitPriceDiscountPct": 0,
+          "TaxAmt": "14.7151",
+          "Freight": "4.5985",
+          "SalesAmount": "183.9382",
+          "violation_reason": "Recalculated total does not match existing SalesAmount"
+        },
+        {
+          "SalesOrderNumber": "SO43662",
+          "SalesOrderLineNumber": 19,
+          "OrderQuantity": 1,
+          "UnitPrice": "356.8980",
+          "UnitPriceDiscountPct": 0,
+          "TaxAmt": "28.5518",
+          "Freight": "8.9225",
+          "SalesAmount": "356.8980",
+          "violation_reason": "Recalculated total does not match existing SalesAmount"
+        },
+        {
+          "SalesOrderNumber": "SO43662",
+          "SalesOrderLineNumber": 20,
+          "OrderQuantity": 1,
+          "UnitPrice": "178.5808",
+          "UnitPriceDiscountPct": 0,
+          "TaxAmt": "14.2865",
+          "Freight": "4.4645",
+          "SalesAmount": "178.5808",
+          "violation_reason": "Recalculated total does not match existing SalesAmount"
+        },
+        {
+          "SalesOrderNumber": "SO43662",
+          "SalesOrderLineNumber": 21,
+          "OrderQuantity": 3,
+          "UnitPrice": "419.4589",
+          "UnitPriceDiscountPct": 0,
+          "TaxAmt": "100.6701",
+          "Freight": "31.4594",
+          "SalesAmount": "1258.3767",
+          "violation_reason": "Recalculated total does not match existing SalesAmount"
+        }
+      ],
+      "sql": "SELECT `SalesOrderNumber`,\n       `SalesOrderLineNumber`,\n       `OrderQuantity`,\n       `UnitPrice`,\n       `UnitPriceDiscountPct`,\n       `TaxAmt`,\n       `Freight`,\n       `SalesAmount`,\n       'Recalculated total does not match existing SalesAmount' AS violation_reason\nFROM `aigdqr-ragstoriches`.`adv_works_dw`.`factresellersales`\nWHERE ROUND((`OrderQuantity` * `UnitPrice` * (1 - `UnitPriceDiscountPct`)) + `TaxAmt` + `Freight`, 2) != ROUND(`SalesAmount`, 2)",
+      "severity": "HIGH",
+      "description": "Recalculate line item totals using OrderQuantity, UnitPrice, UnitPriceDiscountPct, TaxAmt, and Freight for FactResellerSales table, and flag rows where recalculated totals differ from SalesAmount.",
+      "timing_sec": {
+        "sql": 19.167
+      }
+    },
+    {
+      "name": "Recalculate line item totals for FactInternetSales",
+      "status": "failed",
+      "row_count": 50,
+      "details": {
+        "passed": false,
+        "row_count": 50,
+        "ge_available": true,
+        "details": {
+          "success": false,
+          "results": [
+            {
+              "success": false,
+              "expectation_config": {
+                "expectation_type": "expect_table_row_count_to_equal",
+                "kwargs": {
+                  "value": 0,
+                  "result_format": "BASIC"
+                },
+                "meta": {}
+              },
+              "result": {
+                "observed_value": 50
+              },
+              "meta": {},
+              "exception_info": {
+                "raised_exception": false,
+                "exception_message": null,
+                "exception_traceback": null
+              }
+            }
+          ],
+          "evaluation_parameters": {},
+          "statistics": {
+            "evaluated_expectations": 1,
+            "successful_expectations": 0,
+            "unsuccessful_expectations": 1,
+            "success_percent": 0
+          },
+          "meta": {
+            "great_expectations_version": "0.18.21",
+            "expectation_suite_name": "default",
+            "run_id": {
+              "run_name": null,
+              "run_time": "2025-09-09T01:53:19.386322+05:30"
+            },
+            "batch_kwargs": {
+              "ge_batch_id": "a8b3b9dd-8cf1-11f0-8626-3814286fba39"
+            },
+            "batch_markers": {},
+            "batch_parameters": {},
+            "validation_time": "20250908T202319.386322Z",
+            "expectation_suite_meta": {
+              "great_expectations_version": "0.18.21"
+            }
+          }
+        }
+      },
+      "sample": [
+        {
+          "SalesOrderNumber": "SO43697",
+          "SalesOrderLineNumber": 1,
+          "OrderQuantity": 1,
+          "UnitPrice": "3578.2700",
+          "UnitPriceDiscountPct": 0,
+          "TaxAmt": "286.2616",
+          "Freight": "89.4568",
+          "SalesAmount": "3578.2700",
+          "violation_reason": "Recalculated total does not match existing SalesAmount"
+        },
+        {
+          "SalesOrderNumber": "SO43698",
+          "SalesOrderLineNumber": 1,
+          "OrderQuantity": 1,
+          "UnitPrice": "3399.9900",
+          "UnitPriceDiscountPct": 0,
+          "TaxAmt": "271.9992",
+          "Freight": "84.9998",
+          "SalesAmount": "3399.9900",
+          "violation_reason": "Recalculated total does not match existing SalesAmount"
+        },
+        {
+          "SalesOrderNumber": "SO43699",
+          "SalesOrderLineNumber": 1,
+          "OrderQuantity": 1,
+          "UnitPrice": "3399.9900",
+          "UnitPriceDiscountPct": 0,
+          "TaxAmt": "271.9992",
+          "Freight": "84.9998",
+          "SalesAmount": "3399.9900",
+          "violation_reason": "Recalculated total does not match existing SalesAmount"
+        },
+        {
+          "SalesOrderNumber": "SO43700",
+          "SalesOrderLineNumber": 1,
+          "OrderQuantity": 1,
+          "UnitPrice": "699.0982",
+          "UnitPriceDiscountPct": 0,
+          "TaxAmt": "55.9279",
+          "Freight": "17.4775",
+          "SalesAmount": "699.0982",
+          "violation_reason": "Recalculated total does not match existing SalesAmount"
+        },
+        {
+          "SalesOrderNumber": "SO43701",
+          "SalesOrderLineNumber": 1,
+          "OrderQuantity": 1,
+          "UnitPrice": "3399.9900",
+          "UnitPriceDiscountPct": 0,
+          "TaxAmt": "271.9992",
+          "Freight": "84.9998",
+          "SalesAmount": "3399.9900",
+          "violation_reason": "Recalculated total does not match existing SalesAmount"
+        },
+        {
+          "SalesOrderNumber": "SO43702",
+          "SalesOrderLineNumber": 1,
+          "OrderQuantity": 1,
+          "UnitPrice": "3578.2700",
+          "UnitPriceDiscountPct": 0,
+          "TaxAmt": "286.2616",
+          "Freight": "89.4568",
+          "SalesAmount": "3578.2700",
+          "violation_reason": "Recalculated total does not match existing SalesAmount"
+        },
+        {
+          "SalesOrderNumber": "SO43703",
+          "SalesOrderLineNumber": 1,
+          "OrderQuantity": 1,
+          "UnitPrice": "3578.2700",
+          "UnitPriceDiscountPct": 0,
+          "TaxAmt": "286.2616",
+          "Freight": "89.4568",
+          "SalesAmount": "3578.2700",
+          "violation_reason": "Recalculated total does not match existing SalesAmount"
+        },
+        {
+          "SalesOrderNumber": "SO43704",
+          "SalesOrderLineNumber": 1,
+          "OrderQuantity": 1,
+          "UnitPrice": "3374.9900",
+          "UnitPriceDiscountPct": 0,
+          "TaxAmt": "269.9992",
+          "Freight": "84.3748",
+          "SalesAmount": "3374.9900",
+          "violation_reason": "Recalculated total does not match existing SalesAmount"
+        },
+        {
+          "SalesOrderNumber": "SO43705",
+          "SalesOrderLineNumber": 1,
+          "OrderQuantity": 1,
+          "UnitPrice": "3399.9900",
+          "UnitPriceDiscountPct": 0,
+          "TaxAmt": "271.9992",
+          "Freight": "84.9998",
+          "SalesAmount": "3399.9900",
+          "violation_reason": "Recalculated total does not match existing SalesAmount"
+        },
+        {
+          "SalesOrderNumber": "SO43706",
+          "SalesOrderLineNumber": 1,
+          "OrderQuantity": 1,
+          "UnitPrice": "3578.2700",
+          "UnitPriceDiscountPct": 0,
+          "TaxAmt": "286.2616",
+          "Freight": "89.4568",
+          "SalesAmount": "3578.2700",
+          "violation_reason": "Recalculated total does not match existing SalesAmount"
+        },
+        {
+          "SalesOrderNumber": "SO43707",
+          "SalesOrderLineNumber": 1,
+          "OrderQuantity": 1,
+          "UnitPrice": "3578.2700",
+          "UnitPriceDiscountPct": 0,
+          "TaxAmt": "286.2616",
+          "Freight": "89.4568",
+          "SalesAmount": "3578.2700",
+          "violation_reason": "Recalculated total does not match existing SalesAmount"
+        },
+        {
+          "SalesOrderNumber": "SO43708",
+          "SalesOrderLineNumber": 1,
+          "OrderQuantity": 1,
+          "UnitPrice": "699.0982",
+          "UnitPriceDiscountPct": 0,
+          "TaxAmt": "55.9279",
+          "Freight": "17.4775",
+          "SalesAmount": "699.0982",
+          "violation_reason": "Recalculated total does not match existing SalesAmount"
+        },
+        {
+          "SalesOrderNumber": "SO43709",
+          "SalesOrderLineNumber": 1,
+          "OrderQuantity": 1,
+          "UnitPrice": "3578.2700",
+          "UnitPriceDiscountPct": 0,
+          "TaxAmt": "286.2616",
+          "Freight": "89.4568",
+          "SalesAmount": "3578.2700",
+          "violation_reason": "Recalculated total does not match existing SalesAmount"
+        },
+        {
+          "SalesOrderNumber": "SO43710",
+          "SalesOrderLineNumber": 1,
+          "OrderQuantity": 1,
+          "UnitPrice": "3578.2700",
+          "UnitPriceDiscountPct": 0,
+          "TaxAmt": "286.2616",
+          "Freight": "89.4568",
+          "SalesAmount": "3578.2700",
+          "violation_reason": "Recalculated total does not match existing SalesAmount"
+        },
+        {
+          "SalesOrderNumber": "SO43711",
+          "SalesOrderLineNumber": 1,
+          "OrderQuantity": 1,
+          "UnitPrice": "3578.2700",
+          "UnitPriceDiscountPct": 0,
+          "TaxAmt": "286.2616",
+          "Freight": "89.4568",
+          "SalesAmount": "3578.2700",
+          "violation_reason": "Recalculated total does not match existing SalesAmount"
+        },
+        {
+          "SalesOrderNumber": "SO43712",
+          "SalesOrderLineNumber": 1,
+          "OrderQuantity": 1,
+          "UnitPrice": "3578.2700",
+          "UnitPriceDiscountPct": 0,
+          "TaxAmt": "286.2616",
+          "Freight": "89.4568",
+          "SalesAmount": "3578.2700",
+          "violation_reason": "Recalculated total does not match existing SalesAmount"
+        },
+        {
+          "SalesOrderNumber": "SO43713",
+          "SalesOrderLineNumber": 1,
+          "OrderQuantity": 1,
+          "UnitPrice": "3578.2700",
+          "UnitPriceDiscountPct": 0,
+          "TaxAmt": "286.2616",
+          "Freight": "89.4568",
+          "SalesAmount": "3578.2700",
+          "violation_reason": "Recalculated total does not match existing SalesAmount"
+        },
+        {
+          "SalesOrderNumber": "SO43714",
+          "SalesOrderLineNumber": 1,
+          "OrderQuantity": 1,
+          "UnitPrice": "3578.2700",
+          "UnitPriceDiscountPct": 0,
+          "TaxAmt": "286.2616",
+          "Freight": "89.4568",
+          "SalesAmount": "3578.2700",
+          "violation_reason": "Recalculated total does not match existing SalesAmount"
+        },
+        {
+          "SalesOrderNumber": "SO43715",
+          "SalesOrderLineNumber": 1,
+          "OrderQuantity": 1,
+          "UnitPrice": "3578.2700",
+          "UnitPriceDiscountPct": 0,
+          "TaxAmt": "286.2616",
+          "Freight": "89.4568",
+          "SalesAmount": "3578.2700",
+          "violation_reason": "Recalculated total does not match existing SalesAmount"
+        },
+        {
+          "SalesOrderNumber": "SO43716",
+          "SalesOrderLineNumber": 1,
+          "OrderQuantity": 1,
+          "UnitPrice": "3578.2700",
+          "UnitPriceDiscountPct": 0,
+          "TaxAmt": "286.2616",
+          "Freight": "89.4568",
+          "SalesAmount": "3578.2700",
+          "violation_reason": "Recalculated total does not match existing SalesAmount"
+        },
+        {
+          "SalesOrderNumber": "SO43717",
+          "SalesOrderLineNumber": 1,
+          "OrderQuantity": 1,
+          "UnitPrice": "699.0982",
+          "UnitPriceDiscountPct": 0,
+          "TaxAmt": "55.9279",
+          "Freight": "17.4775",
+          "SalesAmount": "699.0982",
+          "violation_reason": "Recalculated total does not match existing SalesAmount"
+        },
+        {
+          "SalesOrderNumber": "SO43718",
+          "SalesOrderLineNumber": 1,
+          "OrderQuantity": 1,
+          "UnitPrice": "3578.2700",
+          "UnitPriceDiscountPct": 0,
+          "TaxAmt": "286.2616",
+          "Freight": "89.4568",
+          "SalesAmount": "3578.2700",
+          "violation_reason": "Recalculated total does not match existing SalesAmount"
+        },
+        {
+          "SalesOrderNumber": "SO43719",
+          "SalesOrderLineNumber": 1,
+          "OrderQuantity": 1,
+          "UnitPrice": "3578.2700",
+          "UnitPriceDiscountPct": 0,
+          "TaxAmt": "286.2616",
+          "Freight": "89.4568",
+          "SalesAmount": "3578.2700",
+          "violation_reason": "Recalculated total does not match existing SalesAmount"
+        },
+        {
+          "SalesOrderNumber": "SO43720",
+          "SalesOrderLineNumber": 1,
+          "OrderQuantity": 1,
+          "UnitPrice": "3578.2700",
+          "UnitPriceDiscountPct": 0,
+          "TaxAmt": "286.2616",
+          "Freight": "89.4568",
+          "SalesAmount": "3578.2700",
+          "violation_reason": "Recalculated total does not match existing SalesAmount"
+        },
+        {
+          "SalesOrderNumber": "SO43721",
+          "SalesOrderLineNumber": 1,
+          "OrderQuantity": 1,
+          "UnitPrice": "3578.2700",
+          "UnitPriceDiscountPct": 0,
+          "TaxAmt": "286.2616",
+          "Freight": "89.4568",
+          "SalesAmount": "3578.2700",
+          "violation_reason": "Recalculated total does not match existing SalesAmount"
+        },
+        {
+          "SalesOrderNumber": "SO43722",
+          "SalesOrderLineNumber": 1,
+          "OrderQuantity": 1,
+          "UnitPrice": "3578.2700",
+          "UnitPriceDiscountPct": 0,
+          "TaxAmt": "286.2616",
+          "Freight": "89.4568",
+          "SalesAmount": "3578.2700",
+          "violation_reason": "Recalculated total does not match existing SalesAmount"
+        },
+        {
+          "SalesOrderNumber": "SO43723",
+          "SalesOrderLineNumber": 1,
+          "OrderQuantity": 1,
+          "UnitPrice": "699.0982",
+          "UnitPriceDiscountPct": 0,
+          "TaxAmt": "55.9279",
+          "Freight": "17.4775",
+          "SalesAmount": "699.0982",
+          "violation_reason": "Recalculated total does not match existing SalesAmount"
+        },
+        {
+          "SalesOrderNumber": "SO43724",
+          "SalesOrderLineNumber": 1,
+          "OrderQuantity": 1,
+          "UnitPrice": "3578.2700",
+          "UnitPriceDiscountPct": 0,
+          "TaxAmt": "286.2616",
+          "Freight": "89.4568",
+          "SalesAmount": "3578.2700",
+          "violation_reason": "Recalculated total does not match existing SalesAmount"
+        },
+        {
+          "SalesOrderNumber": "SO43725",
+          "SalesOrderLineNumber": 1,
+          "OrderQuantity": 1,
+          "UnitPrice": "3578.2700",
+          "UnitPriceDiscountPct": 0,
+          "TaxAmt": "286.2616",
+          "Freight": "89.4568",
+          "SalesAmount": "3578.2700",
+          "violation_reason": "Recalculated total does not match existing SalesAmount"
+        },
+        {
+          "SalesOrderNumber": "SO43726",
+          "SalesOrderLineNumber": 1,
+          "OrderQuantity": 1,
+          "UnitPrice": "699.0982",
+          "UnitPriceDiscountPct": 0,
+          "TaxAmt": "55.9279",
+          "Freight": "17.4775",
+          "SalesAmount": "699.0982",
+          "violation_reason": "Recalculated total does not match existing SalesAmount"
+        },
+        {
+          "SalesOrderNumber": "SO43727",
+          "SalesOrderLineNumber": 1,
+          "OrderQuantity": 1,
+          "UnitPrice": "3578.2700",
+          "UnitPriceDiscountPct": 0,
+          "TaxAmt": "286.2616",
+          "Freight": "89.4568",
+          "SalesAmount": "3578.2700",
+          "violation_reason": "Recalculated total does not match existing SalesAmount"
+        },
+        {
+          "SalesOrderNumber": "SO43728",
+          "SalesOrderLineNumber": 1,
+          "OrderQuantity": 1,
+          "UnitPrice": "3578.2700",
+          "UnitPriceDiscountPct": 0,
+          "TaxAmt": "286.2616",
+          "Freight": "89.4568",
+          "SalesAmount": "3578.2700",
+          "violation_reason": "Recalculated total does not match existing SalesAmount"
+        },
+        {
+          "SalesOrderNumber": "SO43729",
+          "SalesOrderLineNumber": 1,
+          "OrderQuantity": 1,
+          "UnitPrice": "3399.9900",
+          "UnitPriceDiscountPct": 0,
+          "TaxAmt": "271.9992",
+          "Freight": "84.9998",
+          "SalesAmount": "3399.9900",
+          "violation_reason": "Recalculated total does not match existing SalesAmount"
+        },
+        {
+          "SalesOrderNumber": "SO43730",
+          "SalesOrderLineNumber": 1,
+          "OrderQuantity": 1,
+          "UnitPrice": "3399.9900",
+          "UnitPriceDiscountPct": 0,
+          "TaxAmt": "271.9992",
+          "Freight": "84.9998",
+          "SalesAmount": "3399.9900",
+          "violation_reason": "Recalculated total does not match existing SalesAmount"
+        },
+        {
+          "SalesOrderNumber": "SO43731",
+          "SalesOrderLineNumber": 1,
+          "OrderQuantity": 1,
+          "UnitPrice": "3578.2700",
+          "UnitPriceDiscountPct": 0,
+          "TaxAmt": "286.2616",
+          "Freight": "89.4568",
+          "SalesAmount": "3578.2700",
+          "violation_reason": "Recalculated total does not match existing SalesAmount"
+        },
+        {
+          "SalesOrderNumber": "SO43732",
+          "SalesOrderLineNumber": 1,
+          "OrderQuantity": 1,
+          "UnitPrice": "3374.9900",
+          "UnitPriceDiscountPct": 0,
+          "TaxAmt": "269.9992",
+          "Freight": "84.3748",
+          "SalesAmount": "3374.9900",
+          "violation_reason": "Recalculated total does not match existing SalesAmount"
+        },
+        {
+          "SalesOrderNumber": "SO43733",
+          "SalesOrderLineNumber": 1,
+          "OrderQuantity": 1,
+          "UnitPrice": "3578.2700",
+          "UnitPriceDiscountPct": 0,
+          "TaxAmt": "286.2616",
+          "Freight": "89.4568",
+          "SalesAmount": "3578.2700",
+          "violation_reason": "Recalculated total does not match existing SalesAmount"
+        },
+        {
+          "SalesOrderNumber": "SO43734",
+          "SalesOrderLineNumber": 1,
+          "OrderQuantity": 1,
+          "UnitPrice": "3578.2700",
+          "UnitPriceDiscountPct": 0,
+          "TaxAmt": "286.2616",
+          "Freight": "89.4568",
+          "SalesAmount": "3578.2700",
+          "violation_reason": "Recalculated total does not match existing SalesAmount"
+        },
+        {
+          "SalesOrderNumber": "SO43735",
+          "SalesOrderLineNumber": 1,
+          "OrderQuantity": 1,
+          "UnitPrice": "3578.2700",
+          "UnitPriceDiscountPct": 0,
+          "TaxAmt": "286.2616",
+          "Freight": "89.4568",
+          "SalesAmount": "3578.2700",
+          "violation_reason": "Recalculated total does not match existing SalesAmount"
+        },
+        {
+          "SalesOrderNumber": "SO43736",
+          "SalesOrderLineNumber": 1,
+          "OrderQuantity": 1,
+          "UnitPrice": "3399.9900",
+          "UnitPriceDiscountPct": 0,
+          "TaxAmt": "271.9992",
+          "Freight": "84.9998",
+          "SalesAmount": "3399.9900",
+          "violation_reason": "Recalculated total does not match existing SalesAmount"
+        },
+        {
+          "SalesOrderNumber": "SO43737",
+          "SalesOrderLineNumber": 1,
+          "OrderQuantity": 1,
+          "UnitPrice": "3578.2700",
+          "UnitPriceDiscountPct": 0,
+          "TaxAmt": "286.2616",
+          "Freight": "89.4568",
+          "SalesAmount": "3578.2700",
+          "violation_reason": "Recalculated total does not match existing SalesAmount"
+        },
+        {
+          "SalesOrderNumber": "SO43738",
+          "SalesOrderLineNumber": 1,
+          "OrderQuantity": 1,
+          "UnitPrice": "3578.2700",
+          "UnitPriceDiscountPct": 0,
+          "TaxAmt": "286.2616",
+          "Freight": "89.4568",
+          "SalesAmount": "3578.2700",
+          "violation_reason": "Recalculated total does not match existing SalesAmount"
+        },
+        {
+          "SalesOrderNumber": "SO43739",
+          "SalesOrderLineNumber": 1,
+          "OrderQuantity": 1,
+          "UnitPrice": "3578.2700",
+          "UnitPriceDiscountPct": 0,
+          "TaxAmt": "286.2616",
+          "Freight": "89.4568",
+          "SalesAmount": "3578.2700",
+          "violation_reason": "Recalculated total does not match existing SalesAmount"
+        },
+        {
+          "SalesOrderNumber": "SO43740",
+          "SalesOrderLineNumber": 1,
+          "OrderQuantity": 1,
+          "UnitPrice": "3578.2700",
+          "UnitPriceDiscountPct": 0,
+          "TaxAmt": "286.2616",
+          "Freight": "89.4568",
+          "SalesAmount": "3578.2700",
+          "violation_reason": "Recalculated total does not match existing SalesAmount"
+        },
+        {
+          "SalesOrderNumber": "SO43741",
+          "SalesOrderLineNumber": 1,
+          "OrderQuantity": 1,
+          "UnitPrice": "3578.2700",
+          "UnitPriceDiscountPct": 0,
+          "TaxAmt": "286.2616",
+          "Freight": "89.4568",
+          "SalesAmount": "3578.2700",
+          "violation_reason": "Recalculated total does not match existing SalesAmount"
+        },
+        {
+          "SalesOrderNumber": "SO43742",
+          "SalesOrderLineNumber": 1,
+          "OrderQuantity": 1,
+          "UnitPrice": "3578.2700",
+          "UnitPriceDiscountPct": 0,
+          "TaxAmt": "286.2616",
+          "Freight": "89.4568",
+          "SalesAmount": "3578.2700",
+          "violation_reason": "Recalculated total does not match existing SalesAmount"
+        },
+        {
+          "SalesOrderNumber": "SO43743",
+          "SalesOrderLineNumber": 1,
+          "OrderQuantity": 1,
+          "UnitPrice": "3399.9900",
+          "UnitPriceDiscountPct": 0,
+          "TaxAmt": "271.9992",
+          "Freight": "84.9998",
+          "SalesAmount": "3399.9900",
+          "violation_reason": "Recalculated total does not match existing SalesAmount"
+        },
+        {
+          "SalesOrderNumber": "SO43744",
+          "SalesOrderLineNumber": 1,
+          "OrderQuantity": 1,
+          "UnitPrice": "3578.2700",
+          "UnitPriceDiscountPct": 0,
+          "TaxAmt": "286.2616",
+          "Freight": "89.4568",
+          "SalesAmount": "3578.2700",
+          "violation_reason": "Recalculated total does not match existing SalesAmount"
+        },
+        {
+          "SalesOrderNumber": "SO43745",
+          "SalesOrderLineNumber": 1,
+          "OrderQuantity": 1,
+          "UnitPrice": "3578.2700",
+          "UnitPriceDiscountPct": 0,
+          "TaxAmt": "286.2616",
+          "Freight": "89.4568",
+          "SalesAmount": "3578.2700",
+          "violation_reason": "Recalculated total does not match existing SalesAmount"
+        },
+        {
+          "SalesOrderNumber": "SO43746",
+          "SalesOrderLineNumber": 1,
+          "OrderQuantity": 1,
+          "UnitPrice": "3578.2700",
+          "UnitPriceDiscountPct": 0,
+          "TaxAmt": "286.2616",
+          "Freight": "89.4568",
+          "SalesAmount": "3578.2700",
+          "violation_reason": "Recalculated total does not match existing SalesAmount"
+        }
+      ],
+      "sql": "SELECT `SalesOrderNumber`,\n       `SalesOrderLineNumber`,\n       `OrderQuantity`,\n       `UnitPrice`,\n       `UnitPriceDiscountPct`,\n       `TaxAmt`,\n       `Freight`,\n       `SalesAmount`,\n       'Recalculated total does not match existing SalesAmount' AS violation_reason\nFROM `aigdqr-ragstoriches`.`adv_works_dw`.`factinternetsales`\nWHERE ROUND((`OrderQuantity` * `UnitPrice` * (1 - `UnitPriceDiscountPct`)) + `TaxAmt` + `Freight`, 2) != ROUND(`SalesAmount`, 2)",
+      "severity": "HIGH",
+      "description": "Recalculate line item totals using OrderQuantity, UnitPrice, UnitPriceDiscountPct, TaxAmt, and Freight for FactInternetSales table, and flag rows where recalculated totals differ from SalesAmount.",
+      "timing_sec": {
+        "sql": 13.013
+      }
+    }
+  ]
+}
