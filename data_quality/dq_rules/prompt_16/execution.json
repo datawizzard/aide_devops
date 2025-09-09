@@ -1,0 +1,78 @@
+{
+  "summary": {
+    "pass": 1,
+    "fail": 0,
+    "duration": "00:00:15",
+    "warehouse": "0e7ef356fe37e56c"
+  },
+  "violations": [],
+  "log": "[start] Submitting 1 rules to 0e7ef356fe37e56c\n[run] Executing rule 1/1: Implied Tax Rate Consistency Across Sales Channels\n[end] Completed",
+  "per_rule": [
+    {
+      "name": "Implied Tax Rate Consistency Across Sales Channels",
+      "status": "passed",
+      "row_count": 0,
+      "details": {
+        "passed": true,
+        "row_count": 0,
+        "ge_available": true,
+        "details": {
+          "success": true,
+          "results": [
+            {
+              "success": true,
+              "expectation_config": {
+                "expectation_type": "expect_table_row_count_to_equal",
+                "kwargs": {
+                  "value": 0,
+                  "result_format": "BASIC"
+                },
+                "meta": {}
+              },
+              "result": {
+                "observed_value": 0
+              },
+              "meta": {},
+              "exception_info": {
+                "raised_exception": false,
+                "exception_message": null,
+                "exception_traceback": null
+              }
+            }
+          ],
+          "evaluation_parameters": {},
+          "statistics": {
+            "evaluated_expectations": 1,
+            "successful_expectations": 1,
+            "unsuccessful_expectations": 0,
+            "success_percent": 100
+          },
+          "meta": {
+            "great_expectations_version": "0.18.21",
+            "expectation_suite_name": "default",
+            "run_id": {
+              "run_name": null,
+              "run_time": "2025-09-09T20:43:17.598368+05:30"
+            },
+            "batch_kwargs": {
+              "ge_batch_id": "8395e3ef-8d8f-11f0-9456-3814286fba39"
+            },
+            "batch_markers": {},
+            "batch_parameters": {},
+            "validation_time": "20250909T151317.598368Z",
+            "expectation_suite_meta": {
+              "great_expectations_version": "0.18.21"
+            }
+          }
+        }
+      },
+      "sample": [],
+      "sql": "WITH reseller_tax_rate AS\n  (SELECT frs.`SalesTerritoryKey`,\n          frs.`OrderDateKey`,\n          AVG(frs.`TaxAmt` / NULLIF(frs.`SalesAmount`, 0)) AS avg_tax_rate\n   FROM `aigdqr-ragstoriches`.`adv_works_dw`.`factresellersales` frs\n   GROUP BY frs.`SalesTerritoryKey`,\n            frs.`OrderDateKey`),\n     internet_tax_rate AS\n  (SELECT fis.`SalesTerritoryKey`,\n          fis.`OrderDateKey`,\n          AVG(fis.`TaxAmt` / NULLIF(fis.`SalesAmount`, 0)) AS avg_tax_rate\n   FROM `aigdqr-ragstoriches`.`adv_works_dw`.`factinternetsales` fis\n   GROUP BY fis.`SalesTerritoryKey`,\n            fis.`OrderDateKey`)\nSELECT rtr.`SalesTerritoryKey`,\n       rtr.`OrderDateKey`,\n       rtr.`avg_tax_rate` AS reseller_tax_rate,\n       itr.`avg_tax_rate` AS internet_tax_rate,\n       'Implied tax rate difference exceeds tolerance of 0.01' AS violation_reason\nFROM reseller_tax_rate rtr\nJOIN internet_tax_rate itr ON rtr.`SalesTerritoryKey` = itr.`SalesTerritoryKey`\nAND rtr.`OrderDateKey` = itr.`OrderDateKey`\nWHERE ABS(rtr.`avg_tax_rate` - itr.`avg_tax_rate`) > 0.01",
+      "severity": "HIGH",
+      "description": "This rule checks that the implied tax rate (TaxAmt / SalesAmount) is consistent across sales channels (factresellersales and factinternetsales) for the same SalesTerritoryKey and OrderDateKey, within a specified tolerance of 0.01.",
+      "timing_sec": {
+        "sql": 5.251
+      }
+    }
+  ]
+}
