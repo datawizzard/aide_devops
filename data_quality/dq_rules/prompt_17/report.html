@@ -1,0 +1,319 @@
+
+        <!doctype html>
+        <html>
+        <head>
+          <meta charset="utf-8" />
+          <title>Qualitron — Data Quality Report</title>
+          <style>
+            :root {
+              --accent: #00A79D;
+              --accent-hover: #008E86;
+              --text: #0E141B;
+              --text-subtle: #5E6A75;
+              --surface: #FFFFFF;
+              --surface-alt: #F6F8FA;
+              --border: #E6E9EF;
+              --radius: 12px;
+              --font-sans: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+              --font-mono: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, 'Liberation Mono', 'Courier New', monospace;
+            }
+            body {
+              font-family: var(--font-sans);
+              margin: 24px;
+              background: var(--surface);
+              color: var(--text);
+            }
+            .brand { display: flex; align-items: center; gap: 12px; margin-bottom: 12px; }
+            .logo-badge {
+              padding: 4px 8px;
+              border-radius: var(--radius);
+              border: 1px solid rgba(0,0,0,0.12);
+              color: var(--accent);
+              font-weight: 600;
+              letter-spacing: 0.06em;
+            }
+            .brand-title { font-size: 16px; font-weight: 600; }
+            .brand-sub { font-size: 12px; color: var(--text-subtle); }
+            .rule { border: 1px solid var(--border); padding: 12px; margin: 12px 0; border-radius: var(--radius); background: var(--surface); }
+            .status { text-transform: uppercase; font-size: 12px; padding: 2px 6px; border-radius: 999px; margin-left: 8px; }
+            .status.passed { background: #e6ffed; color: #036400; border: 1px solid #b5e6bf; }
+            .status.failed { background: #ffebe6; color: #970000; border: 1px solid #f3b1a3; }
+            .status.error  { background: #fff4e5; color: #8a6d3b; border: 1px solid #ffd9a6; }
+            table { border-collapse: collapse; margin-top: 8px; width: 100%; }
+            th, td { border: 1px solid var(--border); padding: 6px; font-size: 12px; }
+            th { background: var(--surface-alt); text-align: left; }
+            pre { white-space: pre-wrap; background: var(--surface-alt); padding: 8px; border: 1px solid var(--border); border-radius: 8px; }
+            .meta { display: flex; gap: 16px; color: #333; font-size: 13px; margin: 6px 0; }
+            .desc { color: #444; }
+            .divider { height: 1px; background: var(--border); margin: 12px 0; }
+            .header { display: flex; align-items: baseline; justify-content: space-between; margin-bottom: 8px; }
+            .header h1 { margin: 0; font-size: 20px; }
+            .ts { color: var(--text-subtle); font-size: 12px; }
+          </style>
+        </head>
+        <body>
+          <div class="header">
+            <div class="brand">
+              <div class="logo-badge">[ QUALITRON ]</div>
+              <div>
+                <div class="brand-title">Qualitron – AI Data Quality</div>
+                <div class="brand-sub">EPAM-inspired single-page UI</div>
+              </div>
+            </div>
+            <div class="ts">Generated 2025-09-09 15:43:38 UTC</div>
+          </div>
+          <div class="divider"></div>
+
+                <section class="rule">
+                  <h2>
+                    Group-country-region hierarchy cycle check
+                    <span class="status failed">failed</span>
+                  </h2>
+                  <div class="meta">
+                    <div><b>Severity:</b> CRITICAL</div>
+                    <div><b>Violating rows:</b> 50</div>
+                  </div>
+                  <details>
+                    <summary>SQL</summary>
+                    <pre>WITH RECURSIVE hierarchy_path AS
+  (SELECT `SalesTerritoryKey`,
+          `SalesTerritoryKey` AS root_key,
+          CAST(`SalesTerritoryKey` AS STRING) AS PATH,
+          1 AS depth
+   FROM `aigdqr-ragstoriches`.`adv_works_dw`.`dimsalesterritory`
+   UNION ALL SELECT child.`SalesTerritoryKey`,
+                    parent.root_key,
+                    CONCAT(parent.path, &#x27; -&gt; &#x27;, child.`SalesTerritoryKey`) AS PATH,
+                    parent.depth + 1
+   FROM hierarchy_path parent
+   JOIN `aigdqr-ragstoriches`.`adv_works_dw`.`dimsalesterritory` child ON parent.`SalesTerritoryKey` = child.`SalesTerritoryKey`
+   WHERE parent.depth &lt; 100)
+SELECT root_key AS `SalesTerritoryKey`,
+       PATH AS `cycle_path`,
+               &#x27;Cycle detected in hierarchy&#x27; AS `violation_reason`
+FROM hierarchy_path
+WHERE `SalesTerritoryKey` = root_key
+  AND depth &gt; 1</pre>
+                  </details>
+                  <details>
+                    <summary>Validation details</summary>
+                    <pre>{
+  &quot;passed&quot;: false,
+  &quot;row_count&quot;: 50,
+  &quot;ge_available&quot;: true,
+  &quot;details&quot;: {
+    &quot;success&quot;: false,
+    &quot;results&quot;: [
+      {
+        &quot;success&quot;: false,
+        &quot;expectation_config&quot;: {
+          &quot;expectation_type&quot;: &quot;expect_table_row_count_to_equal&quot;,
+          &quot;kwargs&quot;: {
+            &quot;value&quot;: 0,
+            &quot;result_format&quot;: &quot;BASIC&quot;
+          },
+          &quot;meta&quot;: {}
+        },
+        &quot;result&quot;: {
+          &quot;observed_value&quot;: 50
+        },
+        &quot;meta&quot;: {},
+        &quot;exception_info&quot;: {
+          &quot;raised_exception&quot;: false,
+          &quot;exception_message&quot;: null,
+          &quot;exception_traceback&quot;: null
+        }
+      }
+    ],
+    &quot;evaluation_parameters&quot;: {},
+    &quot;statistics&quot;: {
+      &quot;evaluated_expectations&quot;: 1,
+      &quot;successful_expectations&quot;: 0,
+      &quot;unsuccessful_expectations&quot;: 1,
+      &quot;success_percent&quot;: 0
+    },
+    &quot;meta&quot;: {
+      &quot;great_expectations_version&quot;: &quot;0.18.21&quot;,
+      &quot;expectation_suite_name&quot;: &quot;default&quot;,
+      &quot;run_id&quot;: {
+        &quot;run_name&quot;: null,
+        &quot;run_time&quot;: &quot;2025-09-09T21:13:14.152314+05:30&quot;
+      },
+      &quot;batch_kwargs&quot;: {
+        &quot;ge_batch_id&quot;: &quot;b26a452a-8d93-11f0-af75-3814286fba39&quot;
+      },
+      &quot;batch_markers&quot;: {},
+      &quot;batch_parameters&quot;: {},
+      &quot;validation_time&quot;: &quot;20250909T154314.152314Z&quot;,
+      &quot;expectation_suite_meta&quot;: {
+        &quot;great_expectations_version&quot;: &quot;0.18.21&quot;
+      }
+    }
+  }
+}</pre>
+                  </details>
+                  <table><thead><tr><th>SalesTerritoryKey</th><th>cycle_path</th><th>violation_reason</th></tr></thead><tbody><tr><td>1</td><td>1 -&gt; 1</td><td>Cycle detected in hierarchy</td></tr><tr><td>2</td><td>2 -&gt; 2</td><td>Cycle detected in hierarchy</td></tr><tr><td>3</td><td>3 -&gt; 3</td><td>Cycle detected in hierarchy</td></tr><tr><td>4</td><td>4 -&gt; 4</td><td>Cycle detected in hierarchy</td></tr><tr><td>5</td><td>5 -&gt; 5</td><td>Cycle detected in hierarchy</td></tr><tr><td>6</td><td>6 -&gt; 6</td><td>Cycle detected in hierarchy</td></tr><tr><td>7</td><td>7 -&gt; 7</td><td>Cycle detected in hierarchy</td></tr><tr><td>8</td><td>8 -&gt; 8</td><td>Cycle detected in hierarchy</td></tr><tr><td>9</td><td>9 -&gt; 9</td><td>Cycle detected in hierarchy</td></tr><tr><td>10</td><td>10 -&gt; 10</td><td>Cycle detected in hierarchy</td></tr><tr><td>11</td><td>11 -&gt; 11</td><td>Cycle detected in hierarchy</td></tr><tr><td>1</td><td>1 -&gt; 1 -&gt; 1</td><td>Cycle detected in hierarchy</td></tr><tr><td>2</td><td>2 -&gt; 2 -&gt; 2</td><td>Cycle detected in hierarchy</td></tr><tr><td>3</td><td>3 -&gt; 3 -&gt; 3</td><td>Cycle detected in hierarchy</td></tr><tr><td>4</td><td>4 -&gt; 4 -&gt; 4</td><td>Cycle detected in hierarchy</td></tr><tr><td>5</td><td>5 -&gt; 5 -&gt; 5</td><td>Cycle detected in hierarchy</td></tr><tr><td>6</td><td>6 -&gt; 6 -&gt; 6</td><td>Cycle detected in hierarchy</td></tr><tr><td>7</td><td>7 -&gt; 7 -&gt; 7</td><td>Cycle detected in hierarchy</td></tr><tr><td>8</td><td>8 -&gt; 8 -&gt; 8</td><td>Cycle detected in hierarchy</td></tr><tr><td>9</td><td>9 -&gt; 9 -&gt; 9</td><td>Cycle detected in hierarchy</td></tr><tr><td>10</td><td>10 -&gt; 10 -&gt; 10</td><td>Cycle detected in hierarchy</td></tr><tr><td>11</td><td>11 -&gt; 11 -&gt; 11</td><td>Cycle detected in hierarchy</td></tr><tr><td>1</td><td>1 -&gt; 1 -&gt; 1 -&gt; 1</td><td>Cycle detected in hierarchy</td></tr><tr><td>2</td><td>2 -&gt; 2 -&gt; 2 -&gt; 2</td><td>Cycle detected in hierarchy</td></tr><tr><td>3</td><td>3 -&gt; 3 -&gt; 3 -&gt; 3</td><td>Cycle detected in hierarchy</td></tr><tr><td>4</td><td>4 -&gt; 4 -&gt; 4 -&gt; 4</td><td>Cycle detected in hierarchy</td></tr><tr><td>5</td><td>5 -&gt; 5 -&gt; 5 -&gt; 5</td><td>Cycle detected in hierarchy</td></tr><tr><td>6</td><td>6 -&gt; 6 -&gt; 6 -&gt; 6</td><td>Cycle detected in hierarchy</td></tr><tr><td>7</td><td>7 -&gt; 7 -&gt; 7 -&gt; 7</td><td>Cycle detected in hierarchy</td></tr><tr><td>8</td><td>8 -&gt; 8 -&gt; 8 -&gt; 8</td><td>Cycle detected in hierarchy</td></tr><tr><td>9</td><td>9 -&gt; 9 -&gt; 9 -&gt; 9</td><td>Cycle detected in hierarchy</td></tr><tr><td>10</td><td>10 -&gt; 10 -&gt; 10 -&gt; 10</td><td>Cycle detected in hierarchy</td></tr><tr><td>11</td><td>11 -&gt; 11 -&gt; 11 -&gt; 11</td><td>Cycle detected in hierarchy</td></tr><tr><td>1</td><td>1 -&gt; 1 -&gt; 1 -&gt; 1 -&gt; 1</td><td>Cycle detected in hierarchy</td></tr><tr><td>2</td><td>2 -&gt; 2 -&gt; 2 -&gt; 2 -&gt; 2</td><td>Cycle detected in hierarchy</td></tr><tr><td>3</td><td>3 -&gt; 3 -&gt; 3 -&gt; 3 -&gt; 3</td><td>Cycle detected in hierarchy</td></tr><tr><td>4</td><td>4 -&gt; 4 -&gt; 4 -&gt; 4 -&gt; 4</td><td>Cycle detected in hierarchy</td></tr><tr><td>5</td><td>5 -&gt; 5 -&gt; 5 -&gt; 5 -&gt; 5</td><td>Cycle detected in hierarchy</td></tr><tr><td>6</td><td>6 -&gt; 6 -&gt; 6 -&gt; 6 -&gt; 6</td><td>Cycle detected in hierarchy</td></tr><tr><td>7</td><td>7 -&gt; 7 -&gt; 7 -&gt; 7 -&gt; 7</td><td>Cycle detected in hierarchy</td></tr><tr><td>8</td><td>8 -&gt; 8 -&gt; 8 -&gt; 8 -&gt; 8</td><td>Cycle detected in hierarchy</td></tr><tr><td>9</td><td>9 -&gt; 9 -&gt; 9 -&gt; 9 -&gt; 9</td><td>Cycle detected in hierarchy</td></tr><tr><td>10</td><td>10 -&gt; 10 -&gt; 10 -&gt; 10 -&gt; 10</td><td>Cycle detected in hierarchy</td></tr><tr><td>11</td><td>11 -&gt; 11 -&gt; 11 -&gt; 11 -&gt; 11</td><td>Cycle detected in hierarchy</td></tr><tr><td>1</td><td>1 -&gt; 1 -&gt; 1 -&gt; 1 -&gt; 1 -&gt; 1</td><td>Cycle detected in hierarchy</td></tr><tr><td>2</td><td>2 -&gt; 2 -&gt; 2 -&gt; 2 -&gt; 2 -&gt; 2</td><td>Cycle detected in hierarchy</td></tr><tr><td>3</td><td>3 -&gt; 3 -&gt; 3 -&gt; 3 -&gt; 3 -&gt; 3</td><td>Cycle detected in hierarchy</td></tr><tr><td>4</td><td>4 -&gt; 4 -&gt; 4 -&gt; 4 -&gt; 4 -&gt; 4</td><td>Cycle detected in hierarchy</td></tr><tr><td>5</td><td>5 -&gt; 5 -&gt; 5 -&gt; 5 -&gt; 5 -&gt; 5</td><td>Cycle detected in hierarchy</td></tr><tr><td>6</td><td>6 -&gt; 6 -&gt; 6 -&gt; 6 -&gt; 6 -&gt; 6</td><td>Cycle detected in hierarchy</td></tr></tbody></table>
+                  <p class="desc">Detect cycles in the group-country-region hierarchy by traversing parent-child relationships in the dimsalesterritory table. Assumes SalesTerritoryKey is unique and Parent relationships are defined correctly.</p>
+                </section>
+
+                <section class="rule">
+                  <h2>
+                    Orphaned entries in group-country-region hierarchy
+                    <span class="status passed">passed</span>
+                  </h2>
+                  <div class="meta">
+                    <div><b>Severity:</b> HIGH</div>
+                    <div><b>Violating rows:</b> 0</div>
+                  </div>
+                  <details>
+                    <summary>SQL</summary>
+                    <pre>SELECT child.`SalesTerritoryKey`,
+       child.`SalesTerritoryAlternateKey`,
+       &#x27;Orphaned entry: parent does not exist&#x27; AS `violation_reason`
+FROM `aigdqr-ragstoriches`.`adv_works_dw`.`dimsalesterritory` child
+LEFT JOIN `aigdqr-ragstoriches`.`adv_works_dw`.`dimsalesterritory` parent ON child.`SalesTerritoryKey` = parent.`SalesTerritoryKey`
+WHERE parent.`SalesTerritoryKey` IS NULL</pre>
+                  </details>
+                  <details>
+                    <summary>Validation details</summary>
+                    <pre>{
+  &quot;passed&quot;: true,
+  &quot;row_count&quot;: 0,
+  &quot;ge_available&quot;: true,
+  &quot;details&quot;: {
+    &quot;success&quot;: true,
+    &quot;results&quot;: [
+      {
+        &quot;success&quot;: true,
+        &quot;expectation_config&quot;: {
+          &quot;expectation_type&quot;: &quot;expect_table_row_count_to_equal&quot;,
+          &quot;kwargs&quot;: {
+            &quot;value&quot;: 0,
+            &quot;result_format&quot;: &quot;BASIC&quot;
+          },
+          &quot;meta&quot;: {}
+        },
+        &quot;result&quot;: {
+          &quot;observed_value&quot;: 0
+        },
+        &quot;meta&quot;: {},
+        &quot;exception_info&quot;: {
+          &quot;raised_exception&quot;: false,
+          &quot;exception_message&quot;: null,
+          &quot;exception_traceback&quot;: null
+        }
+      }
+    ],
+    &quot;evaluation_parameters&quot;: {},
+    &quot;statistics&quot;: {
+      &quot;evaluated_expectations&quot;: 1,
+      &quot;successful_expectations&quot;: 1,
+      &quot;unsuccessful_expectations&quot;: 0,
+      &quot;success_percent&quot;: 100
+    },
+    &quot;meta&quot;: {
+      &quot;great_expectations_version&quot;: &quot;0.18.21&quot;,
+      &quot;expectation_suite_name&quot;: &quot;default&quot;,
+      &quot;run_id&quot;: {
+        &quot;run_name&quot;: null,
+        &quot;run_time&quot;: &quot;2025-09-09T21:13:16.412326+05:30&quot;
+      },
+      &quot;batch_kwargs&quot;: {
+        &quot;ge_batch_id&quot;: &quot;b3c3450e-8d93-11f0-b464-3814286fba39&quot;
+      },
+      &quot;batch_markers&quot;: {},
+      &quot;batch_parameters&quot;: {},
+      &quot;validation_time&quot;: &quot;20250909T154316.412326Z&quot;,
+      &quot;expectation_suite_meta&quot;: {
+        &quot;great_expectations_version&quot;: &quot;0.18.21&quot;
+      }
+    }
+  }
+}</pre>
+                  </details>
+
+                  <p class="desc">Identify entries in dimsalesterritory that reference non-existent parent entries, ensuring no orphaned relationships.</p>
+                </section>
+
+                <section class="rule">
+                  <h2>
+                    Inconsistent parent-child attributes in group-country-region hierarchy
+                    <span class="status passed">passed</span>
+                  </h2>
+                  <div class="meta">
+                    <div><b>Severity:</b> MEDIUM</div>
+                    <div><b>Violating rows:</b> 0</div>
+                  </div>
+                  <details>
+                    <summary>SQL</summary>
+                    <pre>SELECT child.`SalesTerritoryKey`,
+       child.`SalesTerritoryRegion`,
+       parent.`SalesTerritoryRegion` AS parent_region,
+       &#x27;Inconsistent region between parent and child&#x27; AS `violation_reason`
+FROM `aigdqr-ragstoriches`.`adv_works_dw`.`dimsalesterritory` child
+JOIN `aigdqr-ragstoriches`.`adv_works_dw`.`dimsalesterritory` parent ON child.`SalesTerritoryKey` = parent.`SalesTerritoryKey`
+WHERE child.`SalesTerritoryRegion` &lt;&gt; parent.`SalesTerritoryRegion`</pre>
+                  </details>
+                  <details>
+                    <summary>Validation details</summary>
+                    <pre>{
+  &quot;passed&quot;: true,
+  &quot;row_count&quot;: 0,
+  &quot;ge_available&quot;: true,
+  &quot;details&quot;: {
+    &quot;success&quot;: true,
+    &quot;results&quot;: [
+      {
+        &quot;success&quot;: true,
+        &quot;expectation_config&quot;: {
+          &quot;expectation_type&quot;: &quot;expect_table_row_count_to_equal&quot;,
+          &quot;kwargs&quot;: {
+            &quot;value&quot;: 0,
+            &quot;result_format&quot;: &quot;BASIC&quot;
+          },
+          &quot;meta&quot;: {}
+        },
+        &quot;result&quot;: {
+          &quot;observed_value&quot;: 0
+        },
+        &quot;meta&quot;: {},
+        &quot;exception_info&quot;: {
+          &quot;raised_exception&quot;: false,
+          &quot;exception_message&quot;: null,
+          &quot;exception_traceback&quot;: null
+        }
+      }
+    ],
+    &quot;evaluation_parameters&quot;: {},
+    &quot;statistics&quot;: {
+      &quot;evaluated_expectations&quot;: 1,
+      &quot;successful_expectations&quot;: 1,
+      &quot;unsuccessful_expectations&quot;: 0,
+      &quot;success_percent&quot;: 100
+    },
+    &quot;meta&quot;: {
+      &quot;great_expectations_version&quot;: &quot;0.18.21&quot;,
+      &quot;expectation_suite_name&quot;: &quot;default&quot;,
+      &quot;run_id&quot;: {
+        &quot;run_name&quot;: null,
+        &quot;run_time&quot;: &quot;2025-09-09T21:13:18.486520+05:30&quot;
+      },
+      &quot;batch_kwargs&quot;: {
+        &quot;ge_batch_id&quot;: &quot;b4ffc353-8d93-11f0-8a2c-3814286fba39&quot;
+      },
+      &quot;batch_markers&quot;: {},
+      &quot;batch_parameters&quot;: {},
+      &quot;validation_time&quot;: &quot;20250909T154318.486520Z&quot;,
+      &quot;expectation_suite_meta&quot;: {
+        &quot;great_expectations_version&quot;: &quot;0.18.21&quot;
+      }
+    }
+  }
+}</pre>
+                  </details>
+
+                  <p class="desc">Ensure that parent-child relationships in dimsalesterritory maintain consistent attributes, such as region and country.</p>
+                </section>
+
+        </body>
+        </html>
