@@ -1,0 +1,78 @@
+{
+  "summary": {
+    "pass": 1,
+    "fail": 0,
+    "duration": "00:00:02",
+    "warehouse": "0e7ef356fe37e56c"
+  },
+  "violations": [],
+  "log": "[start] Submitting 1 rules to 0e7ef356fe37e56c\n[run] Executing rule 1/1: Geography and Territory Alignment\n[end] Completed",
+  "per_rule": [
+    {
+      "name": "Geography and Territory Alignment",
+      "status": "passed",
+      "row_count": 0,
+      "details": {
+        "passed": true,
+        "row_count": 0,
+        "ge_available": true,
+        "details": {
+          "success": true,
+          "results": [
+            {
+              "success": true,
+              "expectation_config": {
+                "expectation_type": "expect_table_row_count_to_equal",
+                "kwargs": {
+                  "value": 0,
+                  "result_format": "BASIC"
+                },
+                "meta": {}
+              },
+              "result": {
+                "observed_value": 0
+              },
+              "meta": {},
+              "exception_info": {
+                "raised_exception": false,
+                "exception_message": null,
+                "exception_traceback": null
+              }
+            }
+          ],
+          "evaluation_parameters": {},
+          "statistics": {
+            "evaluated_expectations": 1,
+            "successful_expectations": 1,
+            "unsuccessful_expectations": 0,
+            "success_percent": 100
+          },
+          "meta": {
+            "great_expectations_version": "0.18.21",
+            "expectation_suite_name": "default",
+            "run_id": {
+              "run_name": null,
+              "run_time": "2025-09-09T01:43:25.248459+05:30"
+            },
+            "batch_kwargs": {
+              "ge_batch_id": "46917c56-8cf0-11f0-8582-3814286fba39"
+            },
+            "batch_markers": {},
+            "batch_parameters": {},
+            "validation_time": "20250908T201325.248459Z",
+            "expectation_suite_meta": {
+              "great_expectations_version": "0.18.21"
+            }
+          }
+        }
+      },
+      "sample": [],
+      "sql": "SELECT g.`GeographyKey`,\n       g.`SalesTerritoryKey`,\n       'Geography references a non-existent or invalid sales territory' AS `violation_reason`\nFROM `aigdqr-ragstoriches`.`adv_works_dw`.`dimgeography` g\nWHERE NOT EXISTS\n    (SELECT 1\n     FROM `aigdqr-ragstoriches`.`adv_works_dw`.`dimsalesterritory` t\n     WHERE g.`SalesTerritoryKey` = t.`SalesTerritoryKey`)",
+      "severity": "CRITICAL",
+      "description": "Ensure that each geography entry references a valid and existing sales territory, and that the alignment between geography and territory is consistent. Assumes that the relationship between dimgeography and dimsalesterritory is defined by the SalesTerritoryKey foreign key.",
+      "timing_sec": {
+        "sql": 2.491
+      }
+    }
+  ]
+}
