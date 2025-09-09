@@ -1,0 +1,78 @@
+{
+  "summary": {
+    "pass": 1,
+    "fail": 0,
+    "duration": "00:00:15",
+    "warehouse": "0e7ef356fe37e56c"
+  },
+  "violations": [],
+  "log": "[start] Submitting 1 rules to 0e7ef356fe37e56c\n[run] Executing rule 1/1: Calculate reporting-currency amounts\n[end] Completed",
+  "per_rule": [
+    {
+      "name": "Calculate reporting-currency amounts",
+      "status": "passed",
+      "row_count": 0,
+      "details": {
+        "passed": true,
+        "row_count": 0,
+        "ge_available": true,
+        "details": {
+          "success": true,
+          "results": [
+            {
+              "success": true,
+              "expectation_config": {
+                "expectation_type": "expect_table_row_count_to_equal",
+                "kwargs": {
+                  "value": 0,
+                  "result_format": "BASIC"
+                },
+                "meta": {}
+              },
+              "result": {
+                "observed_value": 0
+              },
+              "meta": {},
+              "exception_info": {
+                "raised_exception": false,
+                "exception_message": null,
+                "exception_traceback": null
+              }
+            }
+          ],
+          "evaluation_parameters": {},
+          "statistics": {
+            "evaluated_expectations": 1,
+            "successful_expectations": 1,
+            "unsuccessful_expectations": 0,
+            "success_percent": 100
+          },
+          "meta": {
+            "great_expectations_version": "0.18.21",
+            "expectation_suite_name": "default",
+            "run_id": {
+              "run_name": null,
+              "run_time": "2025-09-10T01:24:37.495400+05:30"
+            },
+            "batch_kwargs": {
+              "ge_batch_id": "d0ca1410-8db6-11f0-b266-3814286fba39"
+            },
+            "batch_markers": {},
+            "batch_parameters": {},
+            "validation_time": "20250909T195437.495400Z",
+            "expectation_suite_meta": {
+              "great_expectations_version": "0.18.21"
+            }
+          }
+        }
+      },
+      "sample": [],
+      "sql": "SELECT fs.`SalesOrderNumber`,\n       fs.`SalesOrderLineNumber`,\n       fs.`SalesAmount`,\n       fcr.`AverageRate`,\n       fs.`SalesAmount` * fcr.`AverageRate` AS `CalculatedReportingCurrencyAmount`,\n       'Mismatch in reporting-currency amount calculation' AS `violation_reason`\nFROM `aigdqr-ragstoriches`.`adv_works_dw`.`factinternetsales` fs\nJOIN `aigdqr-ragstoriches`.`adv_works_dw`.`factcurrencyrate` fcr ON fs.`CurrencyKey` = fcr.`CurrencyKey`\nAND fs.`OrderDateKey` = fcr.`DateKey`\nWHERE fs.`SalesAmount` * fcr.`AverageRate` IS NULL",
+      "severity": "HIGH",
+      "description": "Ensure that reporting-currency amounts are calculated by multiplying original amounts by the exchange rate of the order date. This rule assumes that the exchange rate is derived from the factcurrencyrate table using the CurrencyKey and DateKey.",
+      "timing_sec": {
+        "sql": 2.462
+      }
+    }
+  ]
+}
