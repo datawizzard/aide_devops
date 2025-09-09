@@ -1,0 +1,144 @@
+{
+  "summary": {
+    "pass": 2,
+    "fail": 0,
+    "duration": "00:00:02",
+    "warehouse": "0e7ef356fe37e56c"
+  },
+  "violations": [],
+  "log": "[start] Submitting 2 rules to 0e7ef356fe37e56c\n[run] Executing rule 1/2: Non-overlapping_customer_validity_periods\n[run] Executing rule 2/2: Non-overlapping_product_validity_periods\n[end] Completed",
+  "per_rule": [
+    {
+      "name": "Non-overlapping_customer_validity_periods",
+      "status": "passed",
+      "row_count": 0,
+      "details": {
+        "passed": true,
+        "row_count": 0,
+        "ge_available": true,
+        "details": {
+          "success": true,
+          "results": [
+            {
+              "success": true,
+              "expectation_config": {
+                "expectation_type": "expect_table_row_count_to_equal",
+                "kwargs": {
+                  "value": 0,
+                  "result_format": "BASIC"
+                },
+                "meta": {}
+              },
+              "result": {
+                "observed_value": 0
+              },
+              "meta": {},
+              "exception_info": {
+                "raised_exception": false,
+                "exception_message": null,
+                "exception_traceback": null
+              }
+            }
+          ],
+          "evaluation_parameters": {},
+          "statistics": {
+            "evaluated_expectations": 1,
+            "successful_expectations": 1,
+            "unsuccessful_expectations": 0,
+            "success_percent": 100
+          },
+          "meta": {
+            "great_expectations_version": "0.18.21",
+            "expectation_suite_name": "default",
+            "run_id": {
+              "run_name": null,
+              "run_time": "2025-09-09T03:41:26.894403+05:30"
+            },
+            "batch_kwargs": {
+              "ge_batch_id": "c38ebf7d-8d00-11f0-8dad-3814286fba39"
+            },
+            "batch_markers": {},
+            "batch_parameters": {},
+            "validation_time": "20250908T221126.894403Z",
+            "expectation_suite_meta": {
+              "great_expectations_version": "0.18.21"
+            }
+          }
+        }
+      },
+      "sample": [],
+      "sql": "WITH customer_validity AS\n  (SELECT c.`customer_id`,\n          c.`insert_date` AS start_date,\n          COALESCE(c.`update_date`, current_timestamp()) AS end_date\n   FROM `aigdqr-ragstoriches`.`calendar_ddp`.`v_customer` c)\nSELECT cv1.`customer_id`,\n       cv1.`start_date`,\n       cv1.`end_date`,\n       cv2.`start_date` AS overlapping_start_date,\n       cv2.`end_date` AS overlapping_end_date,\n       'Overlapping validity periods for the same customer_id' AS violation_reason\nFROM customer_validity cv1\nJOIN customer_validity cv2 ON cv1.`customer_id` = cv2.`customer_id`\nAND cv1.`start_date` < cv2.`end_date`\nAND cv1.`end_date` > cv2.`start_date`\nAND cv1.`start_date` != cv2.`start_date`",
+      "severity": "CRITICAL",
+      "description": "Ensure that customer records in `v_customer` have non-overlapping validity periods, with only one version marked as current at any time. Assumes `insert_date` and `update_date` define the validity period.",
+      "timing_sec": {
+        "sql": 8.902
+      }
+    },
+    {
+      "name": "Non-overlapping_product_validity_periods",
+      "status": "passed",
+      "row_count": 0,
+      "details": {
+        "passed": true,
+        "row_count": 0,
+        "ge_available": true,
+        "details": {
+          "success": true,
+          "results": [
+            {
+              "success": true,
+              "expectation_config": {
+                "expectation_type": "expect_table_row_count_to_equal",
+                "kwargs": {
+                  "value": 0,
+                  "result_format": "BASIC"
+                },
+                "meta": {}
+              },
+              "result": {
+                "observed_value": 0
+              },
+              "meta": {},
+              "exception_info": {
+                "raised_exception": false,
+                "exception_message": null,
+                "exception_traceback": null
+              }
+            }
+          ],
+          "evaluation_parameters": {},
+          "statistics": {
+            "evaluated_expectations": 1,
+            "successful_expectations": 1,
+            "unsuccessful_expectations": 0,
+            "success_percent": 100
+          },
+          "meta": {
+            "great_expectations_version": "0.18.21",
+            "expectation_suite_name": "default",
+            "run_id": {
+              "run_name": null,
+              "run_time": "2025-09-09T03:41:29.460981+05:30"
+            },
+            "batch_kwargs": {
+              "ge_batch_id": "c516d597-8d00-11f0-a7d1-3814286fba39"
+            },
+            "batch_markers": {},
+            "batch_parameters": {},
+            "validation_time": "20250908T221129.460981Z",
+            "expectation_suite_meta": {
+              "great_expectations_version": "0.18.21"
+            }
+          }
+        }
+      },
+      "sample": [],
+      "sql": "WITH product_validity AS\n  (SELECT p.`ProductKey`,\n          p.`StartDate` AS start_date,\n          COALESCE(p.`EndDate`, current_timestamp()) AS end_date\n   FROM `aigdqr-ragstoriches`.`adv_works_dw`.`dimproduct` p)\nSELECT pv1.`ProductKey`,\n       pv1.`start_date`,\n       pv1.`end_date`,\n       pv2.`start_date` AS overlapping_start_date,\n       pv2.`end_date` AS overlapping_end_date,\n       'Overlapping validity periods for the same ProductKey' AS violation_reason\nFROM product_validity pv1\nJOIN product_validity pv2 ON pv1.`ProductKey` = pv2.`ProductKey`\nAND pv1.`start_date` < pv2.`end_date`\nAND pv1.`end_date` > pv2.`start_date`\nAND pv1.`start_date` != pv2.`start_date`",
+      "severity": "CRITICAL",
+      "description": "Ensure that product records in `dimproduct` have non-overlapping validity periods, with only one version marked as current at any time. Assumes `StartDate` and `EndDate` define the validity period.",
+      "timing_sec": {
+        "sql": 2.552
+      }
+    }
+  ]
+}
