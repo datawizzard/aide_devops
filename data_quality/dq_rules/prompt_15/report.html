@@ -1,0 +1,243 @@
+
+        <!doctype html>
+        <html>
+        <head>
+          <meta charset="utf-8" />
+          <title>Qualitron — Data Quality Report</title>
+          <style>
+            :root {
+              --accent: #00A79D;
+              --accent-hover: #008E86;
+              --text: #0E141B;
+              --text-subtle: #5E6A75;
+              --surface: #FFFFFF;
+              --surface-alt: #F6F8FA;
+              --border: #E6E9EF;
+              --radius: 12px;
+              --font-sans: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+              --font-mono: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, 'Liberation Mono', 'Courier New', monospace;
+            }
+            body {
+              font-family: var(--font-sans);
+              margin: 24px;
+              background: var(--surface);
+              color: var(--text);
+            }
+            .brand { display: flex; align-items: center; gap: 12px; margin-bottom: 12px; }
+            .logo-badge {
+              padding: 4px 8px;
+              border-radius: var(--radius);
+              border: 1px solid rgba(0,0,0,0.12);
+              color: var(--accent);
+              font-weight: 600;
+              letter-spacing: 0.06em;
+            }
+            .brand-title { font-size: 16px; font-weight: 600; }
+            .brand-sub { font-size: 12px; color: var(--text-subtle); }
+            .rule { border: 1px solid var(--border); padding: 12px; margin: 12px 0; border-radius: var(--radius); background: var(--surface); }
+            .status { text-transform: uppercase; font-size: 12px; padding: 2px 6px; border-radius: 999px; margin-left: 8px; }
+            .status.passed { background: #e6ffed; color: #036400; border: 1px solid #b5e6bf; }
+            .status.failed { background: #ffebe6; color: #970000; border: 1px solid #f3b1a3; }
+            .status.error  { background: #fff4e5; color: #8a6d3b; border: 1px solid #ffd9a6; }
+            table { border-collapse: collapse; margin-top: 8px; width: 100%; }
+            th, td { border: 1px solid var(--border); padding: 6px; font-size: 12px; }
+            th { background: var(--surface-alt); text-align: left; }
+            pre { white-space: pre-wrap; background: var(--surface-alt); padding: 8px; border: 1px solid var(--border); border-radius: 8px; }
+            .meta { display: flex; gap: 16px; color: #333; font-size: 13px; margin: 6px 0; }
+            .desc { color: #444; }
+            .divider { height: 1px; background: var(--border); margin: 12px 0; }
+            .header { display: flex; align-items: baseline; justify-content: space-between; margin-bottom: 8px; }
+            .header h1 { margin: 0; font-size: 20px; }
+            .ts { color: var(--text-subtle); font-size: 12px; }
+          </style>
+        </head>
+        <body>
+          <div class="header">
+            <div class="brand">
+              <div class="logo-badge">[ QUALITRON ]</div>
+              <div>
+                <div class="brand-title">Qualitron – AI Data Quality</div>
+                <div class="brand-sub">EPAM-inspired single-page UI</div>
+              </div>
+            </div>
+            <div class="ts">Generated 2025-09-09 15:40:25 UTC</div>
+          </div>
+          <div class="divider"></div>
+
+                <section class="rule">
+                  <h2>
+                    Positive exchange rate per currency per day
+                    <span class="status passed">passed</span>
+                  </h2>
+                  <div class="meta">
+                    <div><b>Severity:</b> CRITICAL</div>
+                    <div><b>Violating rows:</b> 0</div>
+                  </div>
+                  <details>
+                    <summary>SQL</summary>
+                    <pre>SELECT fcr.`CurrencyKey`,
+       fcr.`DateKey`,
+       fcr.`Date`,
+       &#x27;No positive exchange rate recorded for this currency on this day&#x27; AS `violation_reason`
+FROM `aigdqr-ragstoriches`.`adv_works_dw`.`factcurrencyrate` fcr
+JOIN `aigdqr-ragstoriches`.`adv_works_dw`.`dimcurrency` dc ON fcr.`CurrencyKey` = dc.`CurrencyKey`
+WHERE NOT EXISTS
+    (SELECT 1
+     FROM `aigdqr-ragstoriches`.`adv_works_dw`.`factcurrencyrate` fcr_inner
+     WHERE fcr_inner.`CurrencyKey` = fcr.`CurrencyKey`
+       AND fcr_inner.`DateKey` = fcr.`DateKey`
+       AND fcr_inner.`AverageRate` &gt; 0)</pre>
+                  </details>
+                  <details>
+                    <summary>Validation details</summary>
+                    <pre>{
+  &quot;passed&quot;: true,
+  &quot;row_count&quot;: 0,
+  &quot;ge_available&quot;: true,
+  &quot;details&quot;: {
+    &quot;success&quot;: true,
+    &quot;results&quot;: [
+      {
+        &quot;success&quot;: true,
+        &quot;expectation_config&quot;: {
+          &quot;expectation_type&quot;: &quot;expect_table_row_count_to_equal&quot;,
+          &quot;kwargs&quot;: {
+            &quot;value&quot;: 0,
+            &quot;result_format&quot;: &quot;BASIC&quot;
+          },
+          &quot;meta&quot;: {}
+        },
+        &quot;result&quot;: {
+          &quot;observed_value&quot;: 0
+        },
+        &quot;meta&quot;: {},
+        &quot;exception_info&quot;: {
+          &quot;raised_exception&quot;: false,
+          &quot;exception_message&quot;: null,
+          &quot;exception_traceback&quot;: null
+        }
+      }
+    ],
+    &quot;evaluation_parameters&quot;: {},
+    &quot;statistics&quot;: {
+      &quot;evaluated_expectations&quot;: 1,
+      &quot;successful_expectations&quot;: 1,
+      &quot;unsuccessful_expectations&quot;: 0,
+      &quot;success_percent&quot;: 100
+    },
+    &quot;meta&quot;: {
+      &quot;great_expectations_version&quot;: &quot;0.18.21&quot;,
+      &quot;expectation_suite_name&quot;: &quot;default&quot;,
+      &quot;run_id&quot;: {
+        &quot;run_name&quot;: null,
+        &quot;run_time&quot;: &quot;2025-09-09T21:08:43.004103+05:30&quot;
+      },
+      &quot;batch_kwargs&quot;: {
+        &quot;ge_batch_id&quot;: &quot;10cc7c31-8d93-11f0-a6ad-3814286fba39&quot;
+      },
+      &quot;batch_markers&quot;: {},
+      &quot;batch_parameters&quot;: {},
+      &quot;validation_time&quot;: &quot;20250909T153843.004103Z&quot;,
+      &quot;expectation_suite_meta&quot;: {
+        &quot;great_expectations_version&quot;: &quot;0.18.21&quot;
+      }
+    }
+  }
+}</pre>
+                  </details>
+
+                  <p class="desc">Ensure that for each major currency, there is at least one positive exchange rate recorded per day in the factcurrencyrate table. Assumes major currencies are identified by their presence in dimcurrency.</p>
+                </section>
+
+                <section class="rule">
+                  <h2>
+                    No gaps in exchange rate records for major currencies
+                    <span class="status failed">failed</span>
+                  </h2>
+                  <div class="meta">
+                    <div><b>Severity:</b> HIGH</div>
+                    <div><b>Violating rows:</b> 50</div>
+                  </div>
+                  <details>
+                    <summary>SQL</summary>
+                    <pre>WITH date_range AS
+  (SELECT DISTINCT `DateKey`
+   FROM `aigdqr-ragstoriches`.`adv_works_dw`.`factcurrencyrate`),
+     missing_dates AS
+  (SELECT dc.`CurrencyKey`,
+          dr.`DateKey`
+   FROM `aigdqr-ragstoriches`.`adv_works_dw`.`dimcurrency` dc
+   CROSS JOIN date_range dr
+   WHERE NOT EXISTS
+       (SELECT 1
+        FROM `aigdqr-ragstoriches`.`adv_works_dw`.`factcurrencyrate` fcr
+        WHERE fcr.`CurrencyKey` = dc.`CurrencyKey`
+          AND fcr.`DateKey` = dr.`DateKey`))
+SELECT md.`CurrencyKey`,
+       md.`DateKey`,
+       &#x27;Missing exchange rate record for this currency on this day&#x27; AS `violation_reason`
+FROM missing_dates md</pre>
+                  </details>
+                  <details>
+                    <summary>Validation details</summary>
+                    <pre>{
+  &quot;passed&quot;: false,
+  &quot;row_count&quot;: 50,
+  &quot;ge_available&quot;: true,
+  &quot;details&quot;: {
+    &quot;success&quot;: false,
+    &quot;results&quot;: [
+      {
+        &quot;success&quot;: false,
+        &quot;expectation_config&quot;: {
+          &quot;expectation_type&quot;: &quot;expect_table_row_count_to_equal&quot;,
+          &quot;kwargs&quot;: {
+            &quot;value&quot;: 0,
+            &quot;result_format&quot;: &quot;BASIC&quot;
+          },
+          &quot;meta&quot;: {}
+        },
+        &quot;result&quot;: {
+          &quot;observed_value&quot;: 50
+        },
+        &quot;meta&quot;: {},
+        &quot;exception_info&quot;: {
+          &quot;raised_exception&quot;: false,
+          &quot;exception_message&quot;: null,
+          &quot;exception_traceback&quot;: null
+        }
+      }
+    ],
+    &quot;evaluation_parameters&quot;: {},
+    &quot;statistics&quot;: {
+      &quot;evaluated_expectations&quot;: 1,
+      &quot;successful_expectations&quot;: 0,
+      &quot;unsuccessful_expectations&quot;: 1,
+      &quot;success_percent&quot;: 0
+    },
+    &quot;meta&quot;: {
+      &quot;great_expectations_version&quot;: &quot;0.18.21&quot;,
+      &quot;expectation_suite_name&quot;: &quot;default&quot;,
+      &quot;run_id&quot;: {
+        &quot;run_name&quot;: null,
+        &quot;run_time&quot;: &quot;2025-09-09T21:08:55.326911+05:30&quot;
+      },
+      &quot;batch_kwargs&quot;: {
+        &quot;ge_batch_id&quot;: &quot;18247db4-8d93-11f0-b9df-3814286fba39&quot;
+      },
+      &quot;batch_markers&quot;: {},
+      &quot;batch_parameters&quot;: {},
+      &quot;validation_time&quot;: &quot;20250909T153855.326911Z&quot;,
+      &quot;expectation_suite_meta&quot;: {
+        &quot;great_expectations_version&quot;: &quot;0.18.21&quot;
+      }
+    }
+  }
+}</pre>
+                  </details>
+                  <table><thead><tr><th>CurrencyKey</th><th>DateKey</th><th>violation_reason</th></tr></thead><tbody><tr><td>1</td><td>20110204</td><td>Missing exchange rate record for this currency on this day</td></tr><tr><td>2</td><td>20110330</td><td>Missing exchange rate record for this currency on this day</td></tr><tr><td>4</td><td>20110702</td><td>Missing exchange rate record for this currency on this day</td></tr><tr><td>5</td><td>20110905</td><td>Missing exchange rate record for this currency on this day</td></tr><tr><td>7</td><td>20120123</td><td>Missing exchange rate record for this currency on this day</td></tr><tr><td>8</td><td>20120316</td><td>Missing exchange rate record for this currency on this day</td></tr><tr><td>9</td><td>20121113</td><td>Missing exchange rate record for this currency on this day</td></tr><tr><td>10</td><td>20131203</td><td>Missing exchange rate record for this currency on this day</td></tr><tr><td>11</td><td>20140103</td><td>Missing exchange rate record for this currency on this day</td></tr><tr><td>12</td><td>20140131</td><td>Missing exchange rate record for this currency on this day</td></tr><tr><td>13</td><td>20110624</td><td>Missing exchange rate record for this currency on this day</td></tr><tr><td>15</td><td>20110906</td><td>Missing exchange rate record for this currency on this day</td></tr><tr><td>17</td><td>20111102</td><td>Missing exchange rate record for this currency on this day</td></tr><tr><td>18</td><td>20120219</td><td>Missing exchange rate record for this currency on this day</td></tr><tr><td>20</td><td>20120512</td><td>Missing exchange rate record for this currency on this day</td></tr><tr><td>21</td><td>20120617</td><td>Missing exchange rate record for this currency on this day</td></tr><tr><td>22</td><td>20120902</td><td>Missing exchange rate record for this currency on this day</td></tr><tr><td>23</td><td>20120905</td><td>Missing exchange rate record for this currency on this day</td></tr><tr><td>24</td><td>20120906</td><td>Missing exchange rate record for this currency on this day</td></tr><tr><td>25</td><td>20120925</td><td>Missing exchange rate record for this currency on this day</td></tr><tr><td>26</td><td>20130205</td><td>Missing exchange rate record for this currency on this day</td></tr><tr><td>27</td><td>20130418</td><td>Missing exchange rate record for this currency on this day</td></tr><tr><td>28</td><td>20130506</td><td>Missing exchange rate record for this currency on this day</td></tr><tr><td>29</td><td>20130629</td><td>Missing exchange rate record for this currency on this day</td></tr><tr><td>30</td><td>20131121</td><td>Missing exchange rate record for this currency on this day</td></tr><tr><td>31</td><td>20131126</td><td>Missing exchange rate record for this currency on this day</td></tr><tr><td>32</td><td>20131227</td><td>Missing exchange rate record for this currency on this day</td></tr><tr><td>33</td><td>20140114</td><td>Missing exchange rate record for this currency on this day</td></tr><tr><td>34</td><td>20110123</td><td>Missing exchange rate record for this currency on this day</td></tr><tr><td>35</td><td>20110302</td><td>Missing exchange rate record for this currency on this day</td></tr><tr><td>37</td><td>20110926</td><td>Missing exchange rate record for this currency on this day</td></tr><tr><td>38</td><td>20111112</td><td>Missing exchange rate record for this currency on this day</td></tr><tr><td>39</td><td>20111119</td><td>Missing exchange rate record for this currency on this day</td></tr><tr><td>40</td><td>20111214</td><td>Missing exchange rate record for this currency on this day</td></tr><tr><td>41</td><td>20111217</td><td>Missing exchange rate record for this currency on this day</td></tr><tr><td>42</td><td>20111224</td><td>Missing exchange rate record for this currency on this day</td></tr><tr><td>43</td><td>20120403</td><td>Missing exchange rate record for this currency on this day</td></tr><tr><td>44</td><td>20120625</td><td>Missing exchange rate record for this currency on this day</td></tr><tr><td>45</td><td>20120705</td><td>Missing exchange rate record for this currency on this day</td></tr><tr><td>46</td><td>20120728</td><td>Missing exchange rate record for this currency on this day</td></tr><tr><td>47</td><td>20120823</td><td>Missing exchange rate record for this currency on this day</td></tr><tr><td>48</td><td>20120910</td><td>Missing exchange rate record for this currency on this day</td></tr><tr><td>49</td><td>20130115</td><td>Missing exchange rate record for this currency on this day</td></tr><tr><td>50</td><td>20130407</td><td>Missing exchange rate record for this currency on this day</td></tr><tr><td>51</td><td>20130510</td><td>Missing exchange rate record for this currency on this day</td></tr><tr><td>52</td><td>20130520</td><td>Missing exchange rate record for this currency on this day</td></tr><tr><td>53</td><td>20130710</td><td>Missing exchange rate record for this currency on this day</td></tr><tr><td>54</td><td>20130902</td><td>Missing exchange rate record for this currency on this day</td></tr><tr><td>55</td><td>20140118</td><td>Missing exchange rate record for this currency on this day</td></tr><tr><td>56</td><td>20140227</td><td>Missing exchange rate record for this currency on this day</td></tr></tbody></table>
+                  <p class="desc">Ensure there are no gaps in exchange rate records for major currencies in the factcurrencyrate table. Assumes major currencies are identified by their presence in dimcurrency and gaps are defined as missing DateKey entries for a CurrencyKey.</p>
+                </section>
+
+        </body>
+        </html>
