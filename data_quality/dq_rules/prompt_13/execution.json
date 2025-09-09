@@ -1,0 +1,437 @@
+{
+  "summary": {
+    "pass": 0,
+    "fail": 1,
+    "duration": "00:00:06",
+    "warehouse": "0e7ef356fe37e56c"
+  },
+  "violations": [
+    {
+      "rule": "Sales associated with effective customer version",
+      "table": "",
+      "keys": "",
+      "detail": "50 rows",
+      "severity": "CRITICAL"
+    }
+  ],
+  "log": "[start] Submitting 1 rules to 0e7ef356fe37e56c\n[run] Executing rule 1/1: Sales associated with effective customer version\n[end] Completed",
+  "per_rule": [
+    {
+      "name": "Sales associated with effective customer version",
+      "status": "failed",
+      "row_count": 50,
+      "details": {
+        "passed": false,
+        "row_count": 50,
+        "ge_available": true,
+        "details": {
+          "success": false,
+          "results": [
+            {
+              "success": false,
+              "expectation_config": {
+                "expectation_type": "expect_table_row_count_to_equal",
+                "kwargs": {
+                  "value": 0,
+                  "result_format": "BASIC"
+                },
+                "meta": {}
+              },
+              "result": {
+                "observed_value": 50
+              },
+              "meta": {},
+              "exception_info": {
+                "raised_exception": false,
+                "exception_message": null,
+                "exception_traceback": null
+              }
+            }
+          ],
+          "evaluation_parameters": {},
+          "statistics": {
+            "evaluated_expectations": 1,
+            "successful_expectations": 0,
+            "unsuccessful_expectations": 1,
+            "success_percent": 0
+          },
+          "meta": {
+            "great_expectations_version": "0.18.21",
+            "expectation_suite_name": "default",
+            "run_id": {
+              "run_name": null,
+              "run_time": "2025-09-09T18:54:23.168245+05:30"
+            },
+            "batch_kwargs": {
+              "ge_batch_id": "4cc2f9ff-8d80-11f0-93a9-3814286fba39"
+            },
+            "batch_markers": {},
+            "batch_parameters": {},
+            "validation_time": "20250909T132423.167236Z",
+            "expectation_suite_meta": {
+              "great_expectations_version": "0.18.21"
+            }
+          }
+        }
+      },
+      "sample": [
+        {
+          "SalesOrderNumber": "SO43697",
+          "SalesOrderLineNumber": 1,
+          "CustomerKey": 21768,
+          "OrderDate": "2010-12-29T00:00:00Z",
+          "violation_reason": "No effective customer version found for the order date"
+        },
+        {
+          "SalesOrderNumber": "SO43698",
+          "SalesOrderLineNumber": 1,
+          "CustomerKey": 28389,
+          "OrderDate": "2010-12-29T00:00:00Z",
+          "violation_reason": "No effective customer version found for the order date"
+        },
+        {
+          "SalesOrderNumber": "SO43699",
+          "SalesOrderLineNumber": 1,
+          "CustomerKey": 25863,
+          "OrderDate": "2010-12-29T00:00:00Z",
+          "violation_reason": "No effective customer version found for the order date"
+        },
+        {
+          "SalesOrderNumber": "SO43700",
+          "SalesOrderLineNumber": 1,
+          "CustomerKey": 14501,
+          "OrderDate": "2010-12-29T00:00:00Z",
+          "violation_reason": "No effective customer version found for the order date"
+        },
+        {
+          "SalesOrderNumber": "SO43701",
+          "SalesOrderLineNumber": 1,
+          "CustomerKey": 11003,
+          "OrderDate": "2010-12-29T00:00:00Z",
+          "violation_reason": "No effective customer version found for the order date"
+        },
+        {
+          "SalesOrderNumber": "SO43702",
+          "SalesOrderLineNumber": 1,
+          "CustomerKey": 27645,
+          "OrderDate": "2010-12-30T00:00:00Z",
+          "violation_reason": "No effective customer version found for the order date"
+        },
+        {
+          "SalesOrderNumber": "SO43703",
+          "SalesOrderLineNumber": 1,
+          "CustomerKey": 16624,
+          "OrderDate": "2010-12-30T00:00:00Z",
+          "violation_reason": "No effective customer version found for the order date"
+        },
+        {
+          "SalesOrderNumber": "SO43704",
+          "SalesOrderLineNumber": 1,
+          "CustomerKey": 11005,
+          "OrderDate": "2010-12-30T00:00:00Z",
+          "violation_reason": "No effective customer version found for the order date"
+        },
+        {
+          "SalesOrderNumber": "SO43705",
+          "SalesOrderLineNumber": 1,
+          "CustomerKey": 11011,
+          "OrderDate": "2010-12-30T00:00:00Z",
+          "violation_reason": "No effective customer version found for the order date"
+        },
+        {
+          "SalesOrderNumber": "SO43706",
+          "SalesOrderLineNumber": 1,
+          "CustomerKey": 27621,
+          "OrderDate": "2010-12-31T00:00:00Z",
+          "violation_reason": "No effective customer version found for the order date"
+        },
+        {
+          "SalesOrderNumber": "SO43707",
+          "SalesOrderLineNumber": 1,
+          "CustomerKey": 27616,
+          "OrderDate": "2010-12-31T00:00:00Z",
+          "violation_reason": "No effective customer version found for the order date"
+        },
+        {
+          "SalesOrderNumber": "SO43708",
+          "SalesOrderLineNumber": 1,
+          "CustomerKey": 20042,
+          "OrderDate": "2010-12-31T00:00:00Z",
+          "violation_reason": "No effective customer version found for the order date"
+        },
+        {
+          "SalesOrderNumber": "SO43709",
+          "SalesOrderLineNumber": 1,
+          "CustomerKey": 16351,
+          "OrderDate": "2010-12-31T00:00:00Z",
+          "violation_reason": "No effective customer version found for the order date"
+        },
+        {
+          "SalesOrderNumber": "SO43710",
+          "SalesOrderLineNumber": 1,
+          "CustomerKey": 16517,
+          "OrderDate": "2010-12-31T00:00:00Z",
+          "violation_reason": "No effective customer version found for the order date"
+        },
+        {
+          "SalesOrderNumber": "SO43711",
+          "SalesOrderLineNumber": 1,
+          "CustomerKey": 27606,
+          "OrderDate": "2011-01-01T00:00:00Z",
+          "violation_reason": "No effective customer version found for the order date"
+        },
+        {
+          "SalesOrderNumber": "SO43712",
+          "SalesOrderLineNumber": 1,
+          "CustomerKey": 13513,
+          "OrderDate": "2011-01-01T00:00:00Z",
+          "violation_reason": "No effective customer version found for the order date"
+        },
+        {
+          "SalesOrderNumber": "SO43713",
+          "SalesOrderLineNumber": 1,
+          "CustomerKey": 27601,
+          "OrderDate": "2011-01-02T00:00:00Z",
+          "violation_reason": "No effective customer version found for the order date"
+        },
+        {
+          "SalesOrderNumber": "SO43714",
+          "SalesOrderLineNumber": 1,
+          "CustomerKey": 13591,
+          "OrderDate": "2011-01-02T00:00:00Z",
+          "violation_reason": "No effective customer version found for the order date"
+        },
+        {
+          "SalesOrderNumber": "SO43715",
+          "SalesOrderLineNumber": 1,
+          "CustomerKey": 16483,
+          "OrderDate": "2011-01-02T00:00:00Z",
+          "violation_reason": "No effective customer version found for the order date"
+        },
+        {
+          "SalesOrderNumber": "SO43716",
+          "SalesOrderLineNumber": 1,
+          "CustomerKey": 16529,
+          "OrderDate": "2011-01-02T00:00:00Z",
+          "violation_reason": "No effective customer version found for the order date"
+        },
+        {
+          "SalesOrderNumber": "SO43717",
+          "SalesOrderLineNumber": 1,
+          "CustomerKey": 25249,
+          "OrderDate": "2011-01-02T00:00:00Z",
+          "violation_reason": "No effective customer version found for the order date"
+        },
+        {
+          "SalesOrderNumber": "SO43718",
+          "SalesOrderLineNumber": 1,
+          "CustomerKey": 27668,
+          "OrderDate": "2011-01-03T00:00:00Z",
+          "violation_reason": "No effective customer version found for the order date"
+        },
+        {
+          "SalesOrderNumber": "SO43719",
+          "SalesOrderLineNumber": 1,
+          "CustomerKey": 27612,
+          "OrderDate": "2011-01-03T00:00:00Z",
+          "violation_reason": "No effective customer version found for the order date"
+        },
+        {
+          "SalesOrderNumber": "SO43720",
+          "SalesOrderLineNumber": 1,
+          "CustomerKey": 13264,
+          "OrderDate": "2011-01-03T00:00:00Z",
+          "violation_reason": "No effective customer version found for the order date"
+        },
+        {
+          "SalesOrderNumber": "SO43721",
+          "SalesOrderLineNumber": 1,
+          "CustomerKey": 13590,
+          "OrderDate": "2011-01-03T00:00:00Z",
+          "violation_reason": "No effective customer version found for the order date"
+        },
+        {
+          "SalesOrderNumber": "SO43722",
+          "SalesOrderLineNumber": 1,
+          "CustomerKey": 13581,
+          "OrderDate": "2011-01-04T00:00:00Z",
+          "violation_reason": "No effective customer version found for the order date"
+        },
+        {
+          "SalesOrderNumber": "SO43723",
+          "SalesOrderLineNumber": 1,
+          "CustomerKey": 14520,
+          "OrderDate": "2011-01-04T00:00:00Z",
+          "violation_reason": "No effective customer version found for the order date"
+        },
+        {
+          "SalesOrderNumber": "SO43724",
+          "SalesOrderLineNumber": 1,
+          "CustomerKey": 16520,
+          "OrderDate": "2011-01-04T00:00:00Z",
+          "violation_reason": "No effective customer version found for the order date"
+        },
+        {
+          "SalesOrderNumber": "SO43725",
+          "SalesOrderLineNumber": 1,
+          "CustomerKey": 13258,
+          "OrderDate": "2011-01-05T00:00:00Z",
+          "violation_reason": "No effective customer version found for the order date"
+        },
+        {
+          "SalesOrderNumber": "SO43726",
+          "SalesOrderLineNumber": 1,
+          "CustomerKey": 14560,
+          "OrderDate": "2011-01-05T00:00:00Z",
+          "violation_reason": "No effective customer version found for the order date"
+        },
+        {
+          "SalesOrderNumber": "SO43727",
+          "SalesOrderLineNumber": 1,
+          "CustomerKey": 16607,
+          "OrderDate": "2011-01-05T00:00:00Z",
+          "violation_reason": "No effective customer version found for the order date"
+        },
+        {
+          "SalesOrderNumber": "SO43728",
+          "SalesOrderLineNumber": 1,
+          "CustomerKey": 27666,
+          "OrderDate": "2011-01-06T00:00:00Z",
+          "violation_reason": "No effective customer version found for the order date"
+        },
+        {
+          "SalesOrderNumber": "SO43729",
+          "SalesOrderLineNumber": 1,
+          "CustomerKey": 11238,
+          "OrderDate": "2011-01-06T00:00:00Z",
+          "violation_reason": "No effective customer version found for the order date"
+        },
+        {
+          "SalesOrderNumber": "SO43730",
+          "SalesOrderLineNumber": 1,
+          "CustomerKey": 25861,
+          "OrderDate": "2011-01-06T00:00:00Z",
+          "violation_reason": "No effective customer version found for the order date"
+        },
+        {
+          "SalesOrderNumber": "SO43731",
+          "SalesOrderLineNumber": 1,
+          "CustomerKey": 16629,
+          "OrderDate": "2011-01-06T00:00:00Z",
+          "violation_reason": "No effective customer version found for the order date"
+        },
+        {
+          "SalesOrderNumber": "SO43732",
+          "SalesOrderLineNumber": 1,
+          "CustomerKey": 11025,
+          "OrderDate": "2011-01-06T00:00:00Z",
+          "violation_reason": "No effective customer version found for the order date"
+        },
+        {
+          "SalesOrderNumber": "SO43733",
+          "SalesOrderLineNumber": 1,
+          "CustomerKey": 27577,
+          "OrderDate": "2011-01-06T00:00:00Z",
+          "violation_reason": "No effective customer version found for the order date"
+        },
+        {
+          "SalesOrderNumber": "SO43734",
+          "SalesOrderLineNumber": 1,
+          "CustomerKey": 27604,
+          "OrderDate": "2011-01-07T00:00:00Z",
+          "violation_reason": "No effective customer version found for the order date"
+        },
+        {
+          "SalesOrderNumber": "SO43735",
+          "SalesOrderLineNumber": 1,
+          "CustomerKey": 16522,
+          "OrderDate": "2011-01-07T00:00:00Z",
+          "violation_reason": "No effective customer version found for the order date"
+        },
+        {
+          "SalesOrderNumber": "SO43736",
+          "SalesOrderLineNumber": 1,
+          "CustomerKey": 11002,
+          "OrderDate": "2011-01-07T00:00:00Z",
+          "violation_reason": "No effective customer version found for the order date"
+        },
+        {
+          "SalesOrderNumber": "SO43737",
+          "SalesOrderLineNumber": 1,
+          "CustomerKey": 13261,
+          "OrderDate": "2011-01-08T00:00:00Z",
+          "violation_reason": "No effective customer version found for the order date"
+        },
+        {
+          "SalesOrderNumber": "SO43738",
+          "SalesOrderLineNumber": 1,
+          "CustomerKey": 11606,
+          "OrderDate": "2011-01-08T00:00:00Z",
+          "violation_reason": "No effective customer version found for the order date"
+        },
+        {
+          "SalesOrderNumber": "SO43739",
+          "SalesOrderLineNumber": 1,
+          "CustomerKey": 13563,
+          "OrderDate": "2011-01-08T00:00:00Z",
+          "violation_reason": "No effective customer version found for the order date"
+        },
+        {
+          "SalesOrderNumber": "SO43740",
+          "SalesOrderLineNumber": 1,
+          "CustomerKey": 16527,
+          "OrderDate": "2011-01-08T00:00:00Z",
+          "violation_reason": "No effective customer version found for the order date"
+        },
+        {
+          "SalesOrderNumber": "SO43741",
+          "SalesOrderLineNumber": 1,
+          "CustomerKey": 27671,
+          "OrderDate": "2011-01-09T00:00:00Z",
+          "violation_reason": "No effective customer version found for the order date"
+        },
+        {
+          "SalesOrderNumber": "SO43742",
+          "SalesOrderLineNumber": 1,
+          "CustomerKey": 13576,
+          "OrderDate": "2011-01-09T00:00:00Z",
+          "violation_reason": "No effective customer version found for the order date"
+        },
+        {
+          "SalesOrderNumber": "SO43743",
+          "SalesOrderLineNumber": 1,
+          "CustomerKey": 11007,
+          "OrderDate": "2011-01-09T00:00:00Z",
+          "violation_reason": "No effective customer version found for the order date"
+        },
+        {
+          "SalesOrderNumber": "SO43744",
+          "SalesOrderLineNumber": 1,
+          "CustomerKey": 16631,
+          "OrderDate": "2011-01-09T00:00:00Z",
+          "violation_reason": "No effective customer version found for the order date"
+        },
+        {
+          "SalesOrderNumber": "SO43745",
+          "SalesOrderLineNumber": 1,
+          "CustomerKey": 16514,
+          "OrderDate": "2011-01-10T00:00:00Z",
+          "violation_reason": "No effective customer version found for the order date"
+        },
+        {
+          "SalesOrderNumber": "SO43746",
+          "SalesOrderLineNumber": 1,
+          "CustomerKey": 16616,
+          "OrderDate": "2011-01-10T00:00:00Z",
+          "violation_reason": "No effective customer version found for the order date"
+        }
+      ],
+      "sql": "SELECT fs.`SalesOrderNumber`,\n       fs.`SalesOrderLineNumber`,\n       fs.`CustomerKey`,\n       fs.`OrderDate`,\n       'No effective customer version found for the order date' AS `violation_reason`\nFROM `aigdqr-ragstoriches`.`adv_works_dw`.`factinternetsales` fs\nWHERE NOT EXISTS\n    (SELECT 1\n     FROM `aigdqr-ragstoriches`.`calendar_ddp`.`v_customer` vc\n     WHERE vc.`customer_id` = fs.`CustomerKey`\n       AND vc.`insert_date` <= fs.`OrderDate`\n       AND (vc.`update_date` IS NULL\n            OR vc.`update_date` > fs.`OrderDate`))",
+      "severity": "CRITICAL",
+      "description": "Ensure each sale record in `factinternetsales` is associated with the customer version effective on the corresponding order date. Assumes `v_customer` contains the effective customer version based on `insert_date` and `update_date`.",
+      "timing_sec": {
+        "sql": 6.639
+      }
+    }
+  ]
+}
