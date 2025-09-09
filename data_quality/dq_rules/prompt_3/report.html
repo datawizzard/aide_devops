@@ -1,0 +1,230 @@
+
+        <!doctype html>
+        <html>
+        <head>
+          <meta charset="utf-8" />
+          <title>Qualitron — Data Quality Report</title>
+          <style>
+            :root {
+              --accent: #00A79D;
+              --accent-hover: #008E86;
+              --text: #0E141B;
+              --text-subtle: #5E6A75;
+              --surface: #FFFFFF;
+              --surface-alt: #F6F8FA;
+              --border: #E6E9EF;
+              --radius: 12px;
+              --font-sans: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+              --font-mono: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, 'Liberation Mono', 'Courier New', monospace;
+            }
+            body {
+              font-family: var(--font-sans);
+              margin: 24px;
+              background: var(--surface);
+              color: var(--text);
+            }
+            .brand { display: flex; align-items: center; gap: 12px; margin-bottom: 12px; }
+            .logo-badge {
+              padding: 4px 8px;
+              border-radius: var(--radius);
+              border: 1px solid rgba(0,0,0,0.12);
+              color: var(--accent);
+              font-weight: 600;
+              letter-spacing: 0.06em;
+            }
+            .brand-title { font-size: 16px; font-weight: 600; }
+            .brand-sub { font-size: 12px; color: var(--text-subtle); }
+            .rule { border: 1px solid var(--border); padding: 12px; margin: 12px 0; border-radius: var(--radius); background: var(--surface); }
+            .status { text-transform: uppercase; font-size: 12px; padding: 2px 6px; border-radius: 999px; margin-left: 8px; }
+            .status.passed { background: #e6ffed; color: #036400; border: 1px solid #b5e6bf; }
+            .status.failed { background: #ffebe6; color: #970000; border: 1px solid #f3b1a3; }
+            .status.error  { background: #fff4e5; color: #8a6d3b; border: 1px solid #ffd9a6; }
+            table { border-collapse: collapse; margin-top: 8px; width: 100%; }
+            th, td { border: 1px solid var(--border); padding: 6px; font-size: 12px; }
+            th { background: var(--surface-alt); text-align: left; }
+            pre { white-space: pre-wrap; background: var(--surface-alt); padding: 8px; border: 1px solid var(--border); border-radius: 8px; }
+            .meta { display: flex; gap: 16px; color: #333; font-size: 13px; margin: 6px 0; }
+            .desc { color: #444; }
+            .divider { height: 1px; background: var(--border); margin: 12px 0; }
+            .header { display: flex; align-items: baseline; justify-content: space-between; margin-bottom: 8px; }
+            .header h1 { margin: 0; font-size: 20px; }
+            .ts { color: var(--text-subtle); font-size: 12px; }
+          </style>
+        </head>
+        <body>
+          <div class="header">
+            <div class="brand">
+              <div class="logo-badge">[ QUALITRON ]</div>
+              <div>
+                <div class="brand-title">Qualitron – AI Data Quality</div>
+                <div class="brand-sub">EPAM-inspired single-page UI</div>
+              </div>
+            </div>
+            <div class="ts">Generated 2025-09-08 18:00:42 UTC</div>
+          </div>
+          <div class="divider"></div>
+
+                <section class="rule">
+                  <h2>
+                    Product without subcategory
+                    <span class="status failed">failed</span>
+                  </h2>
+                  <div class="meta">
+                    <div><b>Severity:</b> HIGH</div>
+                    <div><b>Violating rows:</b> 50</div>
+                  </div>
+                  <details>
+                    <summary>SQL</summary>
+                    <pre>SELECT p.`ProductKey`,
+       p.`EnglishProductName`,
+       &#x27;Product lacks an associated subcategory&#x27; AS `violation_reason`
+FROM `aigdqr-ragstoriches`.`adv_works_dw`.`dimproduct` p
+WHERE NOT EXISTS
+    (SELECT 1
+     FROM `aigdqr-ragstoriches`.`adv_works_dw`.`dimproductsubcategory` s
+     WHERE p.`ProductSubcategoryKey` = s.`ProductSubcategoryKey`)</pre>
+                  </details>
+                  <details>
+                    <summary>Validation details</summary>
+                    <pre>{
+  &quot;passed&quot;: false,
+  &quot;row_count&quot;: 50,
+  &quot;ge_available&quot;: true,
+  &quot;details&quot;: {
+    &quot;success&quot;: false,
+    &quot;results&quot;: [
+      {
+        &quot;success&quot;: false,
+        &quot;expectation_config&quot;: {
+          &quot;expectation_type&quot;: &quot;expect_table_row_count_to_equal&quot;,
+          &quot;kwargs&quot;: {
+            &quot;value&quot;: 0,
+            &quot;result_format&quot;: &quot;BASIC&quot;
+          },
+          &quot;meta&quot;: {}
+        },
+        &quot;result&quot;: {
+          &quot;observed_value&quot;: 50
+        },
+        &quot;meta&quot;: {},
+        &quot;exception_info&quot;: {
+          &quot;raised_exception&quot;: false,
+          &quot;exception_message&quot;: null,
+          &quot;exception_traceback&quot;: null
+        }
+      }
+    ],
+    &quot;evaluation_parameters&quot;: {},
+    &quot;statistics&quot;: {
+      &quot;evaluated_expectations&quot;: 1,
+      &quot;successful_expectations&quot;: 0,
+      &quot;unsuccessful_expectations&quot;: 1,
+      &quot;success_percent&quot;: 0
+    },
+    &quot;meta&quot;: {
+      &quot;great_expectations_version&quot;: &quot;0.18.21&quot;,
+      &quot;expectation_suite_name&quot;: &quot;default&quot;,
+      &quot;run_id&quot;: {
+        &quot;run_name&quot;: null,
+        &quot;run_time&quot;: &quot;2025-09-08T23:27:41.228737+05:30&quot;
+      },
+      &quot;batch_kwargs&quot;: {
+        &quot;ge_batch_id&quot;: &quot;505ab192-8cdd-11f0-9a15-3814286fba39&quot;
+      },
+      &quot;batch_markers&quot;: {},
+      &quot;batch_parameters&quot;: {},
+      &quot;validation_time&quot;: &quot;20250908T175741.228737Z&quot;,
+      &quot;expectation_suite_meta&quot;: {
+        &quot;great_expectations_version&quot;: &quot;0.18.21&quot;
+      }
+    }
+  }
+}</pre>
+                  </details>
+                  <table><thead><tr><th>ProductKey</th><th>EnglishProductName</th><th>violation_reason</th></tr></thead><tbody><tr><td>1</td><td>Adjustable Race</td><td>Product lacks an associated subcategory</td></tr><tr><td>2</td><td>Bearing Ball</td><td>Product lacks an associated subcategory</td></tr><tr><td>3</td><td>BB Ball Bearing</td><td>Product lacks an associated subcategory</td></tr><tr><td>4</td><td>Headset Ball Bearings</td><td>Product lacks an associated subcategory</td></tr><tr><td>5</td><td>Blade</td><td>Product lacks an associated subcategory</td></tr><tr><td>6</td><td>LL Crankarm</td><td>Product lacks an associated subcategory</td></tr><tr><td>7</td><td>ML Crankarm</td><td>Product lacks an associated subcategory</td></tr><tr><td>8</td><td>HL Crankarm</td><td>Product lacks an associated subcategory</td></tr><tr><td>9</td><td>Chainring Bolts</td><td>Product lacks an associated subcategory</td></tr><tr><td>10</td><td>Chainring Nut</td><td>Product lacks an associated subcategory</td></tr><tr><td>11</td><td>Chainring</td><td>Product lacks an associated subcategory</td></tr><tr><td>12</td><td>Crown Race</td><td>Product lacks an associated subcategory</td></tr><tr><td>13</td><td>Chain Stays</td><td>Product lacks an associated subcategory</td></tr><tr><td>14</td><td>Decal 1</td><td>Product lacks an associated subcategory</td></tr><tr><td>15</td><td>Decal 2</td><td>Product lacks an associated subcategory</td></tr><tr><td>16</td><td>Down Tube</td><td>Product lacks an associated subcategory</td></tr><tr><td>17</td><td>Mountain End Caps</td><td>Product lacks an associated subcategory</td></tr><tr><td>18</td><td>Road End Caps</td><td>Product lacks an associated subcategory</td></tr><tr><td>19</td><td>Touring End Caps</td><td>Product lacks an associated subcategory</td></tr><tr><td>20</td><td>Fork End</td><td>Product lacks an associated subcategory</td></tr><tr><td>21</td><td>Freewheel</td><td>Product lacks an associated subcategory</td></tr><tr><td>22</td><td>Flat Washer 1</td><td>Product lacks an associated subcategory</td></tr><tr><td>23</td><td>Flat Washer 6</td><td>Product lacks an associated subcategory</td></tr><tr><td>24</td><td>Flat Washer 2</td><td>Product lacks an associated subcategory</td></tr><tr><td>25</td><td>Flat Washer 9</td><td>Product lacks an associated subcategory</td></tr><tr><td>26</td><td>Flat Washer 4</td><td>Product lacks an associated subcategory</td></tr><tr><td>27</td><td>Flat Washer 3</td><td>Product lacks an associated subcategory</td></tr><tr><td>28</td><td>Flat Washer 8</td><td>Product lacks an associated subcategory</td></tr><tr><td>29</td><td>Flat Washer 5</td><td>Product lacks an associated subcategory</td></tr><tr><td>30</td><td>Flat Washer 7</td><td>Product lacks an associated subcategory</td></tr><tr><td>31</td><td>Fork Crown</td><td>Product lacks an associated subcategory</td></tr><tr><td>32</td><td>Front Derailleur Cage</td><td>Product lacks an associated subcategory</td></tr><tr><td>33</td><td>Front Derailleur Linkage</td><td>Product lacks an associated subcategory</td></tr><tr><td>34</td><td>Guide Pulley</td><td>Product lacks an associated subcategory</td></tr><tr><td>35</td><td>LL Grip Tape</td><td>Product lacks an associated subcategory</td></tr><tr><td>36</td><td>ML Grip Tape</td><td>Product lacks an associated subcategory</td></tr><tr><td>37</td><td>HL Grip Tape</td><td>Product lacks an associated subcategory</td></tr><tr><td>38</td><td>Thin-Jam Hex Nut 9</td><td>Product lacks an associated subcategory</td></tr><tr><td>39</td><td>Thin-Jam Hex Nut 10</td><td>Product lacks an associated subcategory</td></tr><tr><td>40</td><td>Thin-Jam Hex Nut 1</td><td>Product lacks an associated subcategory</td></tr><tr><td>41</td><td>Thin-Jam Hex Nut 2</td><td>Product lacks an associated subcategory</td></tr><tr><td>42</td><td>Thin-Jam Hex Nut 15</td><td>Product lacks an associated subcategory</td></tr><tr><td>43</td><td>Thin-Jam Hex Nut 16</td><td>Product lacks an associated subcategory</td></tr><tr><td>44</td><td>Thin-Jam Hex Nut 5</td><td>Product lacks an associated subcategory</td></tr><tr><td>45</td><td>Thin-Jam Hex Nut 6</td><td>Product lacks an associated subcategory</td></tr><tr><td>46</td><td>Thin-Jam Hex Nut 3</td><td>Product lacks an associated subcategory</td></tr><tr><td>47</td><td>Thin-Jam Hex Nut 4</td><td>Product lacks an associated subcategory</td></tr><tr><td>48</td><td>Thin-Jam Hex Nut 13</td><td>Product lacks an associated subcategory</td></tr><tr><td>49</td><td>Thin-Jam Hex Nut 14</td><td>Product lacks an associated subcategory</td></tr><tr><td>50</td><td>Thin-Jam Hex Nut 7</td><td>Product lacks an associated subcategory</td></tr></tbody></table>
+                  <p class="desc">Flags products in `dimproduct` that do not have an associated subcategory in `dimproductsubcategory`. Assumes `ProductSubcategoryKey` in `dimproduct` is nullable and should reference a valid subcategory.</p>
+                </section>
+
+                <section class="rule">
+                  <h2>
+                    Subcategory without parent category
+                    <span class="status passed">passed</span>
+                  </h2>
+                  <div class="meta">
+                    <div><b>Severity:</b> CRITICAL</div>
+                    <div><b>Violating rows:</b> 0</div>
+                  </div>
+                  <details>
+                    <summary>SQL</summary>
+                    <pre>SELECT s.`ProductSubcategoryKey`,
+       s.`EnglishProductSubcategoryName`,
+       &#x27;Subcategory lacks an associated parent category&#x27; AS `violation_reason`
+FROM `aigdqr-ragstoriches`.`adv_works_dw`.`dimproductsubcategory` s
+WHERE NOT EXISTS
+    (SELECT 1
+     FROM `aigdqr-ragstoriches`.`adv_works_dw`.`dimproductcategory` c
+     WHERE s.`ProductCategoryKey` = c.`ProductCategoryKey`)</pre>
+                  </details>
+                  <details>
+                    <summary>Validation details</summary>
+                    <pre>{
+  &quot;passed&quot;: true,
+  &quot;row_count&quot;: 0,
+  &quot;ge_available&quot;: true,
+  &quot;details&quot;: {
+    &quot;success&quot;: true,
+    &quot;results&quot;: [
+      {
+        &quot;success&quot;: true,
+        &quot;expectation_config&quot;: {
+          &quot;expectation_type&quot;: &quot;expect_table_row_count_to_equal&quot;,
+          &quot;kwargs&quot;: {
+            &quot;value&quot;: 0,
+            &quot;result_format&quot;: &quot;BASIC&quot;
+          },
+          &quot;meta&quot;: {}
+        },
+        &quot;result&quot;: {
+          &quot;observed_value&quot;: 0
+        },
+        &quot;meta&quot;: {},
+        &quot;exception_info&quot;: {
+          &quot;raised_exception&quot;: false,
+          &quot;exception_message&quot;: null,
+          &quot;exception_traceback&quot;: null
+        }
+      }
+    ],
+    &quot;evaluation_parameters&quot;: {},
+    &quot;statistics&quot;: {
+      &quot;evaluated_expectations&quot;: 1,
+      &quot;successful_expectations&quot;: 1,
+      &quot;unsuccessful_expectations&quot;: 0,
+      &quot;success_percent&quot;: 100
+    },
+    &quot;meta&quot;: {
+      &quot;great_expectations_version&quot;: &quot;0.18.21&quot;,
+      &quot;expectation_suite_name&quot;: &quot;default&quot;,
+      &quot;run_id&quot;: {
+        &quot;run_name&quot;: null,
+        &quot;run_time&quot;: &quot;2025-09-08T23:27:47.383437+05:30&quot;
+      },
+      &quot;batch_kwargs&quot;: {
+        &quot;ge_batch_id&quot;: &quot;54051f16-8cdd-11f0-bc9d-3814286fba39&quot;
+      },
+      &quot;batch_markers&quot;: {},
+      &quot;batch_parameters&quot;: {},
+      &quot;validation_time&quot;: &quot;20250908T175747.382444Z&quot;,
+      &quot;expectation_suite_meta&quot;: {
+        &quot;great_expectations_version&quot;: &quot;0.18.21&quot;
+      }
+    }
+  }
+}</pre>
+                  </details>
+
+                  <p class="desc">Flags subcategories in `dimproductsubcategory` that do not have an associated parent category in `dimproductcategory`. Assumes `ProductCategoryKey` in `dimproductsubcategory` is mandatory and should reference a valid category.</p>
+                </section>
+
+        </body>
+        </html>

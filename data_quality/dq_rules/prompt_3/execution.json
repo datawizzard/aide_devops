@@ -1,0 +1,403 @@
+{
+  "summary": {
+    "pass": 1,
+    "fail": 1,
+    "duration": "00:00:05",
+    "warehouse": "0e7ef356fe37e56c"
+  },
+  "violations": [
+    {
+      "rule": "Product without subcategory",
+      "table": "",
+      "keys": "",
+      "detail": "50 rows",
+      "severity": "HIGH"
+    }
+  ],
+  "log": "[start] Submitting 2 rules to 0e7ef356fe37e56c\n[run] Executing rule 1/2: Product without subcategory\n[run] Executing rule 2/2: Subcategory without parent category\n[end] Completed",
+  "per_rule": [
+    {
+      "name": "Product without subcategory",
+      "status": "failed",
+      "row_count": 50,
+      "details": {
+        "passed": false,
+        "row_count": 50,
+        "ge_available": true,
+        "details": {
+          "success": false,
+          "results": [
+            {
+              "success": false,
+              "expectation_config": {
+                "expectation_type": "expect_table_row_count_to_equal",
+                "kwargs": {
+                  "value": 0,
+                  "result_format": "BASIC"
+                },
+                "meta": {}
+              },
+              "result": {
+                "observed_value": 50
+              },
+              "meta": {},
+              "exception_info": {
+                "raised_exception": false,
+                "exception_message": null,
+                "exception_traceback": null
+              }
+            }
+          ],
+          "evaluation_parameters": {},
+          "statistics": {
+            "evaluated_expectations": 1,
+            "successful_expectations": 0,
+            "unsuccessful_expectations": 1,
+            "success_percent": 0
+          },
+          "meta": {
+            "great_expectations_version": "0.18.21",
+            "expectation_suite_name": "default",
+            "run_id": {
+              "run_name": null,
+              "run_time": "2025-09-08T23:27:41.228737+05:30"
+            },
+            "batch_kwargs": {
+              "ge_batch_id": "505ab192-8cdd-11f0-9a15-3814286fba39"
+            },
+            "batch_markers": {},
+            "batch_parameters": {},
+            "validation_time": "20250908T175741.228737Z",
+            "expectation_suite_meta": {
+              "great_expectations_version": "0.18.21"
+            }
+          }
+        }
+      },
+      "sample": [
+        {
+          "ProductKey": 1,
+          "EnglishProductName": "Adjustable Race",
+          "violation_reason": "Product lacks an associated subcategory"
+        },
+        {
+          "ProductKey": 2,
+          "EnglishProductName": "Bearing Ball",
+          "violation_reason": "Product lacks an associated subcategory"
+        },
+        {
+          "ProductKey": 3,
+          "EnglishProductName": "BB Ball Bearing",
+          "violation_reason": "Product lacks an associated subcategory"
+        },
+        {
+          "ProductKey": 4,
+          "EnglishProductName": "Headset Ball Bearings",
+          "violation_reason": "Product lacks an associated subcategory"
+        },
+        {
+          "ProductKey": 5,
+          "EnglishProductName": "Blade",
+          "violation_reason": "Product lacks an associated subcategory"
+        },
+        {
+          "ProductKey": 6,
+          "EnglishProductName": "LL Crankarm",
+          "violation_reason": "Product lacks an associated subcategory"
+        },
+        {
+          "ProductKey": 7,
+          "EnglishProductName": "ML Crankarm",
+          "violation_reason": "Product lacks an associated subcategory"
+        },
+        {
+          "ProductKey": 8,
+          "EnglishProductName": "HL Crankarm",
+          "violation_reason": "Product lacks an associated subcategory"
+        },
+        {
+          "ProductKey": 9,
+          "EnglishProductName": "Chainring Bolts",
+          "violation_reason": "Product lacks an associated subcategory"
+        },
+        {
+          "ProductKey": 10,
+          "EnglishProductName": "Chainring Nut",
+          "violation_reason": "Product lacks an associated subcategory"
+        },
+        {
+          "ProductKey": 11,
+          "EnglishProductName": "Chainring",
+          "violation_reason": "Product lacks an associated subcategory"
+        },
+        {
+          "ProductKey": 12,
+          "EnglishProductName": "Crown Race",
+          "violation_reason": "Product lacks an associated subcategory"
+        },
+        {
+          "ProductKey": 13,
+          "EnglishProductName": "Chain Stays",
+          "violation_reason": "Product lacks an associated subcategory"
+        },
+        {
+          "ProductKey": 14,
+          "EnglishProductName": "Decal 1",
+          "violation_reason": "Product lacks an associated subcategory"
+        },
+        {
+          "ProductKey": 15,
+          "EnglishProductName": "Decal 2",
+          "violation_reason": "Product lacks an associated subcategory"
+        },
+        {
+          "ProductKey": 16,
+          "EnglishProductName": "Down Tube",
+          "violation_reason": "Product lacks an associated subcategory"
+        },
+        {
+          "ProductKey": 17,
+          "EnglishProductName": "Mountain End Caps",
+          "violation_reason": "Product lacks an associated subcategory"
+        },
+        {
+          "ProductKey": 18,
+          "EnglishProductName": "Road End Caps",
+          "violation_reason": "Product lacks an associated subcategory"
+        },
+        {
+          "ProductKey": 19,
+          "EnglishProductName": "Touring End Caps",
+          "violation_reason": "Product lacks an associated subcategory"
+        },
+        {
+          "ProductKey": 20,
+          "EnglishProductName": "Fork End",
+          "violation_reason": "Product lacks an associated subcategory"
+        },
+        {
+          "ProductKey": 21,
+          "EnglishProductName": "Freewheel",
+          "violation_reason": "Product lacks an associated subcategory"
+        },
+        {
+          "ProductKey": 22,
+          "EnglishProductName": "Flat Washer 1",
+          "violation_reason": "Product lacks an associated subcategory"
+        },
+        {
+          "ProductKey": 23,
+          "EnglishProductName": "Flat Washer 6",
+          "violation_reason": "Product lacks an associated subcategory"
+        },
+        {
+          "ProductKey": 24,
+          "EnglishProductName": "Flat Washer 2",
+          "violation_reason": "Product lacks an associated subcategory"
+        },
+        {
+          "ProductKey": 25,
+          "EnglishProductName": "Flat Washer 9",
+          "violation_reason": "Product lacks an associated subcategory"
+        },
+        {
+          "ProductKey": 26,
+          "EnglishProductName": "Flat Washer 4",
+          "violation_reason": "Product lacks an associated subcategory"
+        },
+        {
+          "ProductKey": 27,
+          "EnglishProductName": "Flat Washer 3",
+          "violation_reason": "Product lacks an associated subcategory"
+        },
+        {
+          "ProductKey": 28,
+          "EnglishProductName": "Flat Washer 8",
+          "violation_reason": "Product lacks an associated subcategory"
+        },
+        {
+          "ProductKey": 29,
+          "EnglishProductName": "Flat Washer 5",
+          "violation_reason": "Product lacks an associated subcategory"
+        },
+        {
+          "ProductKey": 30,
+          "EnglishProductName": "Flat Washer 7",
+          "violation_reason": "Product lacks an associated subcategory"
+        },
+        {
+          "ProductKey": 31,
+          "EnglishProductName": "Fork Crown",
+          "violation_reason": "Product lacks an associated subcategory"
+        },
+        {
+          "ProductKey": 32,
+          "EnglishProductName": "Front Derailleur Cage",
+          "violation_reason": "Product lacks an associated subcategory"
+        },
+        {
+          "ProductKey": 33,
+          "EnglishProductName": "Front Derailleur Linkage",
+          "violation_reason": "Product lacks an associated subcategory"
+        },
+        {
+          "ProductKey": 34,
+          "EnglishProductName": "Guide Pulley",
+          "violation_reason": "Product lacks an associated subcategory"
+        },
+        {
+          "ProductKey": 35,
+          "EnglishProductName": "LL Grip Tape",
+          "violation_reason": "Product lacks an associated subcategory"
+        },
+        {
+          "ProductKey": 36,
+          "EnglishProductName": "ML Grip Tape",
+          "violation_reason": "Product lacks an associated subcategory"
+        },
+        {
+          "ProductKey": 37,
+          "EnglishProductName": "HL Grip Tape",
+          "violation_reason": "Product lacks an associated subcategory"
+        },
+        {
+          "ProductKey": 38,
+          "EnglishProductName": "Thin-Jam Hex Nut 9",
+          "violation_reason": "Product lacks an associated subcategory"
+        },
+        {
+          "ProductKey": 39,
+          "EnglishProductName": "Thin-Jam Hex Nut 10",
+          "violation_reason": "Product lacks an associated subcategory"
+        },
+        {
+          "ProductKey": 40,
+          "EnglishProductName": "Thin-Jam Hex Nut 1",
+          "violation_reason": "Product lacks an associated subcategory"
+        },
+        {
+          "ProductKey": 41,
+          "EnglishProductName": "Thin-Jam Hex Nut 2",
+          "violation_reason": "Product lacks an associated subcategory"
+        },
+        {
+          "ProductKey": 42,
+          "EnglishProductName": "Thin-Jam Hex Nut 15",
+          "violation_reason": "Product lacks an associated subcategory"
+        },
+        {
+          "ProductKey": 43,
+          "EnglishProductName": "Thin-Jam Hex Nut 16",
+          "violation_reason": "Product lacks an associated subcategory"
+        },
+        {
+          "ProductKey": 44,
+          "EnglishProductName": "Thin-Jam Hex Nut 5",
+          "violation_reason": "Product lacks an associated subcategory"
+        },
+        {
+          "ProductKey": 45,
+          "EnglishProductName": "Thin-Jam Hex Nut 6",
+          "violation_reason": "Product lacks an associated subcategory"
+        },
+        {
+          "ProductKey": 46,
+          "EnglishProductName": "Thin-Jam Hex Nut 3",
+          "violation_reason": "Product lacks an associated subcategory"
+        },
+        {
+          "ProductKey": 47,
+          "EnglishProductName": "Thin-Jam Hex Nut 4",
+          "violation_reason": "Product lacks an associated subcategory"
+        },
+        {
+          "ProductKey": 48,
+          "EnglishProductName": "Thin-Jam Hex Nut 13",
+          "violation_reason": "Product lacks an associated subcategory"
+        },
+        {
+          "ProductKey": 49,
+          "EnglishProductName": "Thin-Jam Hex Nut 14",
+          "violation_reason": "Product lacks an associated subcategory"
+        },
+        {
+          "ProductKey": 50,
+          "EnglishProductName": "Thin-Jam Hex Nut 7",
+          "violation_reason": "Product lacks an associated subcategory"
+        }
+      ],
+      "sql": "SELECT p.`ProductKey`,\n       p.`EnglishProductName`,\n       'Product lacks an associated subcategory' AS `violation_reason`\nFROM `aigdqr-ragstoriches`.`adv_works_dw`.`dimproduct` p\nWHERE NOT EXISTS\n    (SELECT 1\n     FROM `aigdqr-ragstoriches`.`adv_works_dw`.`dimproductsubcategory` s\n     WHERE p.`ProductSubcategoryKey` = s.`ProductSubcategoryKey`)",
+      "severity": "HIGH",
+      "description": "Flags products in `dimproduct` that do not have an associated subcategory in `dimproductsubcategory`. Assumes `ProductSubcategoryKey` in `dimproduct` is nullable and should reference a valid subcategory.",
+      "timing_sec": {
+        "sql": 2.689
+      }
+    },
+    {
+      "name": "Subcategory without parent category",
+      "status": "passed",
+      "row_count": 0,
+      "details": {
+        "passed": true,
+        "row_count": 0,
+        "ge_available": true,
+        "details": {
+          "success": true,
+          "results": [
+            {
+              "success": true,
+              "expectation_config": {
+                "expectation_type": "expect_table_row_count_to_equal",
+                "kwargs": {
+                  "value": 0,
+                  "result_format": "BASIC"
+                },
+                "meta": {}
+              },
+              "result": {
+                "observed_value": 0
+              },
+              "meta": {},
+              "exception_info": {
+                "raised_exception": false,
+                "exception_message": null,
+                "exception_traceback": null
+              }
+            }
+          ],
+          "evaluation_parameters": {},
+          "statistics": {
+            "evaluated_expectations": 1,
+            "successful_expectations": 1,
+            "unsuccessful_expectations": 0,
+            "success_percent": 100
+          },
+          "meta": {
+            "great_expectations_version": "0.18.21",
+            "expectation_suite_name": "default",
+            "run_id": {
+              "run_name": null,
+              "run_time": "2025-09-08T23:27:47.383437+05:30"
+            },
+            "batch_kwargs": {
+              "ge_batch_id": "54051f16-8cdd-11f0-bc9d-3814286fba39"
+            },
+            "batch_markers": {},
+            "batch_parameters": {},
+            "validation_time": "20250908T175747.382444Z",
+            "expectation_suite_meta": {
+              "great_expectations_version": "0.18.21"
+            }
+          }
+        }
+      },
+      "sample": [],
+      "sql": "SELECT s.`ProductSubcategoryKey`,\n       s.`EnglishProductSubcategoryName`,\n       'Subcategory lacks an associated parent category' AS `violation_reason`\nFROM `aigdqr-ragstoriches`.`adv_works_dw`.`dimproductsubcategory` s\nWHERE NOT EXISTS\n    (SELECT 1\n     FROM `aigdqr-ragstoriches`.`adv_works_dw`.`dimproductcategory` c\n     WHERE s.`ProductCategoryKey` = c.`ProductCategoryKey`)",
+      "severity": "CRITICAL",
+      "description": "Flags subcategories in `dimproductsubcategory` that do not have an associated parent category in `dimproductcategory`. Assumes `ProductCategoryKey` in `dimproductsubcategory` is mandatory and should reference a valid category.",
+      "timing_sec": {
+        "sql": 5.433
+      }
+    }
+  ]
+}
