@@ -1,0 +1,403 @@
+{
+  "summary": {
+    "pass": 1,
+    "fail": 1,
+    "duration": "00:00:12",
+    "warehouse": "0e7ef356fe37e56c"
+  },
+  "violations": [
+    {
+      "rule": "No gaps in exchange rate records for major currencies",
+      "table": "",
+      "keys": "",
+      "detail": "50 rows",
+      "severity": "HIGH"
+    }
+  ],
+  "log": "[start] Submitting 2 rules to 0e7ef356fe37e56c\n[run] Executing rule 1/2: Positive exchange rate per currency per day\n[run] Executing rule 2/2: No gaps in exchange rate records for major currencies\n[end] Completed",
+  "per_rule": [
+    {
+      "name": "Positive exchange rate per currency per day",
+      "status": "passed",
+      "row_count": 0,
+      "details": {
+        "passed": true,
+        "row_count": 0,
+        "ge_available": true,
+        "details": {
+          "success": true,
+          "results": [
+            {
+              "success": true,
+              "expectation_config": {
+                "expectation_type": "expect_table_row_count_to_equal",
+                "kwargs": {
+                  "value": 0,
+                  "result_format": "BASIC"
+                },
+                "meta": {}
+              },
+              "result": {
+                "observed_value": 0
+              },
+              "meta": {},
+              "exception_info": {
+                "raised_exception": false,
+                "exception_message": null,
+                "exception_traceback": null
+              }
+            }
+          ],
+          "evaluation_parameters": {},
+          "statistics": {
+            "evaluated_expectations": 1,
+            "successful_expectations": 1,
+            "unsuccessful_expectations": 0,
+            "success_percent": 100
+          },
+          "meta": {
+            "great_expectations_version": "0.18.21",
+            "expectation_suite_name": "default",
+            "run_id": {
+              "run_name": null,
+              "run_time": "2025-09-09T21:08:43.004103+05:30"
+            },
+            "batch_kwargs": {
+              "ge_batch_id": "10cc7c31-8d93-11f0-a6ad-3814286fba39"
+            },
+            "batch_markers": {},
+            "batch_parameters": {},
+            "validation_time": "20250909T153843.004103Z",
+            "expectation_suite_meta": {
+              "great_expectations_version": "0.18.21"
+            }
+          }
+        }
+      },
+      "sample": [],
+      "sql": "SELECT fcr.`CurrencyKey`,\n       fcr.`DateKey`,\n       fcr.`Date`,\n       'No positive exchange rate recorded for this currency on this day' AS `violation_reason`\nFROM `aigdqr-ragstoriches`.`adv_works_dw`.`factcurrencyrate` fcr\nJOIN `aigdqr-ragstoriches`.`adv_works_dw`.`dimcurrency` dc ON fcr.`CurrencyKey` = dc.`CurrencyKey`\nWHERE NOT EXISTS\n    (SELECT 1\n     FROM `aigdqr-ragstoriches`.`adv_works_dw`.`factcurrencyrate` fcr_inner\n     WHERE fcr_inner.`CurrencyKey` = fcr.`CurrencyKey`\n       AND fcr_inner.`DateKey` = fcr.`DateKey`\n       AND fcr_inner.`AverageRate` > 0)",
+      "severity": "CRITICAL",
+      "description": "Ensure that for each major currency, there is at least one positive exchange rate recorded per day in the factcurrencyrate table. Assumes major currencies are identified by their presence in dimcurrency.",
+      "timing_sec": {
+        "sql": 7.311
+      }
+    },
+    {
+      "name": "No gaps in exchange rate records for major currencies",
+      "status": "failed",
+      "row_count": 50,
+      "details": {
+        "passed": false,
+        "row_count": 50,
+        "ge_available": true,
+        "details": {
+          "success": false,
+          "results": [
+            {
+              "success": false,
+              "expectation_config": {
+                "expectation_type": "expect_table_row_count_to_equal",
+                "kwargs": {
+                  "value": 0,
+                  "result_format": "BASIC"
+                },
+                "meta": {}
+              },
+              "result": {
+                "observed_value": 50
+              },
+              "meta": {},
+              "exception_info": {
+                "raised_exception": false,
+                "exception_message": null,
+                "exception_traceback": null
+              }
+            }
+          ],
+          "evaluation_parameters": {},
+          "statistics": {
+            "evaluated_expectations": 1,
+            "successful_expectations": 0,
+            "unsuccessful_expectations": 1,
+            "success_percent": 0
+          },
+          "meta": {
+            "great_expectations_version": "0.18.21",
+            "expectation_suite_name": "default",
+            "run_id": {
+              "run_name": null,
+              "run_time": "2025-09-09T21:08:55.326911+05:30"
+            },
+            "batch_kwargs": {
+              "ge_batch_id": "18247db4-8d93-11f0-b9df-3814286fba39"
+            },
+            "batch_markers": {},
+            "batch_parameters": {},
+            "validation_time": "20250909T153855.326911Z",
+            "expectation_suite_meta": {
+              "great_expectations_version": "0.18.21"
+            }
+          }
+        }
+      },
+      "sample": [
+        {
+          "CurrencyKey": 1,
+          "DateKey": 20110204,
+          "violation_reason": "Missing exchange rate record for this currency on this day"
+        },
+        {
+          "CurrencyKey": 2,
+          "DateKey": 20110330,
+          "violation_reason": "Missing exchange rate record for this currency on this day"
+        },
+        {
+          "CurrencyKey": 4,
+          "DateKey": 20110702,
+          "violation_reason": "Missing exchange rate record for this currency on this day"
+        },
+        {
+          "CurrencyKey": 5,
+          "DateKey": 20110905,
+          "violation_reason": "Missing exchange rate record for this currency on this day"
+        },
+        {
+          "CurrencyKey": 7,
+          "DateKey": 20120123,
+          "violation_reason": "Missing exchange rate record for this currency on this day"
+        },
+        {
+          "CurrencyKey": 8,
+          "DateKey": 20120316,
+          "violation_reason": "Missing exchange rate record for this currency on this day"
+        },
+        {
+          "CurrencyKey": 9,
+          "DateKey": 20121113,
+          "violation_reason": "Missing exchange rate record for this currency on this day"
+        },
+        {
+          "CurrencyKey": 10,
+          "DateKey": 20131203,
+          "violation_reason": "Missing exchange rate record for this currency on this day"
+        },
+        {
+          "CurrencyKey": 11,
+          "DateKey": 20140103,
+          "violation_reason": "Missing exchange rate record for this currency on this day"
+        },
+        {
+          "CurrencyKey": 12,
+          "DateKey": 20140131,
+          "violation_reason": "Missing exchange rate record for this currency on this day"
+        },
+        {
+          "CurrencyKey": 13,
+          "DateKey": 20110624,
+          "violation_reason": "Missing exchange rate record for this currency on this day"
+        },
+        {
+          "CurrencyKey": 15,
+          "DateKey": 20110906,
+          "violation_reason": "Missing exchange rate record for this currency on this day"
+        },
+        {
+          "CurrencyKey": 17,
+          "DateKey": 20111102,
+          "violation_reason": "Missing exchange rate record for this currency on this day"
+        },
+        {
+          "CurrencyKey": 18,
+          "DateKey": 20120219,
+          "violation_reason": "Missing exchange rate record for this currency on this day"
+        },
+        {
+          "CurrencyKey": 20,
+          "DateKey": 20120512,
+          "violation_reason": "Missing exchange rate record for this currency on this day"
+        },
+        {
+          "CurrencyKey": 21,
+          "DateKey": 20120617,
+          "violation_reason": "Missing exchange rate record for this currency on this day"
+        },
+        {
+          "CurrencyKey": 22,
+          "DateKey": 20120902,
+          "violation_reason": "Missing exchange rate record for this currency on this day"
+        },
+        {
+          "CurrencyKey": 23,
+          "DateKey": 20120905,
+          "violation_reason": "Missing exchange rate record for this currency on this day"
+        },
+        {
+          "CurrencyKey": 24,
+          "DateKey": 20120906,
+          "violation_reason": "Missing exchange rate record for this currency on this day"
+        },
+        {
+          "CurrencyKey": 25,
+          "DateKey": 20120925,
+          "violation_reason": "Missing exchange rate record for this currency on this day"
+        },
+        {
+          "CurrencyKey": 26,
+          "DateKey": 20130205,
+          "violation_reason": "Missing exchange rate record for this currency on this day"
+        },
+        {
+          "CurrencyKey": 27,
+          "DateKey": 20130418,
+          "violation_reason": "Missing exchange rate record for this currency on this day"
+        },
+        {
+          "CurrencyKey": 28,
+          "DateKey": 20130506,
+          "violation_reason": "Missing exchange rate record for this currency on this day"
+        },
+        {
+          "CurrencyKey": 29,
+          "DateKey": 20130629,
+          "violation_reason": "Missing exchange rate record for this currency on this day"
+        },
+        {
+          "CurrencyKey": 30,
+          "DateKey": 20131121,
+          "violation_reason": "Missing exchange rate record for this currency on this day"
+        },
+        {
+          "CurrencyKey": 31,
+          "DateKey": 20131126,
+          "violation_reason": "Missing exchange rate record for this currency on this day"
+        },
+        {
+          "CurrencyKey": 32,
+          "DateKey": 20131227,
+          "violation_reason": "Missing exchange rate record for this currency on this day"
+        },
+        {
+          "CurrencyKey": 33,
+          "DateKey": 20140114,
+          "violation_reason": "Missing exchange rate record for this currency on this day"
+        },
+        {
+          "CurrencyKey": 34,
+          "DateKey": 20110123,
+          "violation_reason": "Missing exchange rate record for this currency on this day"
+        },
+        {
+          "CurrencyKey": 35,
+          "DateKey": 20110302,
+          "violation_reason": "Missing exchange rate record for this currency on this day"
+        },
+        {
+          "CurrencyKey": 37,
+          "DateKey": 20110926,
+          "violation_reason": "Missing exchange rate record for this currency on this day"
+        },
+        {
+          "CurrencyKey": 38,
+          "DateKey": 20111112,
+          "violation_reason": "Missing exchange rate record for this currency on this day"
+        },
+        {
+          "CurrencyKey": 39,
+          "DateKey": 20111119,
+          "violation_reason": "Missing exchange rate record for this currency on this day"
+        },
+        {
+          "CurrencyKey": 40,
+          "DateKey": 20111214,
+          "violation_reason": "Missing exchange rate record for this currency on this day"
+        },
+        {
+          "CurrencyKey": 41,
+          "DateKey": 20111217,
+          "violation_reason": "Missing exchange rate record for this currency on this day"
+        },
+        {
+          "CurrencyKey": 42,
+          "DateKey": 20111224,
+          "violation_reason": "Missing exchange rate record for this currency on this day"
+        },
+        {
+          "CurrencyKey": 43,
+          "DateKey": 20120403,
+          "violation_reason": "Missing exchange rate record for this currency on this day"
+        },
+        {
+          "CurrencyKey": 44,
+          "DateKey": 20120625,
+          "violation_reason": "Missing exchange rate record for this currency on this day"
+        },
+        {
+          "CurrencyKey": 45,
+          "DateKey": 20120705,
+          "violation_reason": "Missing exchange rate record for this currency on this day"
+        },
+        {
+          "CurrencyKey": 46,
+          "DateKey": 20120728,
+          "violation_reason": "Missing exchange rate record for this currency on this day"
+        },
+        {
+          "CurrencyKey": 47,
+          "DateKey": 20120823,
+          "violation_reason": "Missing exchange rate record for this currency on this day"
+        },
+        {
+          "CurrencyKey": 48,
+          "DateKey": 20120910,
+          "violation_reason": "Missing exchange rate record for this currency on this day"
+        },
+        {
+          "CurrencyKey": 49,
+          "DateKey": 20130115,
+          "violation_reason": "Missing exchange rate record for this currency on this day"
+        },
+        {
+          "CurrencyKey": 50,
+          "DateKey": 20130407,
+          "violation_reason": "Missing exchange rate record for this currency on this day"
+        },
+        {
+          "CurrencyKey": 51,
+          "DateKey": 20130510,
+          "violation_reason": "Missing exchange rate record for this currency on this day"
+        },
+        {
+          "CurrencyKey": 52,
+          "DateKey": 20130520,
+          "violation_reason": "Missing exchange rate record for this currency on this day"
+        },
+        {
+          "CurrencyKey": 53,
+          "DateKey": 20130710,
+          "violation_reason": "Missing exchange rate record for this currency on this day"
+        },
+        {
+          "CurrencyKey": 54,
+          "DateKey": 20130902,
+          "violation_reason": "Missing exchange rate record for this currency on this day"
+        },
+        {
+          "CurrencyKey": 55,
+          "DateKey": 20140118,
+          "violation_reason": "Missing exchange rate record for this currency on this day"
+        },
+        {
+          "CurrencyKey": 56,
+          "DateKey": 20140227,
+          "violation_reason": "Missing exchange rate record for this currency on this day"
+        }
+      ],
+      "sql": "WITH date_range AS\n  (SELECT DISTINCT `DateKey`\n   FROM `aigdqr-ragstoriches`.`adv_works_dw`.`factcurrencyrate`),\n     missing_dates AS\n  (SELECT dc.`CurrencyKey`,\n          dr.`DateKey`\n   FROM `aigdqr-ragstoriches`.`adv_works_dw`.`dimcurrency` dc\n   CROSS JOIN date_range dr\n   WHERE NOT EXISTS\n       (SELECT 1\n        FROM `aigdqr-ragstoriches`.`adv_works_dw`.`factcurrencyrate` fcr\n        WHERE fcr.`CurrencyKey` = dc.`CurrencyKey`\n          AND fcr.`DateKey` = dr.`DateKey`))\nSELECT md.`CurrencyKey`,\n       md.`DateKey`,\n       'Missing exchange rate record for this currency on this day' AS `violation_reason`\nFROM missing_dates md",
+      "severity": "HIGH",
+      "description": "Ensure there are no gaps in exchange rate records for major currencies in the factcurrencyrate table. Assumes major currencies are identified by their presence in dimcurrency and gaps are defined as missing DateKey entries for a CurrencyKey.",
+      "timing_sec": {
+        "sql": 12.311
+      }
+    }
+  ]
+}
