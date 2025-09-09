@@ -1,0 +1,144 @@
+{
+  "summary": {
+    "pass": 2,
+    "fail": 0,
+    "duration": "00:00:02",
+    "warehouse": "0e7ef356fe37e56c"
+  },
+  "violations": [],
+  "log": "[start] Submitting 2 rules to 0e7ef356fe37e56c\n[run] Executing rule 1/2: Negative_or_zero_values_in_factresellersales\n[run] Executing rule 2/2: Negative_or_zero_values_in_factinternetsales\n[end] Completed",
+  "per_rule": [
+    {
+      "name": "Negative_or_zero_values_in_factresellersales",
+      "status": "passed",
+      "row_count": 0,
+      "details": {
+        "passed": true,
+        "row_count": 0,
+        "ge_available": true,
+        "details": {
+          "success": true,
+          "results": [
+            {
+              "success": true,
+              "expectation_config": {
+                "expectation_type": "expect_table_row_count_to_equal",
+                "kwargs": {
+                  "value": 0,
+                  "result_format": "BASIC"
+                },
+                "meta": {}
+              },
+              "result": {
+                "observed_value": 0
+              },
+              "meta": {},
+              "exception_info": {
+                "raised_exception": false,
+                "exception_message": null,
+                "exception_traceback": null
+              }
+            }
+          ],
+          "evaluation_parameters": {},
+          "statistics": {
+            "evaluated_expectations": 1,
+            "successful_expectations": 1,
+            "unsuccessful_expectations": 0,
+            "success_percent": 100
+          },
+          "meta": {
+            "great_expectations_version": "0.18.21",
+            "expectation_suite_name": "default",
+            "run_id": {
+              "run_name": null,
+              "run_time": "2025-09-09T01:49:10.237439+05:30"
+            },
+            "batch_kwargs": {
+              "ge_batch_id": "1432c863-8cf1-11f0-af97-3814286fba39"
+            },
+            "batch_markers": {},
+            "batch_parameters": {},
+            "validation_time": "20250908T201910.237439Z",
+            "expectation_suite_meta": {
+              "great_expectations_version": "0.18.21"
+            }
+          }
+        }
+      },
+      "sample": [],
+      "sql": "SELECT `SalesOrderNumber`,\n       `SalesOrderLineNumber`,\n       `OrderQuantity`,\n       `UnitPrice`,\n       `ExtendedAmount`,\n       `SalesAmount`,\n       `TaxAmt`,\n       `Freight`,\n       'Negative or zero value detected in quantities, unit prices, totals, taxes, or freight' AS violation_reason\nFROM `aigdqr-ragstoriches`.`adv_works_dw`.`factresellersales`\nWHERE `OrderQuantity` <= 0\n  OR `UnitPrice` <= 0\n  OR `ExtendedAmount` <= 0\n  OR `SalesAmount` <= 0\n  OR `TaxAmt` < 0\n  OR `Freight` < 0",
+      "severity": "CRITICAL",
+      "description": "Detects records in the factresellersales table where quantities, unit prices, totals, taxes, or freight have negative or zero values.",
+      "timing_sec": {
+        "sql": 2.299
+      }
+    },
+    {
+      "name": "Negative_or_zero_values_in_factinternetsales",
+      "status": "passed",
+      "row_count": 0,
+      "details": {
+        "passed": true,
+        "row_count": 0,
+        "ge_available": true,
+        "details": {
+          "success": true,
+          "results": [
+            {
+              "success": true,
+              "expectation_config": {
+                "expectation_type": "expect_table_row_count_to_equal",
+                "kwargs": {
+                  "value": 0,
+                  "result_format": "BASIC"
+                },
+                "meta": {}
+              },
+              "result": {
+                "observed_value": 0
+              },
+              "meta": {},
+              "exception_info": {
+                "raised_exception": false,
+                "exception_message": null,
+                "exception_traceback": null
+              }
+            }
+          ],
+          "evaluation_parameters": {},
+          "statistics": {
+            "evaluated_expectations": 1,
+            "successful_expectations": 1,
+            "unsuccessful_expectations": 0,
+            "success_percent": 100
+          },
+          "meta": {
+            "great_expectations_version": "0.18.21",
+            "expectation_suite_name": "default",
+            "run_id": {
+              "run_name": null,
+              "run_time": "2025-09-09T01:49:12.272013+05:30"
+            },
+            "batch_kwargs": {
+              "ge_batch_id": "156939ff-8cf1-11f0-83b1-3814286fba39"
+            },
+            "batch_markers": {},
+            "batch_parameters": {},
+            "validation_time": "20250908T201912.272013Z",
+            "expectation_suite_meta": {
+              "great_expectations_version": "0.18.21"
+            }
+          }
+        }
+      },
+      "sample": [],
+      "sql": "SELECT `SalesOrderNumber`,\n       `SalesOrderLineNumber`,\n       `OrderQuantity`,\n       `UnitPrice`,\n       `ExtendedAmount`,\n       `SalesAmount`,\n       `TaxAmt`,\n       `Freight`,\n       'Negative or zero value detected in quantities, unit prices, totals, taxes, or freight' AS violation_reason\nFROM `aigdqr-ragstoriches`.`adv_works_dw`.`factinternetsales`\nWHERE `OrderQuantity` <= 0\n  OR `UnitPrice` <= 0\n  OR `ExtendedAmount` <= 0\n  OR `SalesAmount` <= 0\n  OR `TaxAmt` < 0\n  OR `Freight` < 0",
+      "severity": "CRITICAL",
+      "description": "Detects records in the factinternetsales table where quantities, unit prices, totals, taxes, or freight have negative or zero values.",
+      "timing_sec": {
+        "sql": 2.027
+      }
+    }
+  ]
+}
