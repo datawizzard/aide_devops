@@ -1,0 +1,144 @@
+{
+  "summary": {
+    "pass": 2,
+    "fail": 0,
+    "duration": "00:00:02",
+    "warehouse": "0e7ef356fe37e56c"
+  },
+  "violations": [],
+  "log": "[start] Submitting 2 rules to 0e7ef356fe37e56c\n[run] Executing rule 1/2: Promotion start date earlier than end date\n[run] Executing rule 2/2: Sales within promotion active period\n[end] Completed",
+  "per_rule": [
+    {
+      "name": "Promotion start date earlier than end date",
+      "status": "passed",
+      "row_count": 0,
+      "details": {
+        "passed": true,
+        "row_count": 0,
+        "ge_available": true,
+        "details": {
+          "success": true,
+          "results": [
+            {
+              "success": true,
+              "expectation_config": {
+                "expectation_type": "expect_table_row_count_to_equal",
+                "kwargs": {
+                  "value": 0,
+                  "result_format": "BASIC"
+                },
+                "meta": {}
+              },
+              "result": {
+                "observed_value": 0
+              },
+              "meta": {},
+              "exception_info": {
+                "raised_exception": false,
+                "exception_message": null,
+                "exception_traceback": null
+              }
+            }
+          ],
+          "evaluation_parameters": {},
+          "statistics": {
+            "evaluated_expectations": 1,
+            "successful_expectations": 1,
+            "unsuccessful_expectations": 0,
+            "success_percent": 100
+          },
+          "meta": {
+            "great_expectations_version": "0.18.21",
+            "expectation_suite_name": "default",
+            "run_id": {
+              "run_name": null,
+              "run_time": "2025-09-09T20:19:23.168084+05:30"
+            },
+            "batch_kwargs": {
+              "ge_batch_id": "2c986ec7-8d8c-11f0-9348-3814286fba39"
+            },
+            "batch_markers": {},
+            "batch_parameters": {},
+            "validation_time": "20250909T144923.168084Z",
+            "expectation_suite_meta": {
+              "great_expectations_version": "0.18.21"
+            }
+          }
+        }
+      },
+      "sample": [],
+      "sql": "SELECT `PromotionKey`,\n       `EnglishPromotionName`,\n       `StartDate`,\n       `EndDate`,\n       'StartDate is not earlier than EndDate' AS violation_reason\nFROM `aigdqr-ragstoriches`.`adv_works_dw`.`dimpromotion`\nWHERE `StartDate` >= `EndDate`",
+      "severity": "HIGH",
+      "description": "Detect promotions where the start date is not earlier than the end date. Assumes both StartDate and EndDate are TIMESTAMP columns.",
+      "timing_sec": {
+        "sql": 2.209
+      }
+    },
+    {
+      "name": "Sales within promotion active period",
+      "status": "passed",
+      "row_count": 0,
+      "details": {
+        "passed": true,
+        "row_count": 0,
+        "ge_available": true,
+        "details": {
+          "success": true,
+          "results": [
+            {
+              "success": true,
+              "expectation_config": {
+                "expectation_type": "expect_table_row_count_to_equal",
+                "kwargs": {
+                  "value": 0,
+                  "result_format": "BASIC"
+                },
+                "meta": {}
+              },
+              "result": {
+                "observed_value": 0
+              },
+              "meta": {},
+              "exception_info": {
+                "raised_exception": false,
+                "exception_message": null,
+                "exception_traceback": null
+              }
+            }
+          ],
+          "evaluation_parameters": {},
+          "statistics": {
+            "evaluated_expectations": 1,
+            "successful_expectations": 1,
+            "unsuccessful_expectations": 0,
+            "success_percent": 100
+          },
+          "meta": {
+            "great_expectations_version": "0.18.21",
+            "expectation_suite_name": "default",
+            "run_id": {
+              "run_name": null,
+              "run_time": "2025-09-09T20:19:25.537861+05:30"
+            },
+            "batch_kwargs": {
+              "ge_batch_id": "2e02f375-8d8c-11f0-ba5b-3814286fba39"
+            },
+            "batch_markers": {},
+            "batch_parameters": {},
+            "validation_time": "20250909T144925.536856Z",
+            "expectation_suite_meta": {
+              "great_expectations_version": "0.18.21"
+            }
+          }
+        }
+      },
+      "sample": [],
+      "sql": "SELECT fs.`SalesOrderNumber`,\n       fs.`SalesOrderLineNumber`,\n       fs.`OrderDate`,\n       dp.`PromotionKey`,\n       dp.`StartDate`,\n       dp.`EndDate`,\n       'OrderDate is outside the promotion active period' AS violation_reason\nFROM `aigdqr-ragstoriches`.`adv_works_dw`.`factinternetsales` fs\nJOIN `aigdqr-ragstoriches`.`adv_works_dw`.`dimpromotion` dp ON fs.`PromotionKey` = dp.`PromotionKey`\nWHERE fs.`OrderDate` < dp.`StartDate`\n  OR fs.`OrderDate` > dp.`EndDate`",
+      "severity": "CRITICAL",
+      "description": "Identify sales records associated with promotions where the sale date is outside the promotion's active period. Assumes OrderDate is TIMESTAMP and StartDate/EndDate are TIMESTAMP columns.",
+      "timing_sec": {
+        "sql": 2.353
+      }
+    }
+  ]
+}
