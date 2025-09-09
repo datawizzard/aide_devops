@@ -1,0 +1,144 @@
+{
+  "summary": {
+    "pass": 2,
+    "fail": 0,
+    "duration": "00:00:02",
+    "warehouse": "0e7ef356fe37e56c"
+  },
+  "violations": [],
+  "log": "[start] Submitting 2 rules to 0e7ef356fe37e56c\n[run] Executing rule 1/2: Customer_Assigned_To_Valid_Geography\n[run] Executing rule 2/2: Customer_Not_Unassigned_Geography\n[end] Completed",
+  "per_rule": [
+    {
+      "name": "Customer_Assigned_To_Valid_Geography",
+      "status": "passed",
+      "row_count": 0,
+      "details": {
+        "passed": true,
+        "row_count": 0,
+        "ge_available": true,
+        "details": {
+          "success": true,
+          "results": [
+            {
+              "success": true,
+              "expectation_config": {
+                "expectation_type": "expect_table_row_count_to_equal",
+                "kwargs": {
+                  "value": 0,
+                  "result_format": "BASIC"
+                },
+                "meta": {}
+              },
+              "result": {
+                "observed_value": 0
+              },
+              "meta": {},
+              "exception_info": {
+                "raised_exception": false,
+                "exception_message": null,
+                "exception_traceback": null
+              }
+            }
+          ],
+          "evaluation_parameters": {},
+          "statistics": {
+            "evaluated_expectations": 1,
+            "successful_expectations": 1,
+            "unsuccessful_expectations": 0,
+            "success_percent": 100
+          },
+          "meta": {
+            "great_expectations_version": "0.18.21",
+            "expectation_suite_name": "default",
+            "run_id": {
+              "run_name": null,
+              "run_time": "2025-09-09T01:38:11.094007+05:30"
+            },
+            "batch_kwargs": {
+              "ge_batch_id": "8b516468-8cef-11f0-a9c2-3814286fba39"
+            },
+            "batch_markers": {},
+            "batch_parameters": {},
+            "validation_time": "20250908T200811.094007Z",
+            "expectation_suite_meta": {
+              "great_expectations_version": "0.18.21"
+            }
+          }
+        }
+      },
+      "sample": [],
+      "sql": "SELECT c.`CustomerKey`,\n       c.`GeographyKey`,\n       'Customer is assigned to an invalid geography or geography does not exist' AS violation_reason\nFROM `aigdqr-ragstoriches`.`adv_works_dw`.`dimcustomer` c\nLEFT JOIN `aigdqr-ragstoriches`.`adv_works_dw`.`dimgeography` g ON c.`GeographyKey` = g.`GeographyKey`\nWHERE g.`GeographyKey` IS NULL",
+      "severity": "CRITICAL",
+      "description": "Ensure every customer in the `dimcustomer` table is assigned to a valid geography in the `dimgeography` table. A geography is considered valid if it exists in the `dimgeography` table.",
+      "timing_sec": {
+        "sql": 2.247
+      }
+    },
+    {
+      "name": "Customer_Not_Unassigned_Geography",
+      "status": "passed",
+      "row_count": 0,
+      "details": {
+        "passed": true,
+        "row_count": 0,
+        "ge_available": true,
+        "details": {
+          "success": true,
+          "results": [
+            {
+              "success": true,
+              "expectation_config": {
+                "expectation_type": "expect_table_row_count_to_equal",
+                "kwargs": {
+                  "value": 0,
+                  "result_format": "BASIC"
+                },
+                "meta": {}
+              },
+              "result": {
+                "observed_value": 0
+              },
+              "meta": {},
+              "exception_info": {
+                "raised_exception": false,
+                "exception_message": null,
+                "exception_traceback": null
+              }
+            }
+          ],
+          "evaluation_parameters": {},
+          "statistics": {
+            "evaluated_expectations": 1,
+            "successful_expectations": 1,
+            "unsuccessful_expectations": 0,
+            "success_percent": 100
+          },
+          "meta": {
+            "great_expectations_version": "0.18.21",
+            "expectation_suite_name": "default",
+            "run_id": {
+              "run_name": null,
+              "run_time": "2025-09-09T01:38:13.122271+05:30"
+            },
+            "batch_kwargs": {
+              "ge_batch_id": "8c86f635-8cef-11f0-9577-3814286fba39"
+            },
+            "batch_markers": {},
+            "batch_parameters": {},
+            "validation_time": "20250908T200813.122271Z",
+            "expectation_suite_meta": {
+              "great_expectations_version": "0.18.21"
+            }
+          }
+        }
+      },
+      "sample": [],
+      "sql": "SELECT c.`CustomerKey`,\n       c.`GeographyKey`,\n       'Customer is not assigned to any geography (GeographyKey is NULL)' AS violation_reason\nFROM `aigdqr-ragstoriches`.`adv_works_dw`.`dimcustomer` c\nWHERE c.`GeographyKey` IS NULL",
+      "severity": "HIGH",
+      "description": "Ensure no customer in the `dimcustomer` table is unassigned to any geography. This means the `GeographyKey` column should not be NULL.",
+      "timing_sec": {
+        "sql": 2.016
+      }
+    }
+  ]
+}
