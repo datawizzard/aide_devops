@@ -1,0 +1,144 @@
+{
+  "summary": {
+    "pass": 2,
+    "fail": 0,
+    "duration": "00:00:02",
+    "warehouse": "0e7ef356fe37e56c"
+  },
+  "violations": [],
+  "log": "[start] Submitting 2 rules to 0e7ef356fe37e56c\n[run] Executing rule 1/2: End date not earlier than start date\n[run] Executing rule 2/2: Dates significantly far in the future\n[end] Completed",
+  "per_rule": [
+    {
+      "name": "End date not earlier than start date",
+      "status": "passed",
+      "row_count": 0,
+      "details": {
+        "passed": true,
+        "row_count": 0,
+        "ge_available": true,
+        "details": {
+          "success": true,
+          "results": [
+            {
+              "success": true,
+              "expectation_config": {
+                "expectation_type": "expect_table_row_count_to_equal",
+                "kwargs": {
+                  "value": 0,
+                  "result_format": "BASIC"
+                },
+                "meta": {}
+              },
+              "result": {
+                "observed_value": 0
+              },
+              "meta": {},
+              "exception_info": {
+                "raised_exception": false,
+                "exception_message": null,
+                "exception_traceback": null
+              }
+            }
+          ],
+          "evaluation_parameters": {},
+          "statistics": {
+            "evaluated_expectations": 1,
+            "successful_expectations": 1,
+            "unsuccessful_expectations": 0,
+            "success_percent": 100
+          },
+          "meta": {
+            "great_expectations_version": "0.18.21",
+            "expectation_suite_name": "default",
+            "run_id": {
+              "run_name": null,
+              "run_time": "2025-09-10T01:50:26.439426+05:30"
+            },
+            "batch_kwargs": {
+              "ge_batch_id": "6c07832d-8dba-11f0-a4ce-3814286fba39"
+            },
+            "batch_markers": {},
+            "batch_parameters": {},
+            "validation_time": "20250909T202026.439426Z",
+            "expectation_suite_meta": {
+              "great_expectations_version": "0.18.21"
+            }
+          }
+        }
+      },
+      "sample": [],
+      "sql": "SELECT `calendar_id`,\n       `start_date`,\n       `end_date`,\n       'end_date is earlier than start_date' AS `violation_reason`\nFROM `aigdqr-ragstoriches`.`calendar_ddp`.`v_calendar_full`\nWHERE `end_date` < `start_date`",
+      "severity": "HIGH",
+      "description": "Flags rows where the end_date is earlier than the start_date in the calendar tables. Assumes both start_date and end_date are DATE columns.",
+      "timing_sec": {
+        "sql": 4.38
+      }
+    },
+    {
+      "name": "Dates significantly far in the future",
+      "status": "passed",
+      "row_count": 0,
+      "details": {
+        "passed": true,
+        "row_count": 0,
+        "ge_available": true,
+        "details": {
+          "success": true,
+          "results": [
+            {
+              "success": true,
+              "expectation_config": {
+                "expectation_type": "expect_table_row_count_to_equal",
+                "kwargs": {
+                  "value": 0,
+                  "result_format": "BASIC"
+                },
+                "meta": {}
+              },
+              "result": {
+                "observed_value": 0
+              },
+              "meta": {},
+              "exception_info": {
+                "raised_exception": false,
+                "exception_message": null,
+                "exception_traceback": null
+              }
+            }
+          ],
+          "evaluation_parameters": {},
+          "statistics": {
+            "evaluated_expectations": 1,
+            "successful_expectations": 1,
+            "unsuccessful_expectations": 0,
+            "success_percent": 100
+          },
+          "meta": {
+            "great_expectations_version": "0.18.21",
+            "expectation_suite_name": "default",
+            "run_id": {
+              "run_name": null,
+              "run_time": "2025-09-10T01:50:28.663441+05:30"
+            },
+            "batch_kwargs": {
+              "ge_batch_id": "6d5b89ac-8dba-11f0-b03a-3814286fba39"
+            },
+            "batch_markers": {},
+            "batch_parameters": {},
+            "validation_time": "20250909T202028.663441Z",
+            "expectation_suite_meta": {
+              "great_expectations_version": "0.18.21"
+            }
+          }
+        }
+      },
+      "sample": [],
+      "sql": "SELECT `calendar_id`,\n       `end_date`,\n       'end_date is more than 100 years in the future' AS `violation_reason`\nFROM `aigdqr-ragstoriches`.`calendar_ddp`.`v_calendar_full`\nWHERE `end_date` > date_add(current_date(), 36525)",
+      "severity": "MEDIUM",
+      "description": "Flags rows where the end_date is significantly far in the future (more than 100 years from today). Assumes end_date is a DATE column.",
+      "timing_sec": {
+        "sql": 2.212
+      }
+    }
+  ]
+}
